@@ -1,59 +1,61 @@
-import React from 'react';
+import React, { Component } from 'react';
+import * as firebase from 'firebase';
 import { connect } from 'react-redux';
-import { TouchableHighlight, View, Text, StyleSheet } from 'react-native';
-import Firebase from 'firebase';
+
+import {
+  TouchableHighlight,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+} from 'react-native';
 
 import { fetchData } from './actions';
 
-let styles;
-
-const App = props => {
-  const { container, text, button, buttonText, mainContent } = styles;
-
-  return (
-    <View style={container}>
-      <Text style={text}>Redux Examples</Text>
-      <TouchableHighlight style={button} onPress={() => props.fetchData()}>
-        <Text style={buttonText}>Load Data</Text>
-      </TouchableHighlight>
-      <View style={mainContent}>
-        {props.appData.isFetching && <Text>Loading</Text>}
-        {props.appData.data.length
-          ? props.appData.data.map((person, i) => {
-            return (
-              <View key={i}>
-                <Text>Name: {person.name}</Text>
-                <Text>Age: {person.age}</Text>
-              </View>
-              );
-            })
-          : null}
-      </View>
-    </View>
-  );
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: 'AIzaSyDWfz8Ui-p-G2mJX_t92Zu2nFVtp06bGf8',
+  authDomain: 'chadoin-932bf.firebaseapp.com',
+  databaseURL: 'https://chadoin-932bf.firebaseio.com',
+  projectId: 'chadoin-932bf',
+  storageBucket: 'chadoin-932bf.appspot.com',
+  messagingSenderId: '701206774326',
 };
 
-styles = StyleSheet.create({
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
+    backgroundColor: '#803DFF',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#ffffff',
   },
-  button: {
-    height: 60,
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0b7eff',
-  },
-  buttonText: {
-    color: 'white',
-  },
-  mainContent: {
-    margin: 10,
-  },
+  smileyFace: {},
 });
+
+class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image
+          style={styles.smileyFace}
+          source={require('./images/smiley-face@2x.png')}
+        />
+        <Text style={styles.text}>
+          ChaDoin?
+        </Text>
+      </View>
+    );
+  }
+}
 
 function mapStateToProps(state) {
   return {
