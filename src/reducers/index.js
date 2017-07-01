@@ -21,7 +21,7 @@ function nav(state = initialNavState, action) {
   switch (action.type) {
     case 'Login':
       nextState = AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: 'Profile' }),
+        NavigationActions.navigate({ routeName: 'NewEventScreen' }),
         state,
       );
       break;
