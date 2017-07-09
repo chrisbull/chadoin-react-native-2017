@@ -6,7 +6,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
-    padding: 20,
+    padding: 20
+  },
+  inputContainer: {
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1
   },
   switchControl: {
     flex: 1,
@@ -15,8 +19,6 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
   switchLabel: {
-    borderColor: 'gray',
-    borderWidth: 1,
     height: 40,
     justifyContent: 'center',
     marginTop: 15,
@@ -29,120 +31,104 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
   tappableLabel: {
-    borderColor: 'gray',
-    borderWidth: 1,
     height: 40,
     justifyContent: 'center',
     marginTop: 15,
-    paddingHorizontal: 8,
+    paddingHorizontal: 8
   },
   textInput: {
-    borderColor: 'gray',
-    borderWidth: 1,
     height: 40,
     paddingHorizontal: 8,
   }
 });
 
-class NewEventScreen extends Component {
+export class NewEventScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      eventTitle: '',
+      eventSwitch: 'All-day',
+      eventSwitchIsOn: false,
+      eventSwitchRegressionIsOn: true,
+      dateTimeMode: 'datetime',
+      startDateTime: new Date(),
+      startDateTimeLabel: '',
+    };
+
+    this.getValue = this.getValue.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.toggleDateTime = this.toggleDateTime.bind(this);
+  }
+
+  getValue() {
+    // this.setState({this.props.eventLocation: value});
+    alert('the value is: ' + this.state.eventTitle);
+  }
+
+  onDateChange = (date) => {
+    this.setState({startDateTime: date});
+    this.setState({startDateTimeLabel: '' + this.state.startDateTime});
+  }
+
+  toggleDateTime = (value) => {
+    (this.state.eventSwitchIsOn) ? this.setState({dateTimeMode: 'datetime'}) : this.setState({dateTimeMode: 'date'});
+    (this.state.eventSwitchIsOn) ? this.setState({eventSwitchIsOn: false}) : this.setState({eventSwitchIsOn: true});
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
-        <TextBox />
-        <TappableLabel text='Location'/>
-        <CustomSwitch label='All-day' />
-        <TappableLabel text='Start StartTime' />
-        <TappableLabel text='End DateTime' />
-        <TappableLabel text='Invite Friends' />
-      </ScrollView>
-    );
-  }
-}
 
-class CustomDatePicker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: new Date(),
-    };
-  }
-
-  render() {
-    return (
-      <View>
-        <DatePickerIOS
-          date={this.state.date}
-          mode="datetime"
-          timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
-          onDateChange={this.onDateChange}
-        />
-      </View>
-    );
-  }
-}
-
-class CustomSwitch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      label: '',
-      eventSwitchIsOn: false,
-      eventSwitchRegressionIsOn: true,
-    }
-  }
-
-  render() {
-    return (
-      <View style={styles.switchControl}>
-        <View style={styles.switchLabel}>
-          <Text>{this.props.label}</Text>
+        <View style={styles.inputContainer}>
+          <TextInput style={styles.textInput}
+            placeholder='Title'
+            onChangeText={(text) => this.setState({eventTitle: text})}
+            // onChangeText={(eventTitle) => this.changeValue(eventTitle)}
+            value={this.state.eventTitle} />
         </View>
-        <View style={styles.switchInput}>
-          <Switch
-            onValueChange={(value) => this.setState({eventSwitchIsOn: value})}
-            value={this.state.eventSwitchIsOn} />
+
+        <View style={styles.inputContainer}>
+          <TouchableHighlight style={styles.tappableLabel}
+            onPress={this.getValue} >
+            <Text>{this.state.eventTitle}</Text>
+          </TouchableHighlight>
         </View>
-      </View>
-    );
-  }
-}
 
-class TappableLabel extends Component {
-  constructor(props) {
-    super(props);
+        <View style={styles.switchControl}>
+          <View style={styles.switchLabel}>
+            <Text>{this.state.eventSwitch}</Text>
+          </View>
+          <View style={styles.switchInput}>
+            <Switch
+              onValueChange={this.toggleDateTime}
+              value={this.state.eventSwitchIsOn} />
+          </View>
+        </View>
 
-    this.state = {
-      text: '',
-    };
-  }
-
-  render() {
-    return (
-      <View>
-        <TouchableHighlight
-          style={styles.tappableLabel} >
-          <Text>{this.props.text}</Text>
+        <TouchableHighlight style={styles.tappableLabel}>
+          <View>
+            <Text>Start Time</Text>
+            <Text>{this.state.startDateTime.toLocaleDateString('en-us', {month: 'long', day: 'numeric', year: 'numeric'})}</Text>
+            <Text>{this.state.startDateTime.toLocaleTimeString('en-us', {hour: 'numeric', minute: '2-digit'})}</Text>
+            {/* <Text>{'' + this.state.startDateTimeLabel}</Text> */}
+          </View>
         </TouchableHighlight>
-      </View>
-    );
-  }
-}
 
-class TextBox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+        <TouchableHighlight style={styles.tappableLabel}>
+          <Text>{'' + this.state.startDateTimeLabel}</Text>
+        </TouchableHighlight>
 
-  render() {
-    return (
-      <View>
-        <TextInput
-          placeholder='Title'
-          style={styles.textInput}
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text} />
-      </View>
+        <DatePickerIOS
+          date={this.state.startDateTime}
+          mode={this.state.dateTimeMode}
+          timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
+          onDateChange={this.onDateChange} />
+
+        <TouchableHighlight style={styles.tappableLabel}>
+          <Text>Invite Friends</Text>
+        </TouchableHighlight>
+
+      </ScrollView>
     );
   }
 }
