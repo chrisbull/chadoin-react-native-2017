@@ -13,6 +13,8 @@ import { AppNavigator } from '../navigators/AppNavigator';
 //   tempNavState
 // );
 
+//--- Nav Reducers
+
 const firstAction = AppNavigator.router.getActionForPathAndParams('Main');
 const initialNavState = AppNavigator.router.getStateForAction(firstAction);
 
@@ -40,6 +42,8 @@ function nav(state = initialNavState, action) {
   return nextState || state;
 }
 
+//--- Auth Reducers
+
 const initialAuthState = { isLoggedIn: false };
 
 function auth(state = initialAuthState, action) {
@@ -53,9 +57,33 @@ function auth(state = initialAuthState, action) {
   }
 }
 
+//--- Event Reducers
+let eventIdCounter = 0;
+
+function events(state = [], { type, ...action }) {
+  // state == events
+  switch (type) {
+    case 'CREATE_EVENT':
+      return [
+        ...state,
+        {
+          id: eventIdCounter++,
+          ...action,
+        },
+      ];
+    case 'UPDATE_EVENT':
+      return state.map(event => (event.id === action.id ? action : event));
+    case 'DELETE_EVENT':
+      return state.map(event => (event.id === action.id ? undefined : event));
+    default:
+      return state;
+  }
+}
+
 const AppReducer = combineReducers({
   nav,
   auth,
+  events,
 });
 
 export default AppReducer;

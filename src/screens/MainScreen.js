@@ -32,6 +32,12 @@ const styles = StyleSheet.create({
 });
 
 class MainScreen extends Component {
+  propTypes = {
+    isLoggedIn: PropTypes.bool,
+    login: PropTypes.func,
+    logout: PropTypes.func,
+  };
+
   render() {
     const { isLoggedIn, login, logout } = this.props;
 
