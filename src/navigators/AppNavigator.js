@@ -1,32 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { addNavigationHelpers, StackNavigator } from 'react-navigation'
 
-import LoginScreen from '../screens/LoginScreen';
-import MainScreen from '../screens/MainScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import EventsScreen from '../screens/EventsScreen';
-import NewEventScreen from '../screens/NewEventScreen';
+import LoginScreen from '../screens/LoginScreen'
+import MainScreen from '../screens/MainScreen'
+import ProfileScreen from '../screens/ProfileScreen'
+import EventsScreen from '../screens/EventsScreen'
+import NewEventScreen from '../screens/NewEventScreen'
 
 export const AppNavigator = StackNavigator({
   Main: { screen: MainScreen },
   Login: { screen: LoginScreen },
   Profile: { screen: ProfileScreen },
   Events: { screen: EventsScreen },
-  Event: { screen: NewEventScreen },
-});
+  Event: { screen: NewEventScreen }
+})
 
 const AppWithNavigationState = ({ dispatch, nav }) =>
-  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />;
+  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
 
 AppWithNavigationState.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
-};
+  nav: PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({
-  nav: state.nav,
-});
+  nav: state.nav
+})
 
-export default connect(mapStateToProps)(AppWithNavigationState);
+export default connect(mapStateToProps)(AppWithNavigationState)

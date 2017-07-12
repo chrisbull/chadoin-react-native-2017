@@ -1,21 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from '../components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { StyleSheet, Text, View } from 'react-native'
+import { Button } from '../components'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
-  },
-});
+    margin: 10
+  }
+})
 
 const LoginScreen = ({ navigation }) =>
   <View style={styles.container}>
@@ -23,16 +23,16 @@ const LoginScreen = ({ navigation }) =>
     <Text style={styles.instructions}>This is great</Text>
     <Button
       onPress={() => navigation.dispatch({ type: 'Login' })}
-      title="Log in"
+      title='Log in'
     />
-  </View>;
+  </View>
 
 LoginScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
+  navigation: PropTypes.object.isRequired
+}
 
 LoginScreen.navigationOptions = {
-  title: 'Log In',
-};
+  title: 'Log In'
+}
 
-export default LoginScreen;
+export default LoginScreen

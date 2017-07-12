@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View,
   Text,
   StyleSheet,
   Image,
-  TouchableHighlight,
-} from 'react-native';
+  TouchableHighlight
+} from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,35 +13,34 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   text: {
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#ffffff'
   },
   buttonText: {
     color: '#ffffff',
     textAlign: 'center',
     fontWeight: 'bold'
   },
-  smileyFace: {},
-});
+  smileyFace: {}
+})
 
 export default class WelcomeScreen extends Component {
-
-  onSignInPress() {
-    const { navigate } = this.props.navigation;
-    navigate('SignIn');
+  onSignInPress () {
+    const { navigate } = this.props.navigation
+    navigate('SignIn')
   }
 
-  onSignUpPress() {
-    const { navigate } = this.props.navigation;
-    navigate('SignUp');
+  onSignUpPress () {
+    const { navigate } = this.props.navigation
+    navigate('SignUp')
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Image
@@ -57,10 +56,10 @@ export default class WelcomeScreen extends Component {
             padding: 15,
             borderRadius: 45,
             width: '75%',
-            marginTop: 35,
+            marginTop: 35
           }}
           onPress={() => {
-            this.onSignInPress();
+            this.onSignInPress()
           }}
         >
           <Text style={styles.buttonText}>Sign In</Text>
@@ -71,15 +70,15 @@ export default class WelcomeScreen extends Component {
             padding: 15,
             borderRadius: 45,
             width: '75%',
-            marginTop: 35,
+            marginTop: 35
           }}
           onPress={() => {
-            this.onSignUpPress();
+            this.onSignUpPress()
           }}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableHighlight>
       </View>
-    );
+    )
   }
 }
