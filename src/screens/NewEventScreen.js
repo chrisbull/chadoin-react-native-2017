@@ -76,14 +76,10 @@ const styles = StyleSheet.create({
 
 export class NewEventScreen extends Component {
   state = {
-    event: {},
-    eventSwitch: 'All-day',
-    eventSwitchIsOn: false,
-    eventSwitchRegressionIsOn: true,
-    dateTimeMode: 'datetime',
-    startDateTime: new Date(),
-    startDateTimeLabel: '',
+    event: this.props.event || {},
   };
+
+  // -- Event hanlders
 
   getValue() {
     // this.setState({this.props.eventLocation: value});
@@ -91,17 +87,17 @@ export class NewEventScreen extends Component {
   }
 
   onDateChange = date => {
-    this.setState({
-      startDateTime: date,
-      startDateTimeLabel: '' + this.state.startDateTime,
-    });
+    let { event } = this.state;
+    event.startDateTime = date;
+
+    this.setState({ event });
   };
 
   createOrUpdateEvent = () => {
     const { event } = this.state;
     const { updateEvent, createEvent } = this.props;
 
-    event.id !== null ? updateEvent(event) : createEvent(event);
+    event.id ? updateEvent(event) : createEvent(event);
   };
 
   deleteEvent = () => {
@@ -109,15 +105,9 @@ export class NewEventScreen extends Component {
   };
 
   toggleDateTime = value => {
-    this.state.eventSwitchIsOn
-      ? this.setState({
-          dateTimeMode: 'datetime',
-          eventSwitchIsOn: false,
-        })
-      : this.setState({
-          dateTimeMode: 'date',
-          eventSwitchIsOn: true,
-        });
+    let { event } = this.state;
+    event.isAllDay = value;
+    this.setState({ event });
   };
 
   updateEventTitle = title => {
@@ -128,14 +118,23 @@ export class NewEventScreen extends Component {
   };
 
   render() {
+    const { event, timeZoneOffsetInHours } = this.state;
     const {
-      event,
-      eventSwitch,
-      eventSwitchIsOn,
-      startDateTime,
-      dateTimeMode,
-      timeZoneOffsetInHours,
-    } = this.state;
+      id = null,
+      title = '',
+      isAllDay = false,
+      startDateTime = new Date(),
+    } = event;
+
+    const startDate = startDateTime.toLocaleTimeString('en-us', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    const startTime = startDateTime.toLocaleTimeString('en-us', {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
 
     return (
       <ScrollView style={styles.container}>
@@ -144,7 +143,7 @@ export class NewEventScreen extends Component {
             style={styles.textInput}
             placeholder="Title"
             onChangeText={this.updateEventTitle}
-            value={event.title || ''}
+            value={title}
           />
         </View>
 
@@ -154,7 +153,7 @@ export class NewEventScreen extends Component {
             onPress={this.getValue}
           >
             <Text>
-              {event.title || ''}
+              {title}
             </Text>
           </TouchableHighlight>
         </View>
@@ -162,14 +161,11 @@ export class NewEventScreen extends Component {
         <View style={styles.switchControl}>
           <View style={styles.switchLabel}>
             <Text>
-              {this.state.eventSwitch}
+              {isAllDay}
             </Text>
           </View>
           <View style={styles.switchInput}>
-            <Switch
-              onValueChange={this.toggleDateTime}
-              value={this.state.eventSwitchIsOn}
-            />
+            <Switch onValueChange={this.toggleDateTime} value={isAllDay} />
           </View>
         </View>
 
@@ -177,18 +173,11 @@ export class NewEventScreen extends Component {
           <View style={styles.dateTimeView}>
             <Text style={styles.dateTimeLabel}>Start Time</Text>
             <Text style={styles.dateTimeDate}>
-              {this.state.startDateTime.toLocaleDateString('en-us', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })}
+              {startDate}
             </Text>
-            {!this.state.eventSwitchIsOn &&
+            {!isAllDay &&
               <Text style={styles.dateTimeTime}>
-                {this.state.startDateTime.toLocaleTimeString('en-us', {
-                  hour: 'numeric',
-                  minute: '2-digit',
-                })}
+                {startTime}
               </Text>}
           </View>
         </TouchableHighlight>
@@ -197,26 +186,19 @@ export class NewEventScreen extends Component {
           <View style={styles.dateTimeView}>
             <Text style={styles.dateTimeLabel}>End Time</Text>
             <Text style={styles.dateTimeDate}>
-              {this.state.startDateTime.toLocaleDateString('en-us', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })}
+              {startDate}
             </Text>
-            {!this.state.eventSwitchIsOn &&
+            {!isAllDay &&
               <Text style={styles.dateTimeTime}>
-                {this.state.startDateTime.toLocaleTimeString('en-us', {
-                  hour: 'numeric',
-                  minute: '2-digit',
-                })}
+                {startTime}
               </Text>}
           </View>
         </TouchableHighlight>
 
         <DatePickerIOS
-          date={this.state.startDateTime}
-          mode={this.state.dateTimeMode}
-          timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
+          date={startDateTime}
+          mode={isAllDay ? 'date' : 'datetime'}
+          timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
           onDateChange={this.onDateChange}
         />
 
@@ -229,11 +211,11 @@ export class NewEventScreen extends Component {
           onPress={this.createOrUpdateEvent}
         >
           <Text>
-            {event.id !== null ? 'Create Event' : 'Update Event'}
+            {id ? 'Create Event' : 'Update Event'}
           </Text>
         </TouchableHighlight>
 
-        {event.id !== null &&
+        {id &&
           <TouchableHighlight
             style={styles.tappableLabel}
             onPress={this.deleteEvent}

@@ -23,11 +23,23 @@ function nav(state = initialNavState, action) {
   switch (action.type) {
     case 'Login':
       nextState = AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: 'NewEventScreen' }),
+        NavigationActions.navigate({ routeName: 'Events' }),
         state,
       );
       break;
     case 'Logout':
+      nextState = AppNavigator.router.getStateForAction(
+        NavigationActions.back(),
+        state,
+      );
+      break;
+    case 'NEW_EVENT':
+      nextState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'Event' }),
+        state,
+      );
+      break;
+    case 'CREATE_EVENT':
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.back(),
         state,
@@ -60,9 +72,10 @@ function auth(state = initialAuthState, action) {
 //--- Event Reducers
 let eventIdCounter = 0;
 
-function events(state = [], { type, ...action }) {
+function events(state = [], action) {
+  console.log('events reducer -> state, action ->', state, action);
   // state == events
-  switch (type) {
+  switch (action.type) {
     case 'CREATE_EVENT':
       return [
         ...state,
