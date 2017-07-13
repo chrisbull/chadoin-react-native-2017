@@ -79,6 +79,10 @@ export class NewEventScreen extends Component {
     event: this.props.event || {},
   };
 
+  componentDidMount() {
+    console.log('NewEventScreen', this.props.event, this.state.event);
+  }
+
   // -- Event hanlders
 
   getValue() {
@@ -211,7 +215,7 @@ export class NewEventScreen extends Component {
           onPress={this.createOrUpdateEvent}
         >
           <Text>
-            {id ? 'Create Event' : 'Update Event'}
+            {id ? 'Update Event' : 'Create Event'}
           </Text>
         </TouchableHighlight>
 
@@ -232,7 +236,7 @@ NewEventScreen.navigationOptions = {
 };
 
 const mapStateToProps = state => ({
-  // event: state.event,
+  event: state.event,
 });
 
 const mapDispatchToProps = dispatch => ({

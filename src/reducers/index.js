@@ -33,6 +33,12 @@ function nav(state = initialNavState, action) {
         state,
       );
       break;
+    case 'EDIT_EVENT':
+      nextState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'Event' }),
+        state,
+      );
+      break;
     case 'NEW_EVENT':
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.navigate({ routeName: 'Event' }),
@@ -40,6 +46,7 @@ function nav(state = initialNavState, action) {
       );
       break;
     case 'CREATE_EVENT':
+    case 'UPDATE_EVENT':
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.back(),
         state,
@@ -70,13 +77,23 @@ function auth(state = initialAuthState, action) {
 }
 
 //--- Event Reducers
-let eventIdCounter = 0;
+let eventIdCounter = 1;
 
-function events(state = [], action) {
-  console.log('events reducer -> state, action ->', state, action);
+function event(state = {}, { type, ...action }) {
+  switch (type) {
+    case 'EDIT_EVENT':
+      return action;
+    default:
+      return action;
+  }
+}
+
+function events(state = [], { type, ...action }) {
+  // console.log('events reducer -> state, action ->', state, action);
   // state == events
-  switch (action.type) {
+  switch (type) {
     case 'CREATE_EVENT':
+      console.log('dispatch -> CREATE_EVENT');
       return [
         ...state,
         {
@@ -85,6 +102,7 @@ function events(state = [], action) {
         },
       ];
     case 'UPDATE_EVENT':
+      console.log('dispatch -> UPDATE_EVENT');
       return state.map(event => (event.id === action.id ? action : event));
     case 'DELETE_EVENT':
       return state.map(event => (event.id === action.id ? undefined : event));
@@ -96,6 +114,7 @@ function events(state = [], action) {
 const AppReducer = combineReducers({
   nav,
   auth,
+  event,
   events,
 });
 
