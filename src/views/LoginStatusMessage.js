@@ -1,22 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { StyleSheet, Text, View } from 'react-native'
-import { NavigationActions } from 'react-navigation'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 
-import { Button } from '../components'
+import { Button } from '../components';
 
 const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10
-  }
-})
+    margin: 10,
+  },
+});
 
 const LoginStatusMessage = ({ isLoggedIn, dispatch }) => {
   if (!isLoggedIn) {
-    return <Text>Please log in</Text>
+    return <Text>Please log in</Text>;
   }
   return (
     <View>
@@ -26,20 +26,20 @@ const LoginStatusMessage = ({ isLoggedIn, dispatch }) => {
       <Button
         onPress={() =>
           dispatch(NavigationActions.navigate({ routeName: 'Profile' }))}
-        title='Profile'
-        color='blue'
+        title="Profile"
+        color="blue"
       />
     </View>
-  )
-}
+  );
+};
 
 LoginStatusMessage.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
-}
+  dispatch: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.auth.isLoggedIn
-})
+  isLoggedIn: state.auth.isLoggedIn,
+});
 
-export default connect(mapStateToProps)(LoginStatusMessage)
+export default connect(mapStateToProps)(LoginStatusMessage);

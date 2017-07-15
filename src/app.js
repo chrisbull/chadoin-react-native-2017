@@ -42,24 +42,24 @@
 //
 // export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-import React, { Component } from 'react'
-import { AppRegistry } from 'react-native'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import React, { Component } from 'react';
+import { AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-import AppReducer from './reducers'
-import AppWithNavigationState from './navigators/AppNavigator'
+import AppReducer from './reducers';
+import AppWithNavigationState from './navigators/AppNavigator';
 
 class App extends Component {
   store = createStore(AppReducer);
 
-  render () {
+  render() {
     return (
       <Provider store={this.store}>
         <AppWithNavigationState />
       </Provider>
-    )
+    );
   }
 }
 
-export default App
+export default App;

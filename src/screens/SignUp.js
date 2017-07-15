@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   View,
-  Text
-} from 'react-native'
+  Text,
+} from 'react-native';
 
 export default class SignUpScreen extends Component {
   static navigationOptions = {
-    title: 'Sign Up'
+    title: 'Sign Up',
   };
 
-  render () {
+  render() {
     return (
       <View>
         <Text>Sign Up</Text>
       </View>
-    )
+    );
   }
 }

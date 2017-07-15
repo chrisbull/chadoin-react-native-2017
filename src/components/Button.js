@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { StyleSheet, TouchableHighlight, Text, View } from 'react-native'
-import { Colors } from '../utils'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, TouchableHighlight, Text, View } from 'react-native';
+import { Colors } from '../utils';
 
-function getStyles (props, state) {
+function getStyles(props, state) {
   const styles = StyleSheet.create({
     container: {
-      ...props.style
+      ...props.style,
     },
     highlight: {
       backgroundColor: props.color ? Colors[props.color] : Colors.blue,
@@ -14,17 +14,17 @@ function getStyles (props, state) {
       paddingTop: 15,
       paddingBottom: 15,
       paddingLeft: 30,
-      paddingRight: 30
+      paddingRight: 30,
     },
     label: {
       color: '#ffffff',
       textAlign: 'center',
       fontWeight: 'bold',
-      fontSize: 18
-    }
-  })
+      fontSize: 18,
+    },
+  });
 
-  return styles
+  return styles;
 }
 
 export default class Button extends Component {
@@ -32,10 +32,10 @@ export default class Button extends Component {
     title: PropTypes.String.isRequired,
   };
 
-  render () {
-    const { title, onPress } = this.props
+  render() {
+    const { title, onPress } = this.props;
 
-    const styles = getStyles(this.props, this.state)
+    const styles = getStyles(this.props, this.state);
 
     return (
       <View style={styles.container}>
@@ -45,6 +45,6 @@ export default class Button extends Component {
           </Text>
         </TouchableHighlight>
       </View>
-    )
+    );
   }
 }

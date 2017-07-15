@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   View,
-  Text
-} from 'react-native'
+  Text,
+} from 'react-native';
 
 export default class SignInScreen extends Component {
   static navigationOptions = {
-    title: 'Sign In'
+    title: 'Sign In',
   };
 
-  render () {
+  render() {
     return (
       <View>
         <Text>Sign Up</Text>
       </View>
-    )
+    );
   }
 }
