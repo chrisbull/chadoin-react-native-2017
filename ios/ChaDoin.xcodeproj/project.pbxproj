@@ -51,6 +51,16 @@
 		FA588414DE194628AAD21E41 /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5B0546A5934C64BBBE217E /* libyoga.a */; };
 		E543D34F5B914C289162B948 /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E518A5DF5DA54177BBF23751 /* libcxxreact.a */; };
 		AAEDA700A3DB43DBB2C07B02 /* libjschelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC9BA353D6F49E28610737A /* libjschelpers.a */; };
+		BE14100EA364494084D9D938 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B10464123CA42259CB190C3 /* libReactNativeConfig.a */; };
+		4CC81BD2F9BA4FE8B6D5912E /* Geomanist-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D1113FC7A544781B1ABC2C9 /* Geomanist-Black.otf */; };
+		821380A19C4E42DB9D0DAE90 /* Geomanist-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA632BB5BED94D6ABBB34975 /* Geomanist-Bold.otf */; };
+		1F22D2C9F53144A8B31A73BD /* Geomanist-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3935F31591FC4F64B2AD3FFD /* Geomanist-Book.otf */; };
+		A0BE00909E1D489FB0FC5016 /* Geomanist-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7EC4BD4612947BFAE38931D /* Geomanist-ExtraLight.otf */; };
+		71CD5B71A72F4DA8A6D86C1A /* Geomanist-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 572FFB0474D44ABDA0DBF8AB /* Geomanist-Light.otf */; };
+		F512616A1AC74A0FAC6024C0 /* Geomanist-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3763900CC59A41D39E0CE1E5 /* Geomanist-Medium.otf */; };
+		212CA5FBBCAA4A0BBCACDB3E /* Geomanist-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ED564E532734C2ABD8EDAA6 /* Geomanist-Regular.otf */; };
+		B55D47630BA34318B38C3342 /* Geomanist-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = FFFD738097E74F43AD63052B /* Geomanist-Thin.otf */; };
+		8EACAB42B94E46F8B5663F4D /* Geomanist-Ultra.otf in Resources */ = {isa = PBXBuildFile; fileRef = A902515A19D44DB0989A5000 /* Geomanist-Ultra.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +299,17 @@
 		2F5B0546A5934C64BBBE217E /* libyoga.a */ = {isa = PBXFileReference; name = "libyoga.a"; path = "libyoga.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		E518A5DF5DA54177BBF23751 /* libcxxreact.a */ = {isa = PBXFileReference; name = "libcxxreact.a"; path = "libcxxreact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		0CC9BA353D6F49E28610737A /* libjschelpers.a */ = {isa = PBXFileReference; name = "libjschelpers.a"; path = "libjschelpers.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E439579226AC49A396AE78D6 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeConfig.xcodeproj"; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		8B10464123CA42259CB190C3 /* libReactNativeConfig.a */ = {isa = PBXFileReference; name = "libReactNativeConfig.a"; path = "libReactNativeConfig.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		9D1113FC7A544781B1ABC2C9 /* Geomanist-Black.otf */ = {isa = PBXFileReference; name = "Geomanist-Black.otf"; path = "../App/Fonts/Geomanist/Geomanist-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FA632BB5BED94D6ABBB34975 /* Geomanist-Bold.otf */ = {isa = PBXFileReference; name = "Geomanist-Bold.otf"; path = "../App/Fonts/Geomanist/Geomanist-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3935F31591FC4F64B2AD3FFD /* Geomanist-Book.otf */ = {isa = PBXFileReference; name = "Geomanist-Book.otf"; path = "../App/Fonts/Geomanist/Geomanist-Book.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B7EC4BD4612947BFAE38931D /* Geomanist-ExtraLight.otf */ = {isa = PBXFileReference; name = "Geomanist-ExtraLight.otf"; path = "../App/Fonts/Geomanist/Geomanist-ExtraLight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		572FFB0474D44ABDA0DBF8AB /* Geomanist-Light.otf */ = {isa = PBXFileReference; name = "Geomanist-Light.otf"; path = "../App/Fonts/Geomanist/Geomanist-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3763900CC59A41D39E0CE1E5 /* Geomanist-Medium.otf */ = {isa = PBXFileReference; name = "Geomanist-Medium.otf"; path = "../App/Fonts/Geomanist/Geomanist-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6ED564E532734C2ABD8EDAA6 /* Geomanist-Regular.otf */ = {isa = PBXFileReference; name = "Geomanist-Regular.otf"; path = "../App/Fonts/Geomanist/Geomanist-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FFFD738097E74F43AD63052B /* Geomanist-Thin.otf */ = {isa = PBXFileReference; name = "Geomanist-Thin.otf"; path = "../App/Fonts/Geomanist/Geomanist-Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A902515A19D44DB0989A5000 /* Geomanist-Ultra.otf */ = {isa = PBXFileReference; name = "Geomanist-Ultra.otf"; path = "../App/Fonts/Geomanist/Geomanist-Ultra.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +342,7 @@
 				FA588414DE194628AAD21E41 /* libyoga.a in Frameworks */,
 				E543D34F5B914C289162B948 /* libcxxreact.a in Frameworks */,
 				AAEDA700A3DB43DBB2C07B02 /* libjschelpers.a in Frameworks */,
+				BE14100EA364494084D9D938 /* libReactNativeConfig.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +512,7 @@
 				C0673634A90C4A6488506FD4 /* RNDeviceInfo.xcodeproj */,
 				ED0D6F673EF94EF79F21DEF9 /* RNVectorIcons.xcodeproj */,
 				1025F376C29D4E20B4C796F1 /* RNI18n.xcodeproj */,
+				E439579226AC49A396AE78D6 /* ReactNativeConfig.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -540,6 +563,15 @@
 				6492F220E51849948178AA86 /* Octicons.ttf */,
 				7C429496C7A1407AAAB6A8CC /* SimpleLineIcons.ttf */,
 				EE93C686C15D404B9492DEC9 /* Zocial.ttf */,
+				9D1113FC7A544781B1ABC2C9 /* Geomanist-Black.otf */,
+				FA632BB5BED94D6ABBB34975 /* Geomanist-Bold.otf */,
+				3935F31591FC4F64B2AD3FFD /* Geomanist-Book.otf */,
+				B7EC4BD4612947BFAE38931D /* Geomanist-ExtraLight.otf */,
+				572FFB0474D44ABDA0DBF8AB /* Geomanist-Light.otf */,
+				3763900CC59A41D39E0CE1E5 /* Geomanist-Medium.otf */,
+				6ED564E532734C2ABD8EDAA6 /* Geomanist-Regular.otf */,
+				FFFD738097E74F43AD63052B /* Geomanist-Thin.otf */,
+				A902515A19D44DB0989A5000 /* Geomanist-Ultra.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -913,6 +945,15 @@
 				B23E2CEC4D5D497091403F0F /* Octicons.ttf in Resources */,
 				DA4A4021E858422BA1E1898F /* SimpleLineIcons.ttf in Resources */,
 				D653C76CC7A54AB38E8E105F /* Zocial.ttf in Resources */,
+				4CC81BD2F9BA4FE8B6D5912E /* Geomanist-Black.otf in Resources */,
+				821380A19C4E42DB9D0DAE90 /* Geomanist-Bold.otf in Resources */,
+				1F22D2C9F53144A8B31A73BD /* Geomanist-Book.otf in Resources */,
+				A0BE00909E1D489FB0FC5016 /* Geomanist-ExtraLight.otf in Resources */,
+				71CD5B71A72F4DA8A6D86C1A /* Geomanist-Light.otf in Resources */,
+				F512616A1AC74A0FAC6024C0 /* Geomanist-Medium.otf in Resources */,
+				212CA5FBBCAA4A0BBCACDB3E /* Geomanist-Regular.otf in Resources */,
+				B55D47630BA34318B38C3342 /* Geomanist-Thin.otf in Resources */,
+				8EACAB42B94E46F8B5663F4D /* Geomanist-Ultra.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,12 +1093,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 			};
 			name = Debug;
@@ -1084,12 +1127,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 			};
 			name = Release;
@@ -1114,6 +1159,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 			};
 			name = Debug;
@@ -1137,6 +1183,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 			};
 			name = Release;
@@ -1172,12 +1219,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 			};
 			name = Debug;
@@ -1213,12 +1262,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-i18n/RNI18n",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 			};
 			name = Release;
@@ -1249,6 +1300,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1273,6 +1325,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
