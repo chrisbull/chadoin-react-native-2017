@@ -1,19 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import RoundedButton from '../Components/RoundedButton'
 import styles from './Styles/AuthenticatedScreenStyle'
 import LoginActions from '../Redux/LoginRedux'
 
-class AuthenticatedScreen extends React.Component {
+class AuthenticatedScreen extends Component {
   render () {
-    const { navigate } = this.props.navigation
+    const { navigation } = this.props
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>You are logged in</Text>
         <RoundedButton
           text='Go to Another Authenticated Screen'
-          onPress={() => navigate('AnotherAuthenticatedScreen')}
+          onPress={() => navigation.navigate('AnotherAuthenticatedScreen')}
         />
         <RoundedButton text='Logout' onPress={this.props.logout} />
       </View>
@@ -21,10 +21,8 @@ class AuthenticatedScreen extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(LoginActions.logout())
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(LoginActions.logout())
+})
 
 export default connect(null, mapDispatchToProps)(AuthenticatedScreen)

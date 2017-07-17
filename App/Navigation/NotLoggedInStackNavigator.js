@@ -12,7 +12,6 @@ export default StackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'LoginScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
