@@ -5,14 +5,12 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 export default StackNavigator({
-  LoginScreen: {
-    screen: LoginScreen,
-    navigationOptions: { title: 'Login' }
-  }
+  LoginScreen: { screen: LoginScreen }
 }, {
   // Default config for all screens
   headerMode: 'none',
   navigationOptions: {
-    headerStyle: styles.header
+    headerStyle: styles.header,
+    headerTintColor: styles.header.color
   }
 })

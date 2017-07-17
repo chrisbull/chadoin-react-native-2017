@@ -48,5 +48,11 @@ export default StyleSheet.create({
   topLogo: {
     alignSelf: 'center',
     resizeMode: 'contain'
+  },
+  logoText: {
+    fontFamily: 'Geomanist-Bold',
+    fontSize: 50,
+    color: 'white',
+    letterSpacing: -2
   }
 })

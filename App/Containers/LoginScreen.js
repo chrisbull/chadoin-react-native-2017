@@ -153,16 +153,12 @@ class LoginScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    fetching: state.login.fetching
-  }
-}
+const mapStateToProps = (state) => ({
+  fetching: state.login.fetching
+})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)

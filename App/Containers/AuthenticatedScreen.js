@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text, Button } from 'react-native'
+import { View, Text } from 'react-native'
 import RoundedButton from '../Components/RoundedButton'
-import styles from './Styles/AuthenticatedScreenStyle'
 import LoginActions from '../Redux/LoginRedux'
+
+import styles from './Styles/AuthenticatedScreenStyle'
 
 class AuthenticatedScreen extends Component {
   render () {

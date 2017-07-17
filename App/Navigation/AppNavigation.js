@@ -14,7 +14,8 @@ const AppNavigation = StackNavigator({
   // Default config for all screens
   headerMode: 'none',
   navigationOptions: {
-    headerStyle: styles.header
+    headerStyle: styles.header,
+    headerTintColor: styles.header.color
   }
 })
 
