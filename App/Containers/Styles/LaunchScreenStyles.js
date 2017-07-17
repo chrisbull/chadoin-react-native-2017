@@ -4,7 +4,7 @@ import { Metrics, ApplicationStyles, Fonts, Colors } from '../../Themes/'
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.background
   },
   logo: {
     marginTop: Metrics.doubleSection,
@@ -18,10 +18,10 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   centered: {
-    alignItems: 'center',
+    alignItems: 'center'
   },
   middle: {
     justifyContent: 'center',
-    height: '100%',
+    height: '100%'
   }
 })

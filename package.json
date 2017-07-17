@@ -91,7 +91,9 @@
   },
   "config": {},
   "rnpm": {
-    "assets": ["./App/Fonts/"]
+    "assets": [
+      "./App/Fonts/"
+    ]
   },
   "standard": {
     "parser": "babel-eslint",
