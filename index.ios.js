@@ -1,6 +1,5 @@
-import React from 'react';
-import { AppRegistry } from 'react-native';
+import './App/Config/ReactotronConfig'
+import { AppRegistry } from 'react-native'
+import App from './App/Containers/App'
 
-import App from './src/app';
-
-AppRegistry.registerComponent('ChaDoin', () => App);
+AppRegistry.registerComponent('ChaDoin', () => App)
