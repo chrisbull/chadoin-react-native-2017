@@ -26,7 +26,8 @@ const colors = {
   transparent: 'rgba(0,0,0,0)',
   windowTint: 'rgba(0, 0, 0, 0.4)',
   header: '#5C25C5',
-  headerTitle: '#ffffff'
+  headerTitle: '#ffffff',
+  white: 'white'
 }
 
 export default colors
