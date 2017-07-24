@@ -30,20 +30,18 @@ export class EventsScreen extends Component {
   }
 
   componentWillMount () {
-    console.tron.log('EventsScreen -> componentWillMount() syncEvents')
-    this.props.syncEvents()
+    // console.tron.log('EventsScreen -> componentWillMount() syncEvents')
+    // this.props.syncEvents()
   }
 
   render () {
     return (
       <ScrollView style={styles.container}>
-        <Text>
-          {JSON.stringify(this.props.events, null, 2)}
-        </Text>
         {this.props.events.map(event => (
           <TouchableHighlight
             onPress={() => this.props.editEvent(event)}
             style={styles.card}
+            key={event.id}
           >
             <View>
               <Text style={styles.title}>
@@ -67,7 +65,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   editEvent: () => {},
   newEvent: () => {},
-  syncEvents: () => dispatch(EventActions.syncEvents())
+  // syncEvents: () => dispatch(EventActions.syncEvents())
   // editEvent: event => dispatch({ type: 'EVENT_EDIT', ...event }),
   // newEvent: events => dispatch({ type: 'EVENT_NEW', ...events }),
 })

@@ -15,7 +15,7 @@ import {EventTypes} from '../Redux/EventRedux'
 import {startup} from './StartupSagas'
 import {login} from './LoginSagas'
 import {getUserAvatar} from './GithubSagas'
-import {syncEvents, createNewEvent} from './EventSagas'
+import {syncEventsSaga, createNewEventSaga} from './EventSagas'
 
 /* ------------- API ------------- */
 
