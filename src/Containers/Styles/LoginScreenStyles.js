@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes'
+import { Colors, Metrics, ApplicationStyles, Buttons } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 70,
-    backgroundColor: Colors.background
+    ...ApplicationStyles.screen.mainContainer,
+    paddingTop: 70
   },
   form: {
-    backgroundColor: Colors.snow,
+    backgroundColor: Colors.white,
     margin: Metrics.baseMargin,
     borderRadius: 4
   },
@@ -16,15 +16,15 @@ export default StyleSheet.create({
     paddingHorizontal: Metrics.doubleBaseMargin
   },
   rowLabel: {
-    color: Colors.charcoal
+    color: Colors.black
   },
   textInput: {
     height: 40,
-    color: Colors.coal
+    color: Colors.black
   },
   textInputReadonly: {
     height: 40,
-    color: Colors.steel
+    color: Colors.black
   },
   loginRow: {
     paddingBottom: Metrics.doubleBaseMargin,
@@ -35,11 +35,7 @@ export default StyleSheet.create({
     flex: 1
   },
   loginButton: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: Colors.charcoal,
-    backgroundColor: Colors.panther,
-    padding: 6
+    ...Buttons.style.default
   },
   loginText: {
     textAlign: 'center',

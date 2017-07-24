@@ -1,16 +1,12 @@
 import { StyleSheet } from 'react-native'
-import { Metrics, Colors, Fonts } from '../../Themes/'
+import { Metrics, Colors, Fonts, ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    ...ApplicationStyles.screen.mainContainer,
     paddingTop: Metrics.navBarHeight,
-    backgroundColor: Colors.background
   },
   headerText: {
-    color: Colors.snow,
-    textAlign: 'center',
-    marginVertical: Metrics.marginVertical,
-    ...Fonts.style.h4
+    ...ApplicationStyles.headerText
   }
 })

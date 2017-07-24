@@ -6,10 +6,22 @@ import Colors from './Colors'
 // Similar to an XML fragment layout in Android
 
 const ApplicationStyles = {
+  textColor: {
+    regular: Colors.black
+  },
+  navigationHeader: {
+    backgroundColor: '#5C25C5'
+  },
+  headerText: {
+    color: Colors.white,
+    textAlign: 'center',
+    marginVertical: Metrics.marginVertical,
+    ...Fonts.style.h4
+  },
   screen: {
     mainContainer: {
       flex: 1,
-      backgroundColor: Colors.transparent
+      backgroundColor: Colors.purple
     },
     backgroundImage: {
       position: 'absolute',

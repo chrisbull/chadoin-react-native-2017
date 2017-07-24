@@ -3,7 +3,7 @@ import LoadingScreen from '../Containers/LoadingScreen'
 import LoggedInStackNavigator from './LoggedInStackNavigator'
 import NotLoggedInStackNavigator from './NotLoggedInStackNavigator'
 
-import styles from './Styles/NavigationStyles'
+import navigationStyles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const AppNavigation = StackNavigator({
@@ -14,7 +14,7 @@ const AppNavigation = StackNavigator({
   // Default config for all screens
   headerMode: 'none',
   navigationOptions: {
-    headerStyle: styles.header,
+    headerStyle: navigationStyles.header,
     headerTintColor: 'white'
   }
 })
