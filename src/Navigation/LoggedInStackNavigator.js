@@ -8,6 +8,7 @@ import styles from './Styles/NavigationStyles'
 // Manifest of possible screens
 export default StackNavigator(
   {
+    EventStack: {screen: EventStackNavigator},
     AuthenticatedScreen: {
       screen: AuthenticatedScreen,
       navigationOptions: {
@@ -15,7 +16,6 @@ export default StackNavigator(
       },
     },
     AnotherAuthenticatedScreen: {screen: AnotherAuthenticatedScreen},
-    EventStack: {screen: EventStackNavigator},
   },
   {
     // Default config for all screens
