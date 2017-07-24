@@ -1,6 +1,6 @@
 import { select, put } from 'redux-saga/effects'
-import { selectAvatar, startup } from '../../App/Sagas/StartupSagas'
-import GithubActions from '../../App/Redux/GithubRedux'
+import { selectAvatar, startup } from '../../src/Sagas/StartupSagas'
+import GithubActions from '../../src/Redux/GithubRedux'
 
 const stepper = (fn) => (mock) => fn.next(mock).value
 
