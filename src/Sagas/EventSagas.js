@@ -1,10 +1,8 @@
-import { fork, put, call, take } from 'redux-saga/effects'
-
-import EventActions from '../Redux/EventRedux'
-
+import { fork, takeLatest, put, call, take } from 'redux-saga/effects'
+import EventActions, { EventTypes } from '../Redux/EventRedux'
 import fireApp from '../Services/FirebaseApp'
 
-function* createNewEventSaga({ event }) {
+export function* createNewEventSaga({ event }) {
   try {
     const fireEventId = yield call(fireApp.database.create, 'events', event)
     yield put(EventActions.newEventSuccess({ id: fireEventId, ...event }))
@@ -13,7 +11,7 @@ function* createNewEventSaga({ event }) {
   }
 }
 
-function* syncEventsSaga() {
+export function* syncEventsSaga() {
   const channel = yield call(fireApp.database.channel, 'events')
 
   while (true) {
@@ -26,4 +24,10 @@ function* syncEventsSaga() {
   }
 }
 
-export const eventSagas = [fork(createNewEventSaga), fork(syncEventsSaga)]
+export const onDemandActions = [
+  takeLatest(EventTypes.NEW_EVENT_REQUEST, createNewEventSaga),
+]
+
+export const watcherActions = [fork(syncEventsSaga)]
+
+export default [...onDemandActions, ...watcherActions]

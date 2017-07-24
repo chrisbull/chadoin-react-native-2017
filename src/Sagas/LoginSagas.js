@@ -1,13 +1,13 @@
-import { put } from 'redux-saga/effects'
-import LoginActions from '../Redux/LoginRedux'
+import { takeLatest, put } from 'redux-saga/effects'
+import LoginActions, { LoginTypes } from '../Redux/LoginRedux'
 
-// attempts to login
-export function* login({ username, password }) {
+/* -- Sagas -- */
+export function* loginSaga({ username, password }) {
   if (password === '') {
-    // dispatch failure
     yield put(LoginActions.loginFailure('WRONG'))
   } else {
-    // dispatch successful logins
     yield put(LoginActions.loginSuccess(username))
   }
 }
+
+export default [takeLatest(LoginTypes.LOGIN_REQUEST, loginSaga)]
