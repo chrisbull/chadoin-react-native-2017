@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   Button,
   StyleSheet,
@@ -30,18 +30,18 @@ export class EventScreen extends Component {
   }
 
   updateEventTitle = title => {
-    this.setState({title})
+    this.setState({ title })
   }
 
   handleCreateNewEvent = () => {
-    const {title} = this.state
-    const event = {title}
+    const { title } = this.state
+    const event = { title }
     console.tron.log('EventScreen -> handleCreateNewEvent, event: ', event)
     this.props.createNewEvent(event)
   }
 
   render() {
-    const {title} = this.state
+    const { title } = this.state
 
     return (
       <ScrollView style={styles.container}>
@@ -65,7 +65,7 @@ export class EventScreen extends Component {
   }
 }
 
-const mapStateToProps = ({events}) => ({
+const mapStateToProps = ({ events }) => ({
   event: events.event,
   saving: events.saving,
 })

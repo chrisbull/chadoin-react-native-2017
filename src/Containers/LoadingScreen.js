@@ -8,10 +8,8 @@ import { View } from 'react-native'
 import styles from './Styles/LoadingScreenStyle'
 
 class LoadingScreen extends React.Component {
-  render () {
-    return (
-      <View style={styles.container} />
-    )
+  render() {
+    return <View style={styles.container} />
   }
 }
 

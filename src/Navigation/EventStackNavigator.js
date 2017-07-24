@@ -8,14 +8,14 @@ import styles from './Styles/NavigationStyles'
 export default StackNavigator(
   {
     EventsScreen: { screen: EventsScreen },
-    EventScreen: { screen: EventScreen }
+    EventScreen: { screen: EventScreen },
   },
   {
     // Default config for all screens
     // headerMode: 'none',
     navigationOptions: {
       headerStyle: styles.header,
-      headerTintColor: 'white'
-    }
-  }
+      headerTintColor: 'white',
+    },
+  },
 )

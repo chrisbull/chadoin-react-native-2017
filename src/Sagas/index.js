@@ -1,21 +1,21 @@
-import {takeLatest} from 'redux-saga/effects'
+import { takeLatest } from 'redux-saga/effects'
 import API from '../Services/Api'
 import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
 
 /* ------------- Types ------------- */
 
-import {StartupTypes} from '../Redux/StartupRedux'
-import {GithubTypes} from '../Redux/GithubRedux'
-import {LoginTypes} from '../Redux/LoginRedux'
-import {EventTypes} from '../Redux/EventRedux'
+import { StartupTypes } from '../Redux/StartupRedux'
+import { GithubTypes } from '../Redux/GithubRedux'
+import { LoginTypes } from '../Redux/LoginRedux'
+import { EventTypes } from '../Redux/EventRedux'
 
 /* ------------- Sagas ------------- */
 
-import {startup} from './StartupSagas'
-import {login} from './LoginSagas'
-import {getUserAvatar} from './GithubSagas'
-import {syncEventsSaga, createNewEventSaga} from './EventSagas'
+import { startup } from './StartupSagas'
+import { login } from './LoginSagas'
+import { getUserAvatar } from './GithubSagas'
+import { syncEventsSaga, createNewEventSaga } from './EventSagas'
 
 /* ------------- API ------------- */
 
@@ -25,7 +25,7 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 
 /* ------------- Connect Types To Sagas ------------- */
 
-export default function * root () {
+export default function* root() {
   yield [
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
@@ -38,6 +38,6 @@ export default function * root () {
     // - listen to the SYNC_EVENTS call and then trigger syncEvents Saga
     takeLatest(EventTypes.SYNC_EVENTS, syncEventsSaga),
     // - listen to NEW_EVENT_REQUEST and then trigger createNewEvent Saga
-    takeLatest(EventTypes.NEW_EVENT_REQUEST, createNewEventSaga)
+    takeLatest(EventTypes.NEW_EVENT_REQUEST, createNewEventSaga),
   ]
 }

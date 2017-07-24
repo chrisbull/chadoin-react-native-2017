@@ -8,13 +8,13 @@ export default StyleSheet.create({
     marginHorizontal: Metrics.section,
     marginVertical: Metrics.baseMargin,
     backgroundColor: Colors.blue,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   buttonText: {
     color: Colors.white,
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: Fonts.size.medium,
-    marginVertical: Metrics.baseMargin
-  }
+    marginVertical: Metrics.baseMargin,
+  },
 })

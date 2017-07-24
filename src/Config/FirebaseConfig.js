@@ -4,5 +4,5 @@ export default {
   databaseURL: 'https://chadoin-932bf.firebaseio.com',
   projectId: 'chadoin-932bf',
   storageBucket: 'chadoin-932bf.appspot.com',
-  messagingSenderId: '701206774326'
+  messagingSenderId: '701206774326',
 }

@@ -7,6 +7,6 @@ export default StyleSheet.create({
     paddingTop: Metrics.navBarHeight,
   },
   headerText: {
-    ...ApplicationStyles.headerText
-  }
+    ...ApplicationStyles.headerText,
+  },
 })

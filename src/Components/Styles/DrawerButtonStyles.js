@@ -4,6 +4,6 @@ export default {
   text: {
     ...Fonts.style.h5,
     color: Colors.white,
-    marginVertical: Metrics.baseMargin
-  }
+    marginVertical: Metrics.baseMargin,
+  },
 }

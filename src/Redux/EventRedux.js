@@ -1,13 +1,13 @@
-import {createReducer, createActions} from 'reduxsauce'
+import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 
 /* ------------- Types and Action Creators ------------- */
 
-const {Types, Creators} = createActions({
+const { Types, Creators } = createActions({
   syncEvents: ['events'],
   newEventRequest: ['event'],
   newEventSuccess: ['event'],
-  newEventFailure: ['error']
+  newEventFailure: ['error'],
 })
 
 export const EventTypes = Types
@@ -19,42 +19,42 @@ export const INITIAL_STATE = Immutable({
   event: {},
   events: [],
   saving: false,
-  error: null
+  error: null,
 })
 
 /* ------------- Reducers ------------- */
 
 // Sync Events
 
-export const sync_events = (state, {events}) => {
+export const syncEvents = (state, { events }) => {
   console.tron.log('EventRedux -> sync_events')
-  return state.merge({events})
+  return state.merge({ events })
 }
 
 // New Event
 
-export const new_event_request = (state, {event}) => {
+const newEventRequest = (state, { event }) => {
   console.tron.log('EventRedux -> new_event_request:', event)
-  return state.merge({event, saving: true})
+  return state.merge({ event, saving: true })
 }
 
-export const new_event_success = (state, {event}) => {
+const newEventSuccess = (state, { event }) => {
   console.tron.log('EventRedux -> new_event_success:', event)
-  return state.merge({event, saving: false})
+  return state.merge({ event, saving: false })
 }
 
-export const new_event_failure = (state, {error}) => {
+export const newEventFailure = (state, { error }) => {
   console.tron.log('EventRedux -> new_event_failure:', error)
-  return state.merge({saving: false})
+  return state.merge({ saving: false })
 }
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SYNC_EVENTS]: sync_events,
-  [Types.NEW_EVENT_REQUEST]: new_event_request,
-  [Types.NEW_EVENT_SUCCESS]: new_event_success,
-  [Types.NEW_EVENT_FAILURE]: new_event_failure
+  [Types.SYNC_EVENTS]: syncEvents,
+  [Types.NEW_EVENT_REQUEST]: newEventRequest,
+  [Types.NEW_EVENT_SUCCESS]: newEventSuccess,
+  [Types.NEW_EVENT_FAILURE]: newEventFailure,
 })
 
 /* ------------- Selectors ------------- */

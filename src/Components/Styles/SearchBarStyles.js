@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Fonts, Colors, Metrics, ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
@@ -6,7 +6,7 @@ export default StyleSheet.create({
     ...ApplicationStyles.screen.container,
     marginTop: Metrics.smallMargin,
     flexDirection: 'row',
-    width: Metrics.screenWidth - Metrics.baseMargin
+    width: Metrics.screenWidth - Metrics.baseMargin,
   },
   searchInput: {
     flex: 5,
@@ -21,22 +21,22 @@ export default StyleSheet.create({
     borderColor: Colors.white,
     paddingLeft: 30,
     color: Colors.snow,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   searchIcon: {
     left: Metrics.doubleBaseMargin,
     alignSelf: 'center',
     color: Colors.white,
-    backgroundColor: Colors.transparent
+    backgroundColor: Colors.transparent,
   },
   cancelButton: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: Metrics.baseMargin
+    marginHorizontal: Metrics.baseMargin,
   },
   buttonLabel: {
     color: Colors.white,
     fontFamily: Fonts.type.base,
-    fontSize: Fonts.size.regular
-  }
+    fontSize: Fonts.size.regular,
+  },
 })

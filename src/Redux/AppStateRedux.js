@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  setRehydrationComplete: null
+  setRehydrationComplete: null,
 })
 
 export const AppStateTypes = Types
@@ -13,7 +13,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  rehydrationComplete: false
+  rehydrationComplete: false,
 })
 
 /* ------------- Reducers ------------- */
@@ -25,10 +25,11 @@ export const setRehydrationComplete = (state: Object) =>
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_REHYDRATION_COMPLETE]: setRehydrationComplete
+  [Types.SET_REHYDRATION_COMPLETE]: setRehydrationComplete,
 })
 
 /* ------------- Selectors ------------- */
 
 // Is rehydration complete?
-export const isRehydrationComplete = (state: Object) => state.rehydrationComplete
+export const isRehydrationComplete = (state: Object) =>
+  state.rehydrationComplete

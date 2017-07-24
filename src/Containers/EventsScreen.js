@@ -6,7 +6,7 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native'
 
 import EventActions from '../Redux/EventRedux'
@@ -14,7 +14,7 @@ import styles from './Styles/EventsScreenStyle'
 
 export class EventsScreen extends Component {
   static defaultProps = {
-    events: []
+    events: [],
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -22,22 +22,22 @@ export class EventsScreen extends Component {
       title: 'Events',
       headerRight: (
         <Button
-          title='New'
+          title="New"
           onPress={() => navigation.navigate('EventScreen')}
         />
-      )
+      ),
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     // console.tron.log('EventsScreen -> componentWillMount() syncEvents')
     // this.props.syncEvents()
   }
 
-  render () {
+  render() {
     return (
       <ScrollView style={styles.container}>
-        {this.props.events.map(event => (
+        {this.props.events.map(event =>
           <TouchableHighlight
             onPress={() => this.props.editEvent(event)}
             style={styles.card}
@@ -51,15 +51,15 @@ export class EventsScreen extends Component {
                 {event.startDateTime || ''}
               </Text>
             </View>
-          </TouchableHighlight>
-        ))}
+          </TouchableHighlight>,
+        )}
       </ScrollView>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events
+  events: state.events.events,
 })
 
 const mapDispatchToProps = dispatch => ({

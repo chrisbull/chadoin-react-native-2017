@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts, ApplicationStyles } from '../../Themes/'
+import { Metrics, Fonts, ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
     justifyContent: 'center',
-    marginVertical: Metrics.section
+    marginVertical: Metrics.section,
   },
   contentContainer: {
     alignSelf: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   message: {
     marginTop: Metrics.baseMargin,
@@ -21,5 +21,5 @@ export default StyleSheet.create({
   },
   icon: {
     color: ApplicationStyles.textColor.regular,
-  }
+  },
 })
