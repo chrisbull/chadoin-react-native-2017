@@ -7,6 +7,7 @@
     "test": "jest",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "clean:android": "cd android/ && ./gradlew clean && cd .. && react-native run-android",
+    "newbuild": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && react-native run-ios",
     "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf node_modules/ && npm cache clean --force && yarn install && react-native link && react-native run-ios",
     "test:watch": "jest --watch",
     "updateSnapshot": "jest --updateSnapshot",
@@ -59,19 +60,9 @@
     "babel-preset-react-native": "2.0.0",
     "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-config-prettier": "^2.3.0",
-    "eslint-config-react-native": "^1.6.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-jsx": "^4.0.2",
-    "eslint-config-standard-trailing-commas": "^6.1.0",
     "eslint-plugin-flowtype": "^2.35.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-prettier": "^2.1.2",
-    "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-react-native": "^2.3.2",
-    "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.51.0",
     "husky": "^0.14.3",
     "ignite-animatable": "^1.0.0",
@@ -81,8 +72,6 @@
     "ignite-vector-icons": "^1.0.0",
     "jest": "^20.0.4",
     "mockery": "^2.1.0",
-    "prettier": "^1.5.3",
-    "prettier-eslint": "^6.4.2",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "16.0.0-alpha.12",
     "react-test-renderer": "16.0.0-alpha.12",
@@ -113,11 +102,9 @@
     ]
   },
   "standard": {
-    "extends": ["standard", "standard-jsx", "standard-trailing-commas"],
     "parser": "babel-eslint",
     "plugins": [
-      "flowtype",
-      "prettier"
+      "flowtype"
     ],
     "globals": [
       "describe",
@@ -130,22 +117,6 @@
       "XMLHttpRequest",
       "FormData",
       "React$Element"
-    ],
-    "rules": {
-      "comma-dangle": [
-        2,
-        "always-multiline"
-      ],
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "trailingComma": "all",
-          "bracketSpacing": true,
-          "jsxBracketSameLine": false,
-          "parser": "flow"
-        }
-      ]
-    }
+    ]
   }
 }
