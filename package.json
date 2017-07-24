@@ -64,6 +64,7 @@
     "eslint-config-react-native": "^1.6.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-jsx": "^4.0.2",
+    "eslint-config-standard-trailing-commas": "^6.1.0",
     "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
@@ -112,9 +113,11 @@
     ]
   },
   "standard": {
+    "extends": ["standard", "standard-jsx", "standard-trailing-commas"],
     "parser": "babel-eslint",
     "plugins": [
-      "flowtype"
+      "flowtype",
+      "prettier"
     ],
     "globals": [
       "describe",
@@ -127,6 +130,22 @@
       "XMLHttpRequest",
       "FormData",
       "React$Element"
-    ]
+    ],
+    "rules": {
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ],
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "trailingComma": "all",
+          "bracketSpacing": true,
+          "jsxBracketSameLine": false,
+          "parser": "flow"
+        }
+      ]
+    }
   }
 }
