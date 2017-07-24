@@ -36,7 +36,7 @@ export class EventScreen extends Component {
   handleCreateNewEvent = () => {
     const {title} = this.state
     const event = {title}
-    console.log('EventScreen -> handleCreateNewEvent, event: ', event)
+    console.tron.log('EventScreen -> handleCreateNewEvent, event: ', event)
     this.props.createNewEvent(event)
   }
 

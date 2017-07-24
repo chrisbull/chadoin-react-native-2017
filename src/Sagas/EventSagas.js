@@ -1,34 +1,33 @@
-import {call, fork, put, select, take, takeEvery} from 'redux-saga/effects'
-import EventActions, {EventTypes} from '../Redux/EventRedux'
-import fbApp from '../Services/FirebaseApp'
+import { call, fork, put, take } from 'redux-saga/effects'
+import EventActions from '../Redux/EventRedux'
+import fireApp from '../Services/FirebaseApp'
 
-export function* createNewEvent({event}) {
+export function* createNewEventSaga ({ event }) {
   try {
-    const fbEventId = yield call(fbApp.database.create, 'events', event)
+    const fireEventId = yield call(fireApp.database.create, 'events', event)
     yield put(
       EventActions.newEventSuccess({
-        id: fbEventId,
-        ...event,
-      }),
+        id: fireEventId,
+        ...event
+      })
     )
   } catch (e) {
     yield put(EventActions.newEventFailure(e))
   }
 }
 
-export function* syncEvents() {
-  const channel = yield call(fbApp.channel, 'events')
+export function* syncEventsSaga () {
+  const channel = yield call(fireApp.database.channel, 'events')
 
-  // This creates an infinite loop listener
   while (true) {
-    const events = yield take(channel)
+    const { value: events } = yield take(channel)
     yield put(
       EventActions.syncEvents(
         Object.keys(events).map(key => ({
           ...events[key],
-          id: key,
-        })),
-      ),
+          id: key
+        }))
+      )
     )
   }
 }

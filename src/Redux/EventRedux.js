@@ -7,7 +7,7 @@ const {Types, Creators} = createActions({
   syncEvents: ['events'],
   newEventRequest: ['event'],
   newEventSuccess: ['event'],
-  newEventFailure: ['error'],
+  newEventFailure: ['error']
 })
 
 export const EventTypes = Types
@@ -19,37 +19,42 @@ export const INITIAL_STATE = Immutable({
   event: {},
   events: [],
   saving: false,
+  error: null
 })
 
 /* ------------- Reducers ------------- */
 
-export const sync = (state, {events}) => {
-  console.log('EventRedux -> sync:', events)
+// Sync Events
+
+export const sync_events = (state, {events}) => {
+  console.tron.log('EventRedux -> sync_events')
   return state.merge({events})
 }
 
-export const request = (state, {event}) => {
-  console.log('EventRedux -> request:', event)
+// New Event
+
+export const new_event_request = (state, {event}) => {
+  console.tron.log('EventRedux -> new_event_request:', event)
   return state.merge({event, saving: true})
 }
 
-export const success = (state, {event}) => {
-  console.log('EventRedux -> success:', event)
+export const new_event_success = (state, {event}) => {
+  console.tron.log('EventRedux -> new_event_success:', event)
   return state.merge({event, saving: false})
 }
 
-export const failure = (state, {error}) => {
-  console.log('EventRedux -> failure:', error)
+export const new_event_failure = (state, {error}) => {
+  console.tron.log('EventRedux -> new_event_failure:', error)
   return state.merge({saving: false})
 }
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SYNC_EVENTS]: sync,
-  [Types.NEW_EVENT_REQUEST]: request,
-  [Types.NEW_EVENT_SUCCESS]: success,
-  [Types.NEW_EVENT_FAILURE]: failure,
+  [Types.SYNC_EVENTS]: sync_events,
+  [Types.NEW_EVENT_REQUEST]: new_event_request,
+  [Types.NEW_EVENT_SUCCESS]: new_event_success,
+  [Types.NEW_EVENT_FAILURE]: new_event_failure
 })
 
 /* ------------- Selectors ------------- */
