@@ -21,9 +21,9 @@
     "precommit": "npm run git-hook",
     "prepush": "npm run git-hook",
     "git-hook": "npm run lint -s && npm run test -s",
-    "lint": "standard --verbose | snazzy",
+    "lint": "eslint ./src/**/*.js | snazzy",
     "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
-    "fixcode": "standard --fix"
+    "format": "prettier-eslint ./src/**/*.js --write"
   },
   "dependencies": {
     "apisauce": "^0.14.0",
@@ -60,9 +60,18 @@
     "babel-preset-react-native": "2.0.0",
     "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-config-react-native": "^1.6.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-jsx": "^4.0.2",
+    "eslint-config-touchlay": "^0.5.2",
     "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react-native": "^2.3.2",
+    "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.51.0",
     "husky": "^0.14.3",
     "ignite-animatable": "^1.0.0",
@@ -72,6 +81,9 @@
     "ignite-vector-icons": "^1.0.0",
     "jest": "^20.0.4",
     "mockery": "^2.1.0",
+    "prettier": "^1.5.3",
+    "prettier-eslint": "^6.4.2",
+    "prettier-eslint-cli": "^4.1.1",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "16.0.0-alpha.12",
     "react-test-renderer": "16.0.0-alpha.12",
@@ -82,41 +94,17 @@
     "standard": "^10.0.2"
   },
   "jest": {
-    "testMatch": [
-      "**/Tests/**/*.js",
-      "**/?(*.)(spec|test).js?(x)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "Tests/Setup.js"
-    ],
-    "setupFiles": [
-      "./Tests/Setup"
-    ],
+    "testMatch": ["**/Tests/**/*.js", "**/?(*.)(spec|test).js?(x)"],
+    "testPathIgnorePatterns": ["/node_modules/", "Tests/Setup.js"],
+    "setupFiles": ["./Tests/Setup"],
     "preset": "react-native"
   },
   "config": {},
   "rnpm": {
-    "assets": [
-      "./src/Fonts/"
-    ]
+    "assets": ["./src/Fonts/"]
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ],
-    "globals": [
-      "describe",
-      "test",
-      "jest",
-      "expect",
-      "fetch",
-      "navigator",
-      "__DEV__",
-      "XMLHttpRequest",
-      "FormData",
-      "React$Element"
-    ]
+    "plugins": ["flowtype"]
   }
 }
