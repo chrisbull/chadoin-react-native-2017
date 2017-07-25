@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TextInput, View, ScrollView } from 'react-native'
+import { TextInput, View, ScrollView, Button } from 'react-native'
 
 import RoundedButton from '../Components/RoundedButton'
 
@@ -8,40 +8,40 @@ import ChatActions from '../Redux/ChatRedux'
 
 import styles from './Styles/EventScreenStyle'
 
-export class ChatCreateScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Create Chat',
-    }
-  }
+class ChatCreateScreen extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Create Chat',
+    headerLeft: (
+      <Button onPress={() => navigation.goBack(null)} title="Cancel" />
+    ),
+  })
 
   state = {
     title: '',
   }
 
-  updateChatTitle = title => {
-    this.setState({ title })
-  }
-
-  handleCreate = () => {
-    const { title } = this.state
-    this.props.createChat({ title })
+  handleCreateChat = () => {
+    this.props.createChat({ title: this.state.title })
   }
 
   render() {
-    const { title } = this.state
-
     return (
       <ScrollView style={styles.container}>
         <View style={styles.contentContainer}>
           <TextInput
             style={styles.textInput}
             placeholder="Title"
-            onChangeText={this.updateChatTitle}
-            value={title}
+            onChangeText={title => {
+              this.setState({ title })
+            }}
+            value={this.state.title}
           />
-
-          <RoundedButton onPress={this.handleCreate}>Create Chat</RoundedButton>
+          <RoundedButton
+            onPress={() => {
+              this.handleCreateChat()
+            }}
+            text="Create Chat"
+          />
         </View>
       </ScrollView>
     )

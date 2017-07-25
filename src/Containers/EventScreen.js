@@ -11,7 +11,7 @@ import styles from './Styles/EventScreenStyle'
 const tomorrow = new Date()
 tomorrow.setDate(tomorrow.getDate() + 1)
 
-export class EventScreen extends Component {
+class EventScreen extends Component {
   state = {
     title: (this.props.event && this.props.event.title) || '',
   }

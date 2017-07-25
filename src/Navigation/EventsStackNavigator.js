@@ -1,12 +1,13 @@
 import { StackNavigator } from 'react-navigation'
-import Events from '../Containers/EventsScreen'
-import Event from '../Containers/EventScreen'
+import EventsListScreen from '../Containers/EventsListScreen'
+import EventScreen from '../Containers/EventScreen'
 
 import sharedNavigationOptions from './SharedNavigationOptions'
 
-const MainCardNavigator = StackNavigator(
+const EventMainStack = StackNavigator(
   {
-    Main: { screen: Events },
+    EventsListScreen: { screen: EventsListScreen },
+    EventScreen: { screen: EventScreen },
   },
   {
     headerMode: 'none',
@@ -18,8 +19,8 @@ const MainCardNavigator = StackNavigator(
 
 const MainModalNavigator = StackNavigator(
   {
-    EventStack: { screen: MainCardNavigator },
-    EventScreen: { screen: Event },
+    EventMainStack: { screen: EventMainStack },
+    NewEventScreen: { screen: EventScreen },
   },
   {
     mode: 'modal',

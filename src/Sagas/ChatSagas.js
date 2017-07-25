@@ -23,16 +23,12 @@ export function* syncChatsSaga() {
   }
 }
 
-export function* syncChatSaga({ chats }) {
-  yield put(ChatActions.syncChat(chats))
-}
-
 /* ----- Single Chat Sagas ----- */
 
 export function* createChatSaga({ chat }) {
   try {
-    const id = yield call(fireApp.database.create, 'chats', chat)
-    yield put(ChatActions.chatSuccess({ id, ...chat }))
+    yield call(fireApp.database.create, 'chats', chat)
+    yield put(ChatActions.chatSuccess())
   } catch (e) {
     yield put(ChatActions.chatFailure(e))
   }
@@ -42,7 +38,7 @@ export function* updateChatSaga({ chat }) {
   try {
     const { id, ...data } = chat
     yield call(fireApp.database.update, `chats/${id}`, data)
-    yield put(ChatActions.chatSuccess(chat))
+    yield put(ChatActions.chatSuccess())
   } catch (e) {
     yield put(ChatActions.chatFailure(e))
   }
@@ -74,33 +70,36 @@ export function* updateChatMessageSaga({ chat, message }) {
 
 /* ----- Navigation Sagas ----- */
 
-export function* gotoCreateChat() {
-  yield put(NavigationActions.navigate({ routeName: 'ChatCreateScreen' }))
+export function* gotoNewChatScreen() {
+  yield put(NavigationActions.navigate({ routeName: 'NewChat' }))
 }
 
-export function* gotoEditChat() {
-  yield put(NavigationActions.navigate({ routeName: 'ChatEditScreen' }))
+export function* gotoEditChatScreen() {
+  yield put(NavigationActions.navigate({ routeName: 'EditChat' }))
 }
 
-export function* gotoChat() {
-  yield put(NavigationActions.navigate({ routeName: 'ChatMessageScreen' }))
+export function* gotoChatMessagesScreen() {
+  yield put(NavigationActions.navigate({ routeName: 'ChatMessages' }))
 }
 
 /* ----- Export Sagas ----- */
 
-export const onDemandActions = [
+const ChatSagas = [
+  // -- Sync
+  fork(syncChatsSaga),
+
+  // -- Create/Update Chat
   takeLatest(ChatTypes.CREATE_CHAT_REQUEST, createChatSaga),
   takeLatest(ChatTypes.UPDATE_CHAT_REQUEST, updateChatSaga),
+
+  // -- Create/Update Chat Message
   takeLatest(ChatTypes.CREATE_MESSAGE_REQUEST, createChatMessageSaga),
   takeLatest(ChatTypes.UPDATE_MESSAGE_REQUEST, updateChatMessageSaga),
 
-  // navigation
-  takeLatest(ChatTypes.GOTO_CREATE_CHAT, gotoCreateChat),
-  takeLatest(ChatTypes.GOTO_EDIT_CHAT, gotoEditChat),
-  takeLatest(ChatTypes.GOTO_CHAT, gotoChat),
-  takeLatest(ChatTypes.SYNC_CHATS, syncChatSaga),
+  // -- Navigation
+  takeLatest(ChatTypes.GOTO_NEW_CHAT, gotoNewChatScreen),
+  takeLatest(ChatTypes.GOTO_EDIT_CHAT, gotoEditChatScreen),
+  takeLatest(ChatTypes.GOTO_CHAT, gotoChatMessagesScreen),
 ]
 
-export const watcherActions = [fork(syncChatsSaga)]
-
-export default [...onDemandActions, ...watcherActions]
+export default ChatSagas

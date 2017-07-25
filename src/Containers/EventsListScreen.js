@@ -11,7 +11,7 @@ import RoundedButton from '../Components/RoundedButton'
 import EventActions from '../Redux/EventRedux'
 import styles from './Styles/EventsScreenStyle'
 
-export class EventsScreen extends Component {
+class EventsListScreen extends Component {
   static defaultProps = {
     events: [],
   }
@@ -71,4 +71,4 @@ const mapDispatchToProps = dispatch => ({
   gotoEvent: event => dispatch(EventActions.gotoEvent(event)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventsScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(EventsListScreen)

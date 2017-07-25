@@ -50,6 +50,10 @@ export function* gotoEvent() {
   yield put(NavigationActions.navigate({ routeName: 'EventScreen' }))
 }
 
+export function* gotoNewEvent() {
+  yield put(NavigationActions.navigate({ routeName: 'NewEventScreen' }))
+}
+
 /* ----- Export Sagas ----- */
 
 export const onDemandActions = [
@@ -58,6 +62,7 @@ export const onDemandActions = [
 
   // navigation
   takeLatest(EventTypes.GOTO_EVENT, gotoEvent),
+  takeLatest(EventTypes.GOTO_NEW_EVENT, gotoNewEvent),
 ]
 
 export const watcherActions = [fork(syncEventsSaga)]

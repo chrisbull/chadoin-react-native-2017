@@ -1,17 +1,28 @@
 import { StackNavigator } from 'react-navigation'
 import ChatsListScreen from '../Containers/ChatsListScreen'
-import ChatMessageScreen from '../Containers/ChatMessageScreen'
-import ChatCreateScreen from '../Containers/ChatCreateScreen'
+import ChatMessagesScreen from '../Containers/ChatMessagesScreen'
+import ChatNewScreen from '../Containers/ChatNewScreen'
 
 import sharedNavigationOptions from './SharedNavigationOptions'
 
-const MainCardNavigator = StackNavigator(
+const ChatsMainStack = StackNavigator(
   {
-    ChatsListScreen: { screen: ChatsListScreen },
-    ChatMessageScreen: { screen: ChatMessageScreen },
+    ChatsMainStackHome: { screen: ChatsListScreen },
+    ChatMessages: { screen: ChatMessagesScreen },
+    EditChat: { screen: ChatNewScreen }, // TODO: change to ChatEditScreen
   },
   {
-    headerMode: 'none',
+    navigationOptions: {
+      ...sharedNavigationOptions,
+    },
+  },
+)
+
+const NewChatStack = StackNavigator(
+  {
+    NewChatStackHome: { screen: ChatNewScreen },
+  },
+  {
     navigationOptions: {
       ...sharedNavigationOptions,
     },
@@ -20,10 +31,11 @@ const MainCardNavigator = StackNavigator(
 
 const MainModalNavigator = StackNavigator(
   {
-    ChatsStack: { screen: MainCardNavigator },
-    ChatCreateScreen: { screen: ChatCreateScreen },
+    ChatsMainStack: { screen: ChatsMainStack },
+    NewChat: { screen: NewChatStack },
   },
   {
+    headerMode: 'none',
     mode: 'modal',
     navigationOptions: {
       ...sharedNavigationOptions,

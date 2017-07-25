@@ -11,11 +11,10 @@ export default StackNavigator(
   {
     AuthenticatedScreen: { screen: AuthenticatedScreen },
     AnotherAuthenticatedScreen: { screen: AnotherAuthenticatedScreen },
-    EventsStack: { screen: EventsStackNavigator },
-    ChatsStack: { screen: ChatsStackNavigator },
+    EventsHome: { screen: EventsStackNavigator },
+    ChatsHome: { screen: ChatsStackNavigator },
   },
   {
-    // Default config for all screens
     headerMode: 'none',
     navigationOptions: {
       ...sharedNavigationOptions,

@@ -21,11 +21,11 @@ class AuthenticatedScreen extends Component {
           text="Go to Another Authenticated Screen"
         />
         <RoundedButton
-          onPress={() => navigation.navigate('EventsStack')}
+          onPress={() => navigation.navigate('EventsHome')}
           text="Events"
         />
         <RoundedButton
-          onPress={() => navigation.navigate('ChatsStack')}
+          onPress={() => navigation.navigate('ChatsHome')}
           text="Chats"
         />
         <RoundedButton onPress={this.props.logout} text="Logout" />

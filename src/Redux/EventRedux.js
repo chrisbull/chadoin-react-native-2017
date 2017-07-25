@@ -16,6 +16,7 @@ const { Types, Creators } = createActions({
 
   // navigation
   gotoEvent: ['event'],
+  gotoNewEvent: null,
 })
 
 export const EventTypes = Types
@@ -32,32 +33,25 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Reducers ------------- */
 
-export const syncEvents = (state, { events }) => state.merge({ events })
-
-export const eventRequest = (state, { event }) =>
-  state.merge({ event, saving: true })
-
-export const eventSuccess = (state, { event }) =>
-  state.merge({ event, saving: false })
-
-export const eventFailure = (state, { error }) =>
-  state.merge({ error, saving: false })
-
-export const gotoEvent = (state, { event = {} }) => state.merge({ event })
+export const updateEvents = (state, { events }) => state.merge({ events })
+export const updateEvent = (state, { event }) => state.merge({ event })
+export const updateError = (state, { error }) => state.merge({ error })
+export const none = state => state
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.CREATE_EVENT_REQUEST]: eventRequest,
-  [Types.UPDATE_EVENT_REQUEST]: eventRequest,
-  [Types.EVENT_SUCCESS]: eventSuccess,
-  [Types.EVENT_FAILURE]: eventFailure,
+  [Types.CREATE_EVENT_REQUEST]: updateEvent,
+  [Types.UPDATE_EVENT_REQUEST]: updateEvent,
+  [Types.EVENT_SUCCESS]: updateEvent,
+  [Types.EVENT_FAILURE]: updateError,
 
   // listeners
-  [Types.SYNC_EVENTS]: syncEvents,
+  [Types.SYNC_EVENTS]: updateEvents,
 
   // navigation
-  [Types.GOTO_EVENT]: gotoEvent,
+  [Types.GOTO_EVENT]: updateEvent,
+  [Types.GOTO_NEW_EVENT]: none,
 })
 
 /* ------------- Selectors ------------- */

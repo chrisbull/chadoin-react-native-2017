@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import {
   Button,
@@ -10,50 +10,41 @@ import {
 import ChatActions from '../Redux/ChatRedux'
 import styles from './Styles/EventsScreenStyle'
 
-export class ChatsListScreen extends Component {
-  static defaultProps = {
-    chats: [],
-  }
+const ChatsListScreen = ({ chats, gotoChat }) =>
+  <ScrollView style={styles.container}>
+    {chats.map(chat =>
+      <TouchableHighlight
+        onPress={() => {
+          gotoChat(chat)
+        }}
+        style={styles.card}
+        key={chat.id}
+      >
+        <View>
+          <Text style={styles.title}>
+            {chat.title || ''}
+          </Text>
+        </View>
+      </TouchableHighlight>,
+    )}
+  </ScrollView>
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Chats',
-      headerRight: (
-        <Button
-          title="New"
-          onPress={() => {
-            navigation.dispatch(ChatActions.gotoCreateChat())
-          }}
-        />
-      ),
-    }
-  }
-
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        {this.props.chats.map(chat =>
-          <TouchableHighlight
-            onPress={() => {
-              this.props.gotoChat(chat)
-            }}
-            style={styles.card}
-            key={chat.id}
-          >
-            <View>
-              <Text style={styles.title}>
-                {chat.title || ''}
-              </Text>
-            </View>
-          </TouchableHighlight>,
-        )}
-      </ScrollView>
-    )
+ChatsListScreen.navigationOptions = ({ navigation }) => {
+  return {
+    title: 'Chats',
+    headerRight: (
+      <Button
+        title="New"
+        onPress={() => {
+          navigation.dispatch(ChatActions.gotoNewChat())
+        }}
+      />
+    ),
   }
 }
 
 const mapStateToProps = ({ chats }) => ({
-  chats: chats.chats,
+  chats: chats.list || [],
 })
 
 const mapDispatchToProps = dispatch => ({

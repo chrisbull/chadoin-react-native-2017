@@ -4,25 +4,25 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  createChatRequest: ['chat'],
-  updateChatRequest: ['chat'],
-
-  createMessageRequest: ['chat', 'message'],
-  updateMessageRequest: ['message'],
-
-  // api callbacks
-  chatSuccess: null,
-  chatFailure: ['error'],
-  messageSuccess: null,
-  messageFailure: ['error'],
-
-  // listeners
+  // -- Syncing
   syncChats: ['chats'],
   syncChat: ['chats'],
 
-  // navigation
-  gotoCreateChat: null,
-  gotoEditChat: ['chat'],
+  // -- Create/Update Chat
+  createChatRequest: ['chat'],
+  updateChatRequest: ['chat'],
+  chatSuccess: null,
+  chatFailure: ['error'],
+
+  // -- Create/Update Message
+  createMessageRequest: ['chat', 'message'],
+  updateMessageRequest: ['message'],
+  messageSuccess: null,
+  messageFailure: ['error'],
+
+  // -- Navigation
+  gotoNewChat: null,
+  gotoEditChat: null,
   gotoChat: ['chat'],
 })
 
@@ -33,58 +33,38 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   chat: {},
-  chats: [],
+  list: [],
   error: null,
 })
 
 /* ------------- Reducers ------------- */
 
-export const syncChats = (state, { chats }) => state.merge({ chats })
-
-export const syncChat = (state, { chats }) => {
-  const { chat } = state
-  const updatedChat = chats.filter(newChat => chat.id === newChat.id)
-
-  console.log('updatedChat', updatedChat)
-
-  return state.merge({ chat: updatedChat })
-}
-
-export const chatRequest = state => state
-
-export const chatSuccess = state => state
-
-export const chatFailure = (state, { error }) => state.merge({ error })
-
-export const messageRequest = state => state
-
-export const messageSuccess = state => state
-
-export const messageFailure = (state, { error }) => state.merge({ error })
-
-export const gotoChat = (state, { chat }) => state.merge({ chat })
+export const setChats = (state, { chats }) => state.merge({ list: chats })
+export const setChat = (state, { chat }) => state.merge({ chat })
+export const setError = (state, { error }) => state.merge({ error })
+export const none = state => state
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.CREATE_CHAT_REQUEST]: chatRequest,
-  [Types.UPDATE_CHAT_REQUEST]: chatRequest,
-  [Types.CHAT_SUCCESS]: chatSuccess,
-  [Types.CHAT_FAILURE]: chatFailure,
+  // -- Create/Update Chat
+  // [Types.CREATE_CHAT_REQUEST]: none,
+  // [Types.UPDATE_CHAT_REQUEST]: none,
+  // [Types.CHAT_SUCCESS]: none,
+  [Types.CHAT_FAILURE]: setError,
 
-  [Types.CREATE_MESSAGE_REQUEST]: messageRequest,
-  [Types.UPDATE_MESSAGE_REQUEST]: messageRequest,
-  [Types.MESSAGE_SUCCESS]: messageSuccess,
-  [Types.MESSAGE_FAILURE]: messageFailure,
+  // -- Create/Update Message
+  // [Types.CREATE_MESSAGE_REQUEST]: none,
+  // [Types.UPDATE_MESSAGE_REQUEST]: none,
+  // [Types.MESSAGE_SUCCESS]: none,
+  [Types.MESSAGE_FAILURE]: setError,
 
-  // listeners
-  [Types.SYNC_CHATS]: syncChats,
-  [Types.SYNC_CHAT]: syncChat,
+  // -- Listeners
+  [Types.SYNC_CHATS]: setChats,
+  [Types.SYNC_CHAT]: setChat,
 
-  // navigation
-  [Types.GOTO_CREATE_CHAT]: gotoChat,
-  [Types.GOTO_EDIT_CHAT]: gotoChat,
-  [Types.GOTO_CHAT]: gotoChat,
+  // -- Navigation
+  // [Types.GOTO_NEW_CHAT]: none,
+  // [Types.GOTO_EDIT_CHAT]: none,
+  [Types.GOTO_CHAT]: setChat,
 })
-
-/* ------------- Selectors ------------- */
