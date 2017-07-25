@@ -29,9 +29,14 @@ export function* editEventSaga({ event }) {
   yield put(NavigationActions.navigate({ routeName: 'EditEventScreen' }))
 }
 
+export function* newEventSaga() {
+  yield put(NavigationActions.navigate({ routeName: 'NewEventScreen' }))
+}
+
 /* ----- export sagas ----- */
 export const onDemandActions = [
   takeLatest(EventTypes.NEW_EVENT_REQUEST, createNewEventSaga),
+  takeLatest(EventTypes.NEW_EVENT, newEventSaga),
   takeLatest(EventTypes.EDIT_EVENT, editEventSaga),
 ]
 

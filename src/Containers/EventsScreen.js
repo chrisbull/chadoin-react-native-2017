@@ -22,7 +22,9 @@ export class EventsScreen extends Component {
       headerRight: (
         <Button
           title="New"
-          onPress={() => navigation.navigate('NewEventScreen')}
+          onPress={() => {
+            navigation.dispatch(EventActions.newEvent())
+          }}
         />
       ),
     }
