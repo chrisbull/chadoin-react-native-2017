@@ -1,28 +1,22 @@
 import { StackNavigator } from 'react-navigation'
 import AuthenticatedScreen from '../Containers/AuthenticatedScreen'
 import AnotherAuthenticatedScreen from '../Containers/AnotherAuthenticatedScreen'
-import EventStackNavigator from './EventStackNavigator'
+import EventsStackNavigator from './EventsStackNavigator'
 
-import styles from './Styles/NavigationStyles'
+import sharedNavigationOptions from './SharedNavigationOptions'
 
 // Manifest of possible screens
 export default StackNavigator(
   {
-    EventStack: { screen: EventStackNavigator },
-    AuthenticatedScreen: {
-      screen: AuthenticatedScreen,
-      navigationOptions: {
-        title: 'You are logged in',
-      },
-    },
+    AuthenticatedScreen: { screen: AuthenticatedScreen },
     AnotherAuthenticatedScreen: { screen: AnotherAuthenticatedScreen },
+    EventsStack: { screen: EventsStackNavigator },
   },
   {
     // Default config for all screens
     headerMode: 'none',
     navigationOptions: {
-      headerStyle: styles.header,
-      headerTintColor: 'white',
+      ...sharedNavigationOptions,
     },
   },
 )

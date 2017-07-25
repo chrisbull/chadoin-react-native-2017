@@ -1,43 +1,54 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  ScrollView,
-  Switch,
-  TouchableHighlight,
-  DatePickerIOS,
-} from 'react-native'
+import { Button, TextInput, View, ScrollView } from 'react-native'
 
 import RoundedButton from '../Components/RoundedButton'
+
 import EventActions from '../Redux/EventRedux'
+
 import styles from './Styles/EventScreenStyle'
 
 const tomorrow = new Date()
 tomorrow.setDate(tomorrow.getDate() + 1)
 
 export class EventScreen extends Component {
-  static defaultProps = {
-    event: {},
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      event: props.event || {},
+      title: (props.event && props.event.title) || '',
+      saving: props.saving,
+    }
   }
 
-  state = {
-    title: 'My Great New Event',
-    saving: this.props.saving,
+  static navigationOptions = ({ navigation }) => {
+    console.log('EventScreen -> navigationOptions navigation', navigation)
+
+    return {
+      title: 'New Event',
+      headerLeft: (
+        <Button title="Cancel" onPress={() => navigation.goBack(null)} />
+      ),
+      headerRight: <Button title="Create" onPress={() => {}} />,
+    }
   }
 
   updateEventTitle = title => {
     this.setState({ title })
   }
 
-  handleCreateNewEvent = () => {
+  handleCreate = () => {
     const { title } = this.state
     const event = { title }
     console.tron.log('EventScreen -> handleCreateNewEvent, event: ', event)
     this.props.createNewEvent(event)
+  }
+
+  componentDidMount() {
+    console.log('EventScreen -> componentDidMount:')
+    console.log('props', this.props)
+    console.log('state', this.state)
   }
 
   render() {
@@ -52,11 +63,8 @@ export class EventScreen extends Component {
             onChangeText={this.updateEventTitle}
             value={title}
           />
-          <Text>
-            {title}
-          </Text>
 
-          <RoundedButton onPress={this.handleCreateNewEvent}>
+          <RoundedButton onPress={this.handleCreate}>
             {this.state.saving ? 'Saving...' : 'Create New Event'}
           </RoundedButton>
         </View>

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   Button,
-  StyleSheet,
   Text,
   View,
   ScrollView,
@@ -23,15 +22,10 @@ export class EventsScreen extends Component {
       headerRight: (
         <Button
           title="New"
-          onPress={() => navigation.navigate('EventScreen')}
+          onPress={() => navigation.navigate('NewEventScreen')}
         />
       ),
     }
-  }
-
-  componentWillMount() {
-    // console.tron.log('EventsScreen -> componentWillMount() syncEvents')
-    // this.props.syncEvents()
   }
 
   render() {
@@ -39,7 +33,9 @@ export class EventsScreen extends Component {
       <ScrollView style={styles.container}>
         {this.props.events.map(event =>
           <TouchableHighlight
-            onPress={() => this.props.editEvent(event)}
+            onPress={() => {
+              this.props.editEvent(event)
+            }}
             style={styles.card}
             key={event.id}
           >
@@ -63,11 +59,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  editEvent: () => {},
-  newEvent: () => {},
-  // syncEvents: () => dispatch(EventActions.syncEvents())
-  // editEvent: event => dispatch({ type: 'EVENT_EDIT', ...event }),
-  // newEvent: events => dispatch({ type: 'EVENT_NEW', ...events }),
+  editEvent: event => dispatch(EventActions.editEvent(event)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsScreen)

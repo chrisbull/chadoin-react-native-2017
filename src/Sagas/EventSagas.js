@@ -1,4 +1,5 @@
 import { fork, takeLatest, put, call, take } from 'redux-saga/effects'
+import { NavigationActions } from 'react-navigation'
 import EventActions, { EventTypes } from '../Redux/EventRedux'
 import fireApp from '../Services/FirebaseApp'
 
@@ -24,8 +25,14 @@ export function* syncEventsSaga() {
   }
 }
 
+export function* editEventSaga({ event }) {
+  yield put(NavigationActions.navigate({ routeName: 'EditEventScreen' }))
+}
+
+/* ----- export sagas ----- */
 export const onDemandActions = [
   takeLatest(EventTypes.NEW_EVENT_REQUEST, createNewEventSaga),
+  takeLatest(EventTypes.EDIT_EVENT, editEventSaga),
 ]
 
 export const watcherActions = [fork(syncEventsSaga)]

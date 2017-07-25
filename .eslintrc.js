@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'comma-dangle': [2, 'always-multiline'],
     'import/no-named-as-default-member': [0],
+    'react/prop-types': [0],
     'prettier/prettier': [
       'error',
       {

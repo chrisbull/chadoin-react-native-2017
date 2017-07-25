@@ -7,6 +7,10 @@ import LoginActions from '../Redux/LoginRedux'
 import styles from './Styles/AuthenticatedScreenStyle'
 
 class AuthenticatedScreen extends Component {
+  static navigationOptions = () => ({
+    title: 'AuthenticatedScreen',
+  })
+
   render() {
     const { navigation } = this.props
     return (
@@ -17,7 +21,7 @@ class AuthenticatedScreen extends Component {
           text="Go to Another Authenticated Screen"
         />
         <RoundedButton
-          onPress={() => navigation.navigate('EventStack')}
+          onPress={() => navigation.navigate('EventsStack')}
           text="Events"
         />
         <RoundedButton onPress={this.props.logout} text="Logout" />

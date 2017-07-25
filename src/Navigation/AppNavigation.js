@@ -2,8 +2,7 @@ import { StackNavigator } from 'react-navigation'
 import LoadingScreen from '../Containers/LoadingScreen'
 import LoggedInStackNavigator from './LoggedInStackNavigator'
 import NotLoggedInStackNavigator from './NotLoggedInStackNavigator'
-
-import navigationStyles from './Styles/NavigationStyles'
+import sharedNavigationOptions from './SharedNavigationOptions'
 
 // Manifest of possible screens
 const AppNavigation = StackNavigator(
@@ -16,8 +15,7 @@ const AppNavigation = StackNavigator(
     // Default config for all screens
     headerMode: 'none',
     navigationOptions: {
-      headerStyle: navigationStyles.header,
-      headerTintColor: 'white',
+      ...sharedNavigationOptions,
     },
   },
 )

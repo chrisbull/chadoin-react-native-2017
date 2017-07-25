@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { autoRehydrate } from 'redux-persist'
+import ReduxLogger from 'redux-logger'
 import Config from '../Config/DebugConfig'
 import createSagaMiddleware from 'redux-saga'
 import RehydrationServices from '../Services/RehydrationServices'
@@ -15,6 +16,9 @@ export default (rootReducer, rootSaga) => {
 
   /* ------------- Analytics Middleware ------------- */
   middleware.push(ScreenTracking)
+
+  /* ------------- Redux Logger ------------- */
+  middleware.push(ReduxLogger)
 
   /* ------------- Saga Middleware ------------- */
 
