@@ -24,6 +24,10 @@ class AuthenticatedScreen extends Component {
           onPress={() => navigation.navigate('EventsStack')}
           text="Events"
         />
+        <RoundedButton
+          onPress={() => navigation.navigate('ChatsStack')}
+          text="Chats"
+        />
         <RoundedButton onPress={this.props.logout} text="Logout" />
       </View>
     )

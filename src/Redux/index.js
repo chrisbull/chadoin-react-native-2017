@@ -11,6 +11,7 @@ export default () => {
     login: require('./LoginRedux').reducer,
     search: require('./SearchRedux').reducer,
     events: require('./EventRedux').reducer,
+    chats: require('./ChatRedux').reducer,
   })
 
   return configureStore(rootReducer, rootSaga)
