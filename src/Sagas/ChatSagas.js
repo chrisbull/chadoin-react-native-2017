@@ -1,4 +1,4 @@
-import { fork, takeLatest, put, call, take } from 'redux-saga/effects'
+import { fork, takeLatest, put, call, take, select } from 'redux-saga/effects'
 import { NavigationActions } from 'react-navigation'
 import ChatActions, { ChatTypes } from '../Redux/ChatRedux'
 import fireApp from '../Services/FirebaseApp'
@@ -20,7 +20,17 @@ export function* syncChatsSaga() {
         })),
       ),
     )
+
+    yield put(ChatActions.syncChatsComplete())
   }
+}
+
+export const selectChatFromChats = state =>
+  state.chats.list.find(c => c.id === state.chats.chat.id)
+
+export function* syncChatSaga() {
+  const chat = yield select(selectChatFromChats)
+  yield put(ChatActions.syncChat(chat))
 }
 
 /* ----- Single Chat Sagas ----- */
@@ -87,6 +97,7 @@ export function* gotoChatMessagesScreen() {
 const ChatSagas = [
   // -- Sync
   fork(syncChatsSaga),
+  takeLatest(ChatTypes.SYNC_CHATS_COMPLETE, syncChatSaga),
 
   // -- Create/Update Chat
   takeLatest(ChatTypes.CREATE_CHAT_REQUEST, createChatSaga),

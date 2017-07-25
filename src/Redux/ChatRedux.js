@@ -6,7 +6,8 @@ import Immutable from 'seamless-immutable'
 const { Types, Creators } = createActions({
   // -- Syncing
   syncChats: ['chats'],
-  syncChat: ['chats'],
+  syncChatsComplete: null,
+  syncChat: ['chat'],
 
   // -- Create/Update Chat
   createChatRequest: ['chat'],
@@ -61,6 +62,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   // -- Listeners
   [Types.SYNC_CHATS]: setChats,
+  [Types.SYNC_CHATS_COMPLETE]: none,
   [Types.SYNC_CHAT]: setChat,
 
   // -- Navigation

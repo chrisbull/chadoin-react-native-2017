@@ -18,7 +18,7 @@ export default (rootReducer, rootSaga) => {
   middleware.push(ScreenTracking)
 
   /* ------------- Redux Logger ------------- */
-  middleware.push(ReduxLogger)
+  // middleware.push(ReduxLogger)
 
   /* ------------- Saga Middleware ------------- */
 

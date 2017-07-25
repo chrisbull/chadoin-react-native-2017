@@ -18,48 +18,44 @@ class ChatMessagesScreen extends Component {
     title: 'Messages',
   })
 
-  constructor(props) {
-    super(props)
-
-    const messages = Object.keys(this.props.messages).map(key => ({
-      ...this.props.messages[key],
-      id: key,
-    }))
-
-    this.state = {
-      messages,
-    }
+  state = {
+    messageText: '',
   }
 
   handleCreateMessage = () => {
     const { chat } = this.props
     const { messageText } = this.state
-    const message = { message: messageText, created: new Date() }
 
-    this.props.createMessage(chat, message)
+    if (messageText !== '') {
+      const message = { message: messageText, created: new Date() }
+
+      this.props.createMessage(chat, message)
+      this.setState({ messageText: '' })
+    }
   }
 
   render() {
-    const { messages } = this.state
-
     return (
       <ScrollView style={styles.container}>
-        <Text>
-          {JSON.stringify(messages, null, 2)}
-        </Text>
-        {/* {messages.map(message =>
-          <TouchableHighlight style={styles.card} key={message.id}>
-            <View>
-          <Text style={styles.title}>
-          {JSON.stringify(message, null, 2)}
-          </Text>
-            </View>
-          </TouchableHighlight>,
-        )} */}
+        {Object.keys(this.props.messages)
+          .map(key => ({
+            ...this.props.messages[key],
+            id: key,
+          }))
+          .map(message =>
+            <TouchableHighlight style={styles.card} key={message.id}>
+              <View>
+                <Text style={styles.title}>
+                  {message.message}
+                </Text>
+              </View>
+            </TouchableHighlight>,
+          )}
         <TextInput
           onChangeText={messageText => {
             this.setState({ messageText })
           }}
+          value={this.state.messageText}
           placeholder="Message"
         />
         <RoundedButton onPress={this.handleCreateMessage} text="Send" />
