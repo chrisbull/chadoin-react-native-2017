@@ -4,12 +4,18 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
+  createEventRequest: ['event'],
+  updateEventRequest: ['event'],
+
+  // api callbacks
+  eventSuccess: ['event'],
+  eventFailure: ['error'],
+
+  // listeners
   syncEvents: ['events'],
-  newEvent: null,
-  newEventRequest: ['event'],
-  newEventSuccess: ['event'],
-  newEventFailure: ['error'],
-  editEvent: ['event'],
+
+  // navigation
+  gotoEvent: ['event'],
 })
 
 export const EventTypes = Types
@@ -26,33 +32,32 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Reducers ------------- */
 
-/* -- Sync Events -- */
 export const syncEvents = (state, { events }) => state.merge({ events })
 
-/* -- New Event -- */
-export const newEvent = state => state
-
-export const newEventRequest = (state, { event }) =>
+export const eventRequest = (state, { event }) =>
   state.merge({ event, saving: true })
 
-export const newEventSuccess = (state, { event }) =>
+export const eventSuccess = (state, { event }) =>
   state.merge({ event, saving: false })
 
-export const newEventFailure = (state, { error }) =>
+export const eventFailure = (state, { error }) =>
   state.merge({ error, saving: false })
 
-/* -- Edit Event -- */
-export const editEvent = (state, { event }) => state.merge({ event })
+export const gotoEvent = (state, { event = {} }) => state.merge({ event })
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.CREATE_EVENT_REQUEST]: eventRequest,
+  [Types.UPDATE_EVENT_REQUEST]: eventRequest,
+  [Types.EVENT_SUCCESS]: eventSuccess,
+  [Types.EVENT_FAILURE]: eventFailure,
+
+  // listeners
   [Types.SYNC_EVENTS]: syncEvents,
-  [Types.NEW_EVENT]: newEvent,
-  [Types.NEW_EVENT_REQUEST]: newEventRequest,
-  [Types.NEW_EVENT_SUCCESS]: newEventSuccess,
-  [Types.NEW_EVENT_FAILURE]: newEventFailure,
-  [Types.EDIT_EVENT]: editEvent,
+
+  // navigation
+  [Types.GOTO_EVENT]: gotoEvent,
 })
 
 /* ------------- Selectors ------------- */

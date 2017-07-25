@@ -12,24 +12,16 @@ const tomorrow = new Date()
 tomorrow.setDate(tomorrow.getDate() + 1)
 
 export class EventScreen extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      event: props.event || {},
-      title: (props.event && props.event.title) || '',
-      saving: props.saving,
-    }
+  state = {
+    title: (this.props.event && this.props.event.title) || '',
   }
 
   static navigationOptions = ({ navigation }) => {
     console.log('EventScreen -> navigationOptions navigation', navigation)
 
     return {
-      title: 'New Event',
-      headerLeft: (
-        <Button title="Cancel" onPress={() => navigation.goBack(null)} />
-      ),
+      title: 'Event',
+      headerLeft: <Button title="Cancel" onPress={() => navigation.goBack()} />,
       headerRight: <Button title="Create" onPress={() => {}} />,
     }
   }
@@ -39,16 +31,19 @@ export class EventScreen extends Component {
   }
 
   handleCreate = () => {
+    const { event, createEvent, updateEvent } = this.props
     const { title } = this.state
-    const event = { title }
-    console.tron.log('EventScreen -> handleCreateNewEvent, event: ', event)
-    this.props.createNewEvent(event)
-  }
 
-  componentDidMount() {
-    console.log('EventScreen -> componentDidMount:')
-    console.log('props', this.props)
-    console.log('state', this.state)
+    const newEvent = {
+      ...this.props.event,
+      title,
+    }
+
+    const needCreateEvent = !event.id
+
+    console.log('needCreateEvent', needCreateEvent, newEvent)
+
+    return !event.id ? createEvent(newEvent) : updateEvent(newEvent)
   }
 
   render() {
@@ -65,7 +60,9 @@ export class EventScreen extends Component {
           />
 
           <RoundedButton onPress={this.handleCreate}>
-            {this.state.saving ? 'Saving...' : 'Create New Event'}
+            {this.props.saving
+              ? 'Saving...'
+              : this.props.event.id ? 'Update Event' : 'Create Event'}
           </RoundedButton>
         </View>
       </ScrollView>
@@ -79,7 +76,8 @@ const mapStateToProps = ({ events }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createNewEvent: event => dispatch(EventActions.newEventRequest(event)),
+  createEvent: event => dispatch(EventActions.createEventRequest(event)),
+  updateEvent: event => dispatch(EventActions.updateEventRequest(event)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventScreen)

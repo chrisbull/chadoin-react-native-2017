@@ -3,41 +3,61 @@ import { NavigationActions } from 'react-navigation'
 import EventActions, { EventTypes } from '../Redux/EventRedux'
 import fireApp from '../Services/FirebaseApp'
 
-export function* createNewEventSaga({ event }) {
+/* ----- Single Event Sagas ----- */
+
+export function* createEventSaga({ event }) {
   try {
     const fireEventId = yield call(fireApp.database.create, 'events', event)
-    yield put(EventActions.newEventSuccess({ id: fireEventId, ...event }))
+    yield put(EventActions.eventSuccess({ id: fireEventId, ...event }))
   } catch (e) {
-    yield put(EventActions.newEventFailure(e))
+    yield put(EventActions.eventFailure(e))
   }
 }
+
+export function* updateEventSaga({ event }) {
+  try {
+    const { id, ...data } = event
+    yield call(fireApp.database.update, `events/${id}`, data)
+    yield put(EventActions.eventSuccess(event))
+  } catch (e) {
+    yield put(EventActions.eventFailure(e))
+  }
+}
+
+/* ----- All Events Sagas ----- */
 
 export function* syncEventsSaga() {
   const channel = yield call(fireApp.database.channel, 'events')
 
   while (true) {
-    const { value: events } = yield take(channel)
+    const { value } = yield take(channel)
+    const events = value || []
+
     yield put(
       EventActions.syncEvents(
-        Object.keys(events).map(key => ({ ...events[key], id: key })),
+        Object.keys(events).map(key => ({
+          ...events[key],
+          id: key,
+        })),
       ),
     )
   }
 }
 
-export function* editEventSaga({ event }) {
-  yield put(NavigationActions.navigate({ routeName: 'EditEventScreen' }))
+/* ----- Navigation Sagas ----- */
+
+export function* gotoEvent() {
+  yield put(NavigationActions.navigate({ routeName: 'EventScreen' }))
 }
 
-export function* newEventSaga() {
-  yield put(NavigationActions.navigate({ routeName: 'NewEventScreen' }))
-}
+/* ----- Export Sagas ----- */
 
-/* ----- export sagas ----- */
 export const onDemandActions = [
-  takeLatest(EventTypes.NEW_EVENT_REQUEST, createNewEventSaga),
-  takeLatest(EventTypes.NEW_EVENT, newEventSaga),
-  takeLatest(EventTypes.EDIT_EVENT, editEventSaga),
+  takeLatest(EventTypes.CREATE_EVENT_REQUEST, createEventSaga),
+  takeLatest(EventTypes.UPDATE_EVENT_REQUEST, updateEventSaga),
+
+  // navigation
+  takeLatest(EventTypes.GOTO_EVENT, gotoEvent),
 ]
 
 export const watcherActions = [fork(syncEventsSaga)]

@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableHighlight,
 } from 'react-native'
-
+import RoundedButton from '../Components/RoundedButton'
 import EventActions from '../Redux/EventRedux'
 import styles from './Styles/EventsScreenStyle'
 
@@ -23,7 +23,7 @@ export class EventsScreen extends Component {
         <Button
           title="New"
           onPress={() => {
-            navigation.dispatch(EventActions.newEvent())
+            navigation.dispatch(EventActions.gotoEvent())
           }}
         />
       ),
@@ -36,7 +36,7 @@ export class EventsScreen extends Component {
         {this.props.events.map(event =>
           <TouchableHighlight
             onPress={() => {
-              this.props.editEvent(event)
+              this.props.gotoEvent(event)
             }}
             style={styles.card}
             key={event.id}
@@ -51,17 +51,24 @@ export class EventsScreen extends Component {
             </View>
           </TouchableHighlight>,
         )}
+        <RoundedButton
+          onPress={() => {
+            this.props.gotoEvent()
+          }}
+        >
+          Add New Event
+        </RoundedButton>
       </ScrollView>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  events: state.events.events,
+const mapStateToProps = ({ events }) => ({
+  events: events.events,
 })
 
 const mapDispatchToProps = dispatch => ({
-  editEvent: event => dispatch(EventActions.editEvent(event)),
+  gotoEvent: event => dispatch(EventActions.gotoEvent(event)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsScreen)

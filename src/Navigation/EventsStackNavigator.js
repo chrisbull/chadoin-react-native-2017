@@ -7,7 +7,6 @@ import sharedNavigationOptions from './SharedNavigationOptions'
 const MainCardNavigator = StackNavigator(
   {
     Main: { screen: Events },
-    EditEventScreen: { screen: Event },
   },
   {
     headerMode: 'none',
@@ -20,7 +19,7 @@ const MainCardNavigator = StackNavigator(
 const MainModalNavigator = StackNavigator(
   {
     EventStack: { screen: MainCardNavigator },
-    NewEventScreen: { screen: Event },
+    EventScreen: { screen: Event },
   },
   {
     mode: 'modal',
