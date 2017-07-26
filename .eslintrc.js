@@ -1,6 +1,13 @@
 module.exports = {
   parser: 'babel-eslint',
-  plugins: ['standard', 'react', 'react-native', 'flowtype', 'prettier'],
+  plugins: [
+    'standard',
+    'react',
+    'react-native',
+    'flowtype',
+    'prettier',
+    'import'
+  ],
   extends: [
     'standard',
     'standard-jsx',
