@@ -1,18 +1,14 @@
-import { StackNavigator } from 'react-navigation'
-import AuthenticatedScreen from '../Containers/AuthenticatedScreen'
-import AnotherAuthenticatedScreen from '../Containers/AnotherAuthenticatedScreen'
+import { TabNavigator } from 'react-navigation'
 import EventsStackNavigator from './EventsStackNavigator'
 import ChatsStackNavigator from './ChatsStackNavigator'
 
 import sharedNavigationOptions from './SharedNavigationOptions'
 
 // Manifest of possible screens
-export default StackNavigator(
+export default TabNavigator(
   {
-    AuthenticatedScreen: { screen: AuthenticatedScreen },
-    AnotherAuthenticatedScreen: { screen: AnotherAuthenticatedScreen },
-    EventsHome: { screen: EventsStackNavigator },
-    ChatsHome: { screen: ChatsStackNavigator },
+    Events: { screen: EventsStackNavigator },
+    Chats: { screen: ChatsStackNavigator },
   },
   {
     headerMode: 'none',
