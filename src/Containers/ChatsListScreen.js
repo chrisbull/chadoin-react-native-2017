@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   Button,
@@ -10,24 +10,31 @@ import {
 import ChatActions from '../Redux/ChatRedux'
 import styles from './Styles/EventsScreenStyle'
 
-const ChatsListScreen = ({ chats, gotoChat }) =>
-  <ScrollView style={styles.container}>
-    {chats.map(chat =>
-      <TouchableHighlight
-        onPress={() => {
-          gotoChat(chat)
-        }}
-        style={styles.card}
-        key={chat.id}
-      >
-        <View>
-          <Text style={styles.title}>
-            {chat.title || ''}
-          </Text>
-        </View>
-      </TouchableHighlight>,
-    )}
-  </ScrollView>
+class ChatsListScreen extends Component {
+  render() {
+    const { chats, gotoChat } = this.props
+
+    return (
+      <ScrollView style={styles.container}>
+        {chats.map(chat =>
+          <TouchableHighlight
+            onPress={() => {
+              gotoChat(chat)
+            }}
+            style={styles.card}
+            key={chat.id}
+          >
+            <View>
+              <Text style={styles.title}>
+                {chat.title || ''}
+              </Text>
+            </View>
+          </TouchableHighlight>,
+        )}
+      </ScrollView>
+    )
+  }
+}
 
 ChatsListScreen.navigationOptions = ({ navigation }) => {
   return {
