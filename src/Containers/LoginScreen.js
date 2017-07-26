@@ -28,13 +28,14 @@ class LoginScreen extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      username: 'reactnative@infinite.red',
-      password: 'password',
-      visibleHeight: Metrics.screenHeight,
-      topLogo: { width: Metrics.screenWidth },
-    }
     this.isAttempting = false
+  }
+
+  state = {
+    email: 'chrisbull83@gmail.com',
+    password: 'password',
+    visibleHeight: Metrics.screenHeight,
+    topLogo: { width: Metrics.screenWidth },
   }
 
   componentWillReceiveProps(newProps) {
@@ -83,14 +84,14 @@ class LoginScreen extends React.Component {
   }
 
   handlePressLogin = () => {
-    const { username, password } = this.state
+    const { email, password } = this.state
     this.isAttempting = true
     // attempt a login - a saga is listening to pick it up from here.
-    this.props.attemptLogin(username, password)
+    this.props.attemptLogin(email, password)
   }
 
   handleChangeUsername = text => {
-    this.setState({ username: text })
+    this.setState({ email: text })
   }
 
   handleChangePassword = text => {
@@ -98,7 +99,7 @@ class LoginScreen extends React.Component {
   }
 
   render() {
-    const { username, password } = this.state
+    const { email, password } = this.state
     const { fetching } = this.props
     const editable = !fetching
     const textInputStyle = editable
@@ -118,9 +119,9 @@ class LoginScreen extends React.Component {
           <View style={styles.row}>
             <Text style={styles.rowLabel}>Username</Text>
             <TextInput
-              ref="username"
+              ref="email"
               style={textInputStyle}
-              value={username}
+              value={email}
               editable={editable}
               keyboardType="default"
               returnKeyType="next"
@@ -129,7 +130,7 @@ class LoginScreen extends React.Component {
               onChangeText={this.handleChangeUsername}
               underlineColorAndroid="transparent"
               onSubmitEditing={() => this.refs.password.focus()}
-              placeholder="Username"
+              placeholder="Email"
             />
           </View>
 
@@ -181,8 +182,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  attemptLogin: (username, password) =>
-    dispatch(LoginActions.loginRequest(username, password)),
+  attemptLogin: (email, password) =>
+    dispatch(LoginActions.loginRequest(email, password)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)

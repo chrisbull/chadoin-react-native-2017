@@ -36,7 +36,6 @@ const ButtonColors = {
 const ButtonStyles = {
   regular: {
     ...ButtonBase,
-    ...Fonts.normal,
     ...ButtonColors.default,
   },
 }

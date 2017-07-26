@@ -34,13 +34,6 @@ export default StyleSheet.create({
   loginButtonWrapper: {
     flex: 1,
   },
-  loginButton: {
-    ...Buttons.style.default,
-  },
-  loginText: {
-    textAlign: 'center',
-    color: Colors.silver,
-  },
   topLogo: {
     alignSelf: 'center',
     resizeMode: 'contain',
