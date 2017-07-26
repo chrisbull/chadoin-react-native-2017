@@ -64,7 +64,7 @@ class EventsListScreen extends Component {
 }
 
 const mapStateToProps = ({ events }) => ({
-  events: events.events,
+  events: events.list,
 })
 
 const mapDispatchToProps = dispatch => ({

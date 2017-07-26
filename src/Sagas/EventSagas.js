@@ -1,28 +1,7 @@
-import { fork, takeLatest, put, call, take } from 'redux-saga/effects'
+import { fork, takeLatest, put, call, take, select } from 'redux-saga/effects'
 import { NavigationActions } from 'react-navigation'
 import EventActions, { EventTypes } from '../Redux/EventRedux'
 import fireApp from '../Services/FirebaseApp'
-
-/* ----- Single Event Sagas ----- */
-
-export function* createEventSaga({ event }) {
-  try {
-    const fireEventId = yield call(fireApp.database.create, 'events', event)
-    yield put(EventActions.eventSuccess({ id: fireEventId, ...event }))
-  } catch (e) {
-    yield put(EventActions.eventFailure(e))
-  }
-}
-
-export function* updateEventSaga({ event }) {
-  try {
-    const { id, ...data } = event
-    yield call(fireApp.database.update, `events/${id}`, data)
-    yield put(EventActions.eventSuccess(event))
-  } catch (e) {
-    yield put(EventActions.eventFailure(e))
-  }
-}
 
 /* ----- All Events Sagas ----- */
 
@@ -44,27 +23,57 @@ export function* syncEventsSaga() {
   }
 }
 
+/* ----- Single Event Sagas ----- */
+
+export function* createEventSaga({ event }) {
+  try {
+    const fireEventId = yield call(fireApp.database.create, 'events', event)
+    yield put(EventActions.eventSuccess({ id: fireEventId, ...event }))
+    yield put(EventActions.gotoEventList())
+  } catch (e) {
+    yield put(EventActions.eventFailure(e))
+  }
+}
+
+export function* updateEventSaga({ event }) {
+  try {
+    const { id, ...data } = event
+    yield call(fireApp.database.update, `events/${id}`, data)
+    yield put(EventActions.eventSuccess(event))
+    yield put(EventActions.gotoEventList())
+  } catch (e) {
+    yield put(EventActions.eventFailure(e))
+  }
+}
+
 /* ----- Navigation Sagas ----- */
 
-export function* gotoEvent() {
+export function* gotoNewEventScreen() {
+  yield put(NavigationActions.navigate({ routeName: 'NewEventScreen' }))
+}
+
+export function* gotoEventScreen() {
   yield put(NavigationActions.navigate({ routeName: 'EventScreen' }))
 }
 
-export function* gotoNewEvent() {
-  yield put(NavigationActions.navigate({ routeName: 'NewEventScreen' }))
+export function* gotoEventListScreen() {
+  yield put(NavigationActions.back({}))
 }
 
 /* ----- Export Sagas ----- */
 
-export const onDemandActions = [
+const EventSagas = [
+  // -- Sync
+  fork(syncEventsSaga),
+
+  // -- Create/Update Event
   takeLatest(EventTypes.CREATE_EVENT_REQUEST, createEventSaga),
   takeLatest(EventTypes.UPDATE_EVENT_REQUEST, updateEventSaga),
 
-  // navigation
-  takeLatest(EventTypes.GOTO_EVENT, gotoEvent),
-  takeLatest(EventTypes.GOTO_NEW_EVENT, gotoNewEvent),
+  // -- Navigation
+  takeLatest(EventTypes.GOTO_NEW_EVENT, gotoNewEventScreen),
+  takeLatest(EventTypes.GOTO_EVENT, gotoEventScreen),
+  takeLatest(EventTypes.GOTO_EVENT_LIST, gotoEventListScreen),
 ]
 
-export const watcherActions = [fork(syncEventsSaga)]
-
-export default [...onDemandActions, ...watcherActions]
+export default EventSagas

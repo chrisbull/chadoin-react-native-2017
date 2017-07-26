@@ -4,19 +4,23 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
+  // -- Syncing
+  syncEvents: ['events'],
+  syncEventsComplete: null,
+  syncEvent: ['event'],
+
+  // -- Create/Update Event
   createEventRequest: ['event'],
   updateEventRequest: ['event'],
 
-  // api callbacks
+  // -- API Callbacks
   eventSuccess: ['event'],
   eventFailure: ['error'],
 
-  // listeners
-  syncEvents: ['events'],
-
-  // navigation
-  gotoEvent: ['event'],
+  // -- Navigation
   gotoNewEvent: null,
+  gotoEvent: ['event'],
+  gotoEventList: null,
 })
 
 export const EventTypes = Types
@@ -33,25 +37,24 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Reducers ------------- */
 
-export const updateEvents = (state, { events }) => state.merge({ events })
-export const updateEvent = (state, { event }) => state.merge({ event })
-export const updateError = (state, { error }) => state.merge({ error })
+export const setEvents = (state, { events }) => state.merge({ list: events })
+export const setEvent = (state, { event }) => state.merge({ event })
+export const setError = (state, { error }) => state.merge({ error })
 export const none = state => state
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.CREATE_EVENT_REQUEST]: updateEvent,
-  [Types.UPDATE_EVENT_REQUEST]: updateEvent,
-  [Types.EVENT_SUCCESS]: updateEvent,
-  [Types.EVENT_FAILURE]: updateError,
+  // -- Create/Update Event
+  [Types.EVENT_SUCCESS]: setEvent,
+  [Types.EVENT_FAILURE]: setError,
 
-  // listeners
-  [Types.SYNC_EVENTS]: updateEvents,
+  // -- Listeners
+  [Types.SYNC_EVENTS]: setEvents,
 
-  // navigation
-  [Types.GOTO_EVENT]: updateEvent,
-  [Types.GOTO_NEW_EVENT]: none,
+  // -- Navigation
+  [Types.GOTO_EVENT]: setEvent,
+  [Types.GOTO_EVENT_LIST]: none,
 })
 
 /* ------------- Selectors ------------- */
