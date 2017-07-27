@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Text, TouchableOpacity } from 'react-native'
-import ExamplesRegistry from '../Services/ExamplesRegistry'
 import { Metrics, Colors, Fonts } from '../Themes'
 
 const styles = {
@@ -11,14 +10,7 @@ const styles = {
   },
 }
 
-ExamplesRegistry.addComponentExample('Drawer Button', () =>
-  <DrawerButton
-    text="Example left drawer button"
-    onPress={() => window.alert('Your drawers are showing')}
-  />,
-)
-
-class DrawerButton extends Component {
+export default class DrawerButton extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
@@ -29,5 +21,3 @@ class DrawerButton extends Component {
     )
   }
 }
-
-export default DrawerButton

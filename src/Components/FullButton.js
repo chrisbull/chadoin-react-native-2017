@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
-import ExamplesRegistry from '../Services/ExamplesRegistry'
 import { Fonts, Colors } from '../Themes/'
 
 const styles = StyleSheet.create({
@@ -18,20 +16,7 @@ const styles = StyleSheet.create({
   },
 })
 
-ExamplesRegistry.addComponentExample('Full Button', () =>
-  <FullButton
-    text="Hey there"
-    onPress={() => window.alert('Full Button Pressed!')}
-  />,
-)
-
 export default class FullButton extends Component {
-  static propTypes = {
-    text: PropTypes.string,
-    onPress: PropTypes.func,
-    styles: PropTypes.object,
-  }
-
   render() {
     return (
       <TouchableOpacity

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
-import ExamplesRegistry from '../Services/ExamplesRegistry'
 import { Fonts, Colors, Metrics } from '../Themes/'
 
 const styles = StyleSheet.create({
@@ -20,13 +19,6 @@ const styles = StyleSheet.create({
     marginVertical: Metrics.baseMargin,
   },
 })
-
-ExamplesRegistry.addComponentExample('Rounded Button', () =>
-  <RoundedButton
-    text="real buttons have curves"
-    onPress={() => window.alert('Rounded Button Pressed!')}
-  />,
-)
 
 export default class RoundedButton extends Component {
   getText() {

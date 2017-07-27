@@ -6,5 +6,10 @@ import loginSagas from './LoginSagas'
 import chatSagas from './ChatSagas'
 
 export default function* root() {
-  yield all([...startupSagas, ...loginSagas, ...eventSagas, ...chatSagas])
+  yield all([
+    ...startupSagas, // StartupSagas
+    ...loginSagas, // LoginSagas
+    ...eventSagas, // EventSagas
+    ...chatSagas, // ChatSagas
+  ])
 }
