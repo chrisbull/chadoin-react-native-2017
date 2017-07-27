@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { autoRehydrate } from 'redux-persist'
-import ReduxLogger from 'redux-logger'
+// import ReduxLogger from 'redux-logger'
 import Config from '../Config/DebugConfig'
 import createSagaMiddleware from 'redux-saga'
 import RehydrationServices from '../Services/RehydrationServices'
@@ -44,6 +44,14 @@ export default (rootReducer, rootSaga) => {
     ? console.tron.createStore
     : createStore
   const store = createAppropriateStore(rootReducer, compose(...enhancers))
+
+  // Fix for hot reloading and react-redux v2.0.0
+  if (module.hot) {
+    module.hot.accept('../Redux', () => {
+      const nextRootReducer = require('../Redux/index')
+      store.replaceReducer(nextRootReducer)
+    })
+  }
 
   // configure persistStore and check reducer version number
   if (ReduxPersist.active) {
