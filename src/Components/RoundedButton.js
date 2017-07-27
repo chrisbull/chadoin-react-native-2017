@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { TouchableOpacity, Text } from 'react-native'
-import styles from './Styles/RoundedButtonStyles'
+import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
+import { Fonts, Colors, Metrics } from '../Themes/'
 
-// Note that this file (src/Components/RoundedButton) needs to be
-// imported in your app somewhere, otherwise your component won't be
-// compiled and added to the examples dev screen.
+const styles = StyleSheet.create({
+  button: {
+    height: 45,
+    borderRadius: 5,
+    marginHorizontal: Metrics.section,
+    marginVertical: Metrics.baseMargin,
+    backgroundColor: Colors.blue,
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: Colors.white,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: Fonts.size.medium,
+    marginVertical: Metrics.baseMargin,
+  },
+})
 
-// Ignore in coverage report
-/* istanbul ignore next */
 ExamplesRegistry.addComponentExample('Rounded Button', () =>
   <RoundedButton
     text="real buttons have curves"
@@ -18,13 +29,6 @@ ExamplesRegistry.addComponentExample('Rounded Button', () =>
 )
 
 export default class RoundedButton extends Component {
-  static propTypes = {
-    onPress: PropTypes.func,
-    text: PropTypes.string,
-    children: PropTypes.string,
-    navigator: PropTypes.object,
-  }
-
   getText() {
     const buttonText = this.props.text || this.props.children || ''
     return buttonText.toUpperCase()

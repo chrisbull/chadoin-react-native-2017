@@ -1,15 +1,16 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { ApplicationStyles } from '../Themes/'
 
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
-
-// Styles
-import styles from './Styles/LoadingScreenStyle'
+const styles = StyleSheet.create({
+  mainContainer: {
+    ...ApplicationStyles.MainContainer.styles,
+  },
+})
 
 class LoadingScreen extends React.Component {
   render() {
-    return <View style={styles.container} />
+    return <View style={styles.mainContainer} />
   }
 }
 

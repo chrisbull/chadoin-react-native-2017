@@ -1,9 +1,9 @@
 import { ApplicationStyles } from '../Themes'
-const { navHeaderStyle, navHeaderTintColor } = ApplicationStyles
+const { NavigationHeader } = ApplicationStyles
 
 const sharedNavigationOptions = {
-  headerStyle: navHeaderStyle,
-  headerTintColor: navHeaderTintColor,
+  headerStyle: NavigationHeader.style,
+  headerTintColor: NavigationHeader.tintColor,
 }
 
 export default sharedNavigationOptions

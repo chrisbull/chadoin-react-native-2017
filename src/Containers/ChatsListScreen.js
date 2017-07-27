@@ -3,12 +3,27 @@ import { connect } from 'react-redux'
 import {
   Button,
   Text,
-  View,
   ScrollView,
   TouchableHighlight,
+  StyleSheet,
 } from 'react-native'
 import ChatActions from '../Redux/ChatRedux'
-import styles from './Styles/EventsScreenStyle'
+import { Colors, ApplicationStyles } from '../Themes/'
+
+const styles = StyleSheet.create({
+  container: {
+    ...ApplicationStyles.MainContainer.styles,
+    backgroundColor: Colors.purple,
+  },
+  tableRow: {
+    padding: 12,
+  },
+  tableRowTitle: {
+    color: 'white',
+  },
+})
+
+const tableRowUnderlayColor = 'rgba(0,0,0,0.3)'
 
 class ChatsListScreen extends Component {
   render() {
@@ -21,14 +36,13 @@ class ChatsListScreen extends Component {
             onPress={() => {
               gotoChat(chat)
             }}
-            style={styles.card}
+            style={styles.tableRow}
+            underlayColor={tableRowUnderlayColor}
             key={chat.id}
           >
-            <View>
-              <Text style={styles.title}>
-                {chat.title || ''}
-              </Text>
-            </View>
+            <Text style={styles.tableRowTitle}>
+              {chat.title || ''}
+            </Text>
           </TouchableHighlight>,
         )}
       </ScrollView>

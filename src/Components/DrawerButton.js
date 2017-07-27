@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Text, TouchableOpacity } from 'react-native'
-import styles from './Styles/DrawerButtonStyles'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
+import { Metrics, Colors, Fonts } from '../Themes'
 
-// Note that this file (src/Components/DrawerButton) needs to be
-// imported in your app somewhere, otherwise your component won't be
-// compiled and added to the examples dev screen.
+const styles = {
+  text: {
+    ...Fonts.style.h5,
+    color: Colors.white,
+    marginVertical: Metrics.baseMargin,
+  },
+}
 
-// Ignore in coverage report
-/* istanbul ignore next */
 ExamplesRegistry.addComponentExample('Drawer Button', () =>
   <DrawerButton
     text="Example left drawer button"
@@ -18,11 +19,6 @@ ExamplesRegistry.addComponentExample('Drawer Button', () =>
 )
 
 class DrawerButton extends Component {
-  static propTypes = {
-    text: PropTypes.string,
-    onPress: PropTypes.func,
-  }
-
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress}>

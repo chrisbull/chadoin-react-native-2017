@@ -1,16 +1,32 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { View, Text } from 'react-native'
-import styles from './Styles/AlertMessageStyles'
+import { View, Text, StyleSheet } from 'react-native'
+import { Metrics, Fonts, ApplicationStyles } from '../Themes/'
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    marginVertical: Metrics.section,
+  },
+  contentContainer: {
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  message: {
+    marginTop: Metrics.baseMargin,
+    marginHorizontal: Metrics.baseMargin,
+    textAlign: 'center',
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.regular,
+    fontWeight: 'bold',
+    color: ApplicationStyles.textColor.regular,
+  },
+  icon: {
+    color: ApplicationStyles.textColor.regular,
+  },
+})
 
 export default class AlertMessage extends Component {
   static defaultProps = { show: true }
-
-  static propTypes = {
-    show: PropTypes.bool,
-    style: PropTypes.obj,
-    title: PropTypes.string,
-  }
 
   render() {
     let messageComponent = null

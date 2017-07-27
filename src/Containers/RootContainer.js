@@ -1,12 +1,23 @@
-import React, { Component } from 'react'
-import { View, StatusBar } from 'react-native'
-import ReduxNavigation from '../Navigation/ReduxNavigation'
-import { connect } from 'react-redux'
-import StartupActions from '../Redux/StartupRedux'
-import ReduxPersist from '../Config/ReduxPersist'
+/*
+ * NO NEED TO EDIT THIS FILE!
+ * UNLESS YOU ABSOLUELY KNOW WHAT YOU ARE DOING
+ * AND HAVE GOOD REASON FOR IT
+ */
 
-// Styles
-import styles from './Styles/RootContainerStyles'
+import '../Config'
+import DebugConfig from '../Config/DebugConfig'
+import React, { Component } from 'react'
+import { View, StatusBar, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
+import ReduxPersist from '../Config/ReduxPersist'
+import StartupActions from '../Redux/StartupRedux'
+import ReduxNavigation from '../Navigation/ReduxNavigation'
+
+const styles = StyleSheet.create({
+  applicationView: {
+    flex: 1,
+  },
+})
 
 class RootContainer extends Component {
   componentDidMount() {
@@ -26,9 +37,13 @@ class RootContainer extends Component {
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = dispatch => ({
   startup: () => dispatch(StartupActions.startup()),
 })
 
-export default connect(null, mapDispatchToProps)(RootContainer)
+// allow reactotron overlay for fast design in dev mode
+export default connect(null, mapDispatchToProps)(
+  DebugConfig.useReactotron
+    ? console.tron.overlay(RootContainer)
+    : RootContainer,
+)

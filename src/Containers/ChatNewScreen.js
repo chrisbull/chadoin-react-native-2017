@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TextInput, View, ScrollView, Button } from 'react-native'
-
+import { TextInput, View, ScrollView, Button, StyleSheet } from 'react-native'
+import { ApplicationStyles } from '../Themes/'
 import RoundedButton from '../Components/RoundedButton'
-
 import ChatActions from '../Redux/ChatRedux'
 
-import styles from './Styles/EventScreenStyle'
+const styles = StyleSheet.create({
+  mainContainer: {
+    ...ApplicationStyles.MainContainer.styles,
+  },
+})
 
 class ChatCreateScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -26,10 +29,9 @@ class ChatCreateScreen extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.contentContainer}>
+      <ScrollView style={styles.mainContainer}>
+        <View>
           <TextInput
-            style={styles.textInput}
             placeholder="Title"
             onChangeText={title => {
               this.setState({ title })

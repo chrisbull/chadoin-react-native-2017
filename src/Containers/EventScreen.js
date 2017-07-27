@@ -9,13 +9,17 @@ import {
   TextInput,
   TouchableHighlight,
   View,
+  StyleSheet,
 } from 'react-native'
-
+import { ApplicationStyles } from '../Themes/'
+import EventActions from '../Redux/EventRedux'
 import RoundedButton from '../Components/RoundedButton'
 
-import EventActions from '../Redux/EventRedux'
-
-import styles from './Styles/EventScreenStyle'
+const styles = StyleSheet.create({
+  mainContainer: {
+    ...ApplicationStyles.MainContainer.styles,
+  },
+})
 
 const tomorrow = new Date()
 tomorrow.setDate(tomorrow.getDate() + 1)
@@ -99,7 +103,7 @@ class EventScreen extends Component {
     })
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.mainContainer}>
         <View style={styles.contentContainer}>
           <TextInput
             style={styles.textInput}

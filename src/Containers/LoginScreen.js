@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import {
   View,
   ScrollView,
@@ -9,19 +9,19 @@ import {
   Image,
   Keyboard,
   LayoutAnimation,
+  StyleSheet,
 } from 'react-native'
-import { connect } from 'react-redux'
-import styles from './Styles/LoginScreenStyles'
-import { Images, Metrics } from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
+import { Images, Metrics, ApplicationStyles } from '../Themes'
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    ...ApplicationStyles.MainContainer.styles,
+    paddingTop: 70,
+  },
+})
 
 class LoginScreen extends React.Component {
-  static propTypes = {
-    dispatch: PropTypes.func,
-    fetching: PropTypes.bool,
-    attemptLogin: PropTypes.func,
-  }
-
   isAttempting = false
   keyboardDidShowListener = {}
   keyboardDidHideListener = {}
@@ -108,7 +108,7 @@ class LoginScreen extends React.Component {
     return (
       <ScrollView
         contentContainerStyle={{ justifyContent: 'center' }}
-        style={[styles.container, { height: this.state.visibleHeight }]}
+        style={[styles.mainContainer, { height: this.state.visibleHeight }]}
         keyboardShouldPersistTaps="always"
       >
         <Image

@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { TouchableOpacity, Text } from 'react-native'
-import styles from './Styles/FullButtonStyles'
+import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
+import { Fonts, Colors } from '../Themes/'
 
-// Note that this file (src/Components/FullButton) needs to be
-// imported in your app somewhere, otherwise your component won't be
-// compiled and added to the examples dev screen.
+const styles = StyleSheet.create({
+  button: {
+    marginVertical: 5,
+    backgroundColor: Colors.blue,
+  },
+  buttonText: {
+    margin: 18,
+    textAlign: 'center',
+    color: Colors.white,
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.bold,
+  },
+})
 
-// Ignore in coverage report
-/* istanbul ignore next */
 ExamplesRegistry.addComponentExample('Full Button', () =>
   <FullButton
     text="Hey there"

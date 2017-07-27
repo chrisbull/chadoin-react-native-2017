@@ -6,12 +6,17 @@ import {
   View,
   ScrollView,
   TouchableHighlight,
+  StyleSheet,
 } from 'react-native'
-
+import { ApplicationStyles } from '../Themes/'
 import RoundedButton from '../Components/RoundedButton'
-
 import ChatActions from '../Redux/ChatRedux'
-import styles from './Styles/EventsScreenStyle'
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    ...ApplicationStyles.MainContainer.styles,
+  },
+})
 
 class ChatMessagesScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -36,16 +41,16 @@ class ChatMessagesScreen extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.mainContainer}>
         {Object.keys(this.props.messages)
           .map(key => ({
             ...this.props.messages[key],
             id: key,
           }))
           .map(message =>
-            <TouchableHighlight style={styles.card} key={message.id}>
+            <TouchableHighlight key={message.id}>
               <View>
-                <Text style={styles.title}>
+                <Text>
                   {message.message}
                 </Text>
               </View>

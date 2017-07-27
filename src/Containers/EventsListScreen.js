@@ -6,10 +6,17 @@ import {
   View,
   ScrollView,
   TouchableHighlight,
+  StyleSheet,
 } from 'react-native'
 import RoundedButton from '../Components/RoundedButton'
 import EventActions from '../Redux/EventRedux'
-import styles from './Styles/EventsScreenStyle'
+import { ApplicationStyles } from '../Themes/'
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    ...ApplicationStyles.MainContainer.styles,
+  },
+})
 
 class EventsListScreen extends Component {
   static defaultProps = {
@@ -32,7 +39,7 @@ class EventsListScreen extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.mainContainer}>
         {this.props.events.map(event =>
           <TouchableHighlight
             onPress={() => {
