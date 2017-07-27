@@ -8,6 +8,7 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
+  TouchableWithoutFeedback,
   View,
   StyleSheet,
 } from 'react-native'
@@ -35,26 +36,14 @@ class EventScreen extends Component {
       (this.props.event && new Date(this.props.event.endDateTime)) || tomorrow,
     date: new Date(),
     timeZoneOffsetInHours: -1 * new Date().getTimezoneOffset() / 60,
-  }
-
-  static navigationOptions = ({ navigation }) => {
-    console.log('EventScreen -> navigationOptions navigation', navigation)
-
-    return {
-      title: 'Event',
-      headerLeft: <Button title="Cancel" onPress={() => navigation.goBack()} />,
-      headerRight: <Button title="Create" onPress={() => {}} />,
-    }
+    startDateTimePickerVisible: false,
+    endDateTimePickerVisible: false,
   }
 
   // -- Event handlers
 
   toggleDateTime = allDay => {
     this.setState({ allDay })
-  }
-
-  onDateChange = startDateTime => {
-    this.setState({ startDateTime })
   }
 
   // -- Save Handler
@@ -82,13 +71,14 @@ class EventScreen extends Component {
 
   render() {
     const {
-      id,
       title,
       allDay,
       startDateTime,
       endDateTime,
       timeZoneOffsetInHours,
       saving,
+      startDateTimePickerVisible,
+      endDateTimePickerVisible,
     } = this.state
 
     const startDate = startDateTime.toLocaleTimeString('en-us', {
@@ -98,6 +88,17 @@ class EventScreen extends Component {
     })
 
     const startTime = startDateTime.toLocaleTimeString('en-us', {
+      hour: 'numeric',
+      minute: '2-digit',
+    })
+
+    const endDate = endDateTime.toLocaleTimeString('en-us', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    })
+
+    const endTime = endDateTime.toLocaleTimeString('en-us', {
       hour: 'numeric',
       minute: '2-digit',
     })
@@ -123,7 +124,14 @@ class EventScreen extends Component {
             </View>
           </View>
 
-          <TouchableHighlight style={styles.tappableLabel}>
+          <TouchableWithoutFeedback
+            style={styles.tappableLabel}
+            onPress={() => {
+              this.setState({
+                startDateTimePickerVisible: !startDateTimePickerVisible,
+              })
+            }}
+          >
             <View style={styles.dateTimeView}>
               <Text style={styles.dateTimeLabel}>Start Time</Text>
               <Text style={styles.dateTimeDate}>
@@ -134,27 +142,55 @@ class EventScreen extends Component {
                   {startTime}
                 </Text>}
             </View>
-          </TouchableHighlight>
+          </TouchableWithoutFeedback>
 
-          <TouchableHighlight style={styles.tappableLabel}>
+          <View
+            style={{
+              height: startDateTimePickerVisible ? 'auto' : 0,
+              overflow: 'hidden',
+            }}
+          >
+            <DatePickerIOS
+              date={startDateTime}
+              mode={allDay ? 'date' : 'datetime'}
+              timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
+              onDateChange={date => this.setState({ startDateTime: date })}
+            />
+          </View>
+
+          <TouchableWithoutFeedback
+            style={styles.tappableLabel}
+            onPress={() => {
+              this.setState({
+                endDateTimePickerVisible: !endDateTimePickerVisible,
+              })
+            }}
+          >
             <View style={styles.dateTimeView}>
               <Text style={styles.dateTimeLabel}>End Time</Text>
               <Text style={styles.dateTimeDate}>
-                {startDate}
+                {endDate}
               </Text>
               {!allDay &&
                 <Text style={styles.dateTimeTime}>
-                  {startTime}
+                  {endTime}
                 </Text>}
             </View>
-          </TouchableHighlight>
+          </TouchableWithoutFeedback>
 
-          <DatePickerIOS
-            date={startDateTime}
-            mode={allDay ? 'date' : 'datetime'}
-            timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
-            onDateChange={this.onDateChange}
-          />
+          <View
+            style={{
+              height: endDateTimePickerVisible ? 'auto' : 0,
+              overflow: 'hidden',
+            }}
+          >
+            <DatePickerIOS
+              date={endDateTime}
+              mode={allDay ? 'date' : 'datetime'}
+              timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
+              onDateChange={date => this.setState({ endDateTime: date })}
+            />
+          </View>
 
           <TouchableHighlight style={styles.tappableLabel}>
             <Text>Invite Friends</Text>
@@ -165,6 +201,14 @@ class EventScreen extends Component {
         </View>
       </ScrollView>
     )
+  }
+}
+
+EventScreen.navigationOptions = ({ navigation }) => {
+  return {
+    title: 'Event',
+    headerLeft: <Button title="Cancel" onPress={() => navigation.goBack()} />,
+    headerRight: <Button title="Create" onPress={() => {}} />,
   }
 }
 
