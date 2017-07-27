@@ -12,6 +12,7 @@ export const NavigationHeader = {
 export const MainContainer = {
   style: {
     flex: 1,
+    backgroundColor: 'white',
   },
 }
 

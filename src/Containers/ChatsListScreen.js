@@ -11,15 +11,15 @@ import ChatActions from '../Redux/ChatRedux'
 import { Colors, ApplicationStyles } from '../Themes/'
 
 const styles = StyleSheet.create({
-  container: {
-    ...ApplicationStyles.MainContainer.styles,
-    backgroundColor: Colors.purple,
+  mainContainer: {
+    ...ApplicationStyles.MainContainer.style,
   },
-  tableRow: {
+  listRowContainer: {
     padding: 12,
   },
-  tableRowTitle: {
-    color: 'white',
+  listRowTitle: {
+    color: Colors.blueGreyMedium,
+    fontWeight: '500',
   },
 })
 
@@ -30,17 +30,17 @@ class ChatsListScreen extends Component {
     const { chats, gotoChat } = this.props
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.mainContainer}>
         {chats.map(chat =>
           <TouchableHighlight
             onPress={() => {
               gotoChat(chat)
             }}
-            style={styles.tableRow}
+            style={styles.listRowContainer}
             underlayColor={tableRowUnderlayColor}
             key={chat.id}
           >
-            <Text style={styles.tableRowTitle}>
+            <Text style={styles.listRowTitle}>
               {chat.title || ''}
             </Text>
           </TouchableHighlight>,
