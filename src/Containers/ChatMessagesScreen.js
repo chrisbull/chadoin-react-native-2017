@@ -62,6 +62,8 @@ class ChatMessagesScreen extends Component {
           }}
           value={this.state.messageText}
           placeholder="Message"
+          autoFocus
+          multiline
         />
         <RoundedButton onPress={this.handleCreateMessage} text="Send" />
       </ScrollView>
