@@ -49,11 +49,11 @@ export function* updateEventSaga({ event }) {
 /* ----- Navigation Sagas ----- */
 
 export function* gotoNewEventScreen() {
-  yield put(NavigationActions.navigate({ routeName: 'NewEventScreen' }))
+  yield put(NavigationActions.navigate({ routeName: 'NewEvent' }))
 }
 
 export function* gotoEventScreen() {
-  yield put(NavigationActions.navigate({ routeName: 'EventScreen' }))
+  yield put(NavigationActions.navigate({ routeName: 'EditEvent' }))
 }
 
 export function* gotoEventListScreen() {

@@ -11,14 +11,14 @@ const INITIAL_STATE = getStateForAction(
 const NOT_LOGGED_IN_STATE = getStateForAction(
   reset({
     index: 0,
-    actions: [navigate({ routeName: 'NotLoggedInStack' })],
+    actions: [navigate({ routeName: 'LoginScreen' })],
   }),
 )
 
 const LOGGED_IN_STATE = getStateForAction(
   reset({
     index: 0,
-    actions: [navigate({ routeName: 'LoggedInStack' })],
+    actions: [navigate({ routeName: 'MainScreen' })],
   }),
 )
 

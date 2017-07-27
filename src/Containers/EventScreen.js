@@ -204,13 +204,11 @@ class EventScreen extends Component {
   }
 }
 
-EventScreen.navigationOptions = ({ navigation }) => {
-  return {
-    title: 'Event',
-    headerLeft: <Button title="Cancel" onPress={() => navigation.goBack()} />,
-    headerRight: <Button title="Create" onPress={() => {}} />,
-  }
-}
+EventScreen.navigationOptions = ({ navigation }) => ({
+  title: 'Create Event',
+  headerLeft: <Button onPress={() => navigation.goBack(null)} title="Cancel" />,
+  tabBarVisible: false,
+})
 
 const mapStateToProps = ({ events }) => ({
   event: events.event,

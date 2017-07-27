@@ -40,7 +40,6 @@ export const INITIAL_STATE = Immutable({
 export const setEvents = (state, { events }) => state.merge({ list: events })
 export const setEvent = (state, { event }) => state.merge({ event })
 export const setError = (state, { error }) => state.merge({ error })
-export const none = state => state
 
 /* ------------- Hookup Reducers To Types ------------- */
 
@@ -54,7 +53,6 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   // -- Navigation
   [Types.GOTO_EVENT]: setEvent,
-  [Types.GOTO_EVENT_LIST]: none,
 })
 
 /* ------------- Selectors ------------- */

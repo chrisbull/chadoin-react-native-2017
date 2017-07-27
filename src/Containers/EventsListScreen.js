@@ -23,20 +23,6 @@ class EventsListScreen extends Component {
     events: [],
   }
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Events',
-      headerRight: (
-        <Button
-          title="New"
-          onPress={() => {
-            navigation.dispatch(EventActions.gotoEvent())
-          }}
-        />
-      ),
-    }
-  }
-
   render() {
     return (
       <ScrollView style={styles.mainContainer}>
@@ -58,17 +44,22 @@ class EventsListScreen extends Component {
             </View>
           </TouchableHighlight>,
         )}
-        <RoundedButton
-          onPress={() => {
-            this.props.gotoEvent()
-          }}
-        >
-          Add New Event
-        </RoundedButton>
       </ScrollView>
     )
   }
 }
+
+EventsListScreen.navigationOptions = ({ navigation }) => ({
+  title: 'Events',
+  headerRight: (
+    <Button
+      title="New"
+      onPress={() => {
+        navigation.dispatch(EventActions.gotoNewEvent())
+      }}
+    />
+  ),
+})
 
 const mapStateToProps = ({ events }) => ({
   events: events.list,

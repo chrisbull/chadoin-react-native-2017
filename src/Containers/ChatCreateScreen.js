@@ -12,13 +12,6 @@ const styles = StyleSheet.create({
 })
 
 class ChatCreateScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Create Chat',
-    headerLeft: (
-      <Button onPress={() => navigation.goBack(null)} title="Cancel" />
-    ),
-  })
-
   state = {
     title: '',
   }
@@ -49,6 +42,11 @@ class ChatCreateScreen extends Component {
     )
   }
 }
+
+ChatCreateScreen.navigationOptions = ({ navigation }) => ({
+  title: 'Create Chat',
+  headerLeft: <Button onPress={() => navigation.goBack(null)} title="Cancel" />,
+})
 
 const mapStateToProps = () => ({})
 

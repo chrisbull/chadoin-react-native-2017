@@ -19,10 +19,6 @@ const styles = StyleSheet.create({
 })
 
 class ChatMessagesScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Messages',
-  })
-
   state = {
     messageText: '',
   }
@@ -70,6 +66,11 @@ class ChatMessagesScreen extends Component {
     )
   }
 }
+
+ChatMessagesScreen.navigationOptions = ({ navigation }) => ({
+  title: 'Messages',
+  tabBarVisible: false,
+})
 
 const mapStateToProps = ({ chats }) => ({
   chat: chats.chat,
