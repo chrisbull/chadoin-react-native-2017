@@ -3,50 +3,72 @@ import { connect } from 'react-redux'
 import {
   Button,
   Text,
-  ScrollView,
+  FlatList,
   TouchableHighlight,
   StyleSheet,
 } from 'react-native'
+import { ApplicationStyles } from '../Themes'
 import ChatActions from '../Redux/ChatRedux'
-import { Colors, ApplicationStyles } from '../Themes/'
 
 const styles = StyleSheet.create({
   mainContainer: {
     ...ApplicationStyles.MainContainer.style,
-    backgroundColor: Colors.purple,
   },
-  listRowContainer: {
-    padding: 12,
+  listView: {
+    ...ApplicationStyles.ListView.style,
   },
-  listRowTitle: {
-    color: Colors.blueGreyMedium,
-    fontWeight: '500',
+  listViewRow: {
+    ...ApplicationStyles.ListViewRow.containerStyle,
+  },
+  listViewRowTitle: {
+    ...ApplicationStyles.ListViewRow.titleStyle,
   },
 })
 
-const tableRowUnderlayColor = 'rgba(0,0,0,0.3)'
+class MyListItem extends Component {
+  _onPress = () => {
+    this.props.onPressItem(this.props.item)
+  }
+
+  render() {
+    return (
+      <TouchableHighlight
+        onPress={this._onPress}
+        style={styles.listViewRow}
+        underlayColor={ApplicationStyles.ListViewRow.underlayColor}
+      >
+        <Text style={styles.listViewRowTitle}>
+          {this.props.title}
+        </Text>
+      </TouchableHighlight>
+    )
+  }
+}
 
 class ChatsListScreen extends Component {
-  render() {
-    const { chats, gotoChat } = this.props
+  static defaultProps = {
+    items: [],
+  }
 
+  _keyExtractor = (item, index) => item.id
+
+  _onPressItem = item => this.props.gotoItem(item)
+
+  _renderItem = ({ item }) =>
+    <MyListItem
+      onPressItem={this._onPressItem}
+      title={item.title}
+      item={item}
+    />
+
+  render() {
     return (
-      <ScrollView style={styles.mainContainer}>
-        {chats.map(chat =>
-          <TouchableHighlight
-            onPress={() => {
-              gotoChat(chat)
-            }}
-            style={styles.listRowContainer}
-            underlayColor={tableRowUnderlayColor}
-            key={chat.id}
-          >
-            <Text style={styles.listRowTitle}>
-              {chat.title || ''}
-            </Text>
-          </TouchableHighlight>,
-        )}
-      </ScrollView>
+      <FlatList
+        style={styles.mainContainer}
+        data={this.props.items}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+      />
     )
   }
 }
@@ -66,11 +88,11 @@ ChatsListScreen.navigationOptions = ({ navigation }) => {
 }
 
 const mapStateToProps = ({ chats }) => ({
-  chats: chats.list || [],
+  items: chats.list,
 })
 
 const mapDispatchToProps = dispatch => ({
-  gotoChat: chat => dispatch(ChatActions.gotoChat(chat)),
+  gotoItem: chat => dispatch(ChatActions.gotoChat(chat)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatsListScreen)

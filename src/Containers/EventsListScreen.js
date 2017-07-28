@@ -3,68 +3,72 @@ import { connect } from 'react-redux'
 import {
   Button,
   Text,
-  View,
-  ListView,
+  FlatList,
   TouchableHighlight,
   StyleSheet,
 } from 'react-native'
+import { ApplicationStyles } from '../Themes'
 import EventActions from '../Redux/EventRedux'
-import { Colors, ApplicationStyles } from '../Themes/'
 
 const styles = StyleSheet.create({
   mainContainer: {
-    ...ApplicationStyles.MainContainer.styles,
+    ...ApplicationStyles.MainContainer.style,
   },
-  listRowContainer: {
-    padding: 12,
+  listView: {
+    ...ApplicationStyles.ListView.style,
   },
-  listRowTitle: {
-    color: Colors.blueGreyMedium,
-    fontWeight: '500',
+  listViewRow: {
+    ...ApplicationStyles.ListViewRow.containerStyle,
+  },
+  listViewRowTitle: {
+    ...ApplicationStyles.ListViewRow.titleStyle,
   },
 })
 
-const tableRowUnderlayColor = 'rgba(0,0,0,0.3)'
-
-const ListRow = props =>
-  <TouchableHighlight
-    onPress={() => {
-      props.gotoEvent(props.data)
-    }}
-    style={styles.listRowContainer}
-    underlayColor={tableRowUnderlayColor}
-    key={props.data.id}
-  >
-    <Text>
-      {props.data.title}
-    </Text>
-  </TouchableHighlight>
-
-class EventsListScreen extends Component {
-  static defaultProps = {
-    events: [],
-  }
-
-  constructor(props) {
-    super(props)
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    })
-
-    this.state = {
-      dataSource: ds.cloneWithRows(this.props.events),
-    }
+class MyListItem extends Component {
+  _onPress = () => {
+    this.props.onPressItem(this.props.item)
   }
 
   render() {
     return (
-      <View style={styles.mainContainer}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={data =>
-            <ListRow data={data} gotoEvent={this.props.gotoEvent} />}
-        />
-      </View>
+      <TouchableHighlight
+        onPress={this._onPress}
+        style={styles.listViewRow}
+        underlayColor={ApplicationStyles.ListViewRow.underlayColor}
+      >
+        <Text style={styles.listViewRowTitle}>
+          {this.props.title}
+        </Text>
+      </TouchableHighlight>
+    )
+  }
+}
+
+class EventsListScreen extends Component {
+  static defaultProps = {
+    items: [],
+  }
+
+  _keyExtractor = (item, index) => item.id
+
+  _onPressItem = item => this.props.gotoItem(item)
+
+  _renderItem = ({ item }) =>
+    <MyListItem
+      onPressItem={this._onPressItem}
+      title={item.title}
+      item={item}
+    />
+
+  render() {
+    return (
+      <FlatList
+        style={styles.mainContainer}
+        data={this.props.items}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+      />
     )
   }
 }
@@ -82,11 +86,11 @@ EventsListScreen.navigationOptions = ({ navigation }) => ({
 })
 
 const mapStateToProps = ({ events }) => ({
-  events: events.list,
+  items: events.list,
 })
 
 const mapDispatchToProps = dispatch => ({
-  gotoEvent: event => dispatch(EventActions.gotoEvent(event)),
+  gotoItem: event => dispatch(EventActions.gotoEvent(event)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsListScreen)
