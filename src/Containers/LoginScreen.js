@@ -36,6 +36,7 @@ class LoginScreen extends React.Component {
     password: 'password',
     visibleHeight: Metrics.screenHeight,
     topLogo: { width: Metrics.screenWidth },
+    focusPasswordInput: false,
   }
 
   componentWillReceiveProps(newProps) {
@@ -119,7 +120,6 @@ class LoginScreen extends React.Component {
           <View style={styles.row}>
             <Text style={styles.rowLabel}>Username</Text>
             <TextInput
-              ref="email"
               style={textInputStyle}
               value={email}
               editable={editable}
@@ -129,7 +129,8 @@ class LoginScreen extends React.Component {
               autoCorrect={false}
               onChangeText={this.handleChangeUsername}
               underlineColorAndroid="transparent"
-              onSubmitEditing={() => this.refs.password.focus()}
+              onSubmitEditing={() =>
+                this.setState({ focusPasswordInput: true })}
               placeholder="Email"
             />
           </View>
@@ -137,7 +138,6 @@ class LoginScreen extends React.Component {
           <View style={styles.row}>
             <Text style={styles.rowLabel}>Password</Text>
             <TextInput
-              ref="password"
               style={textInputStyle}
               value={password}
               editable={editable}
@@ -150,6 +150,7 @@ class LoginScreen extends React.Component {
               underlineColorAndroid="transparent"
               onSubmitEditing={this.handlePressLogin}
               placeholder="Password"
+              focus={this.state.focusPasswordInput}
             />
           </View>
 

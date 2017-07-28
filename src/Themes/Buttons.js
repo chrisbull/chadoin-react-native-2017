@@ -1,4 +1,3 @@
-import Fonts from './Fonts'
 import Colors from './Colors'
 
 const ButtonBase = {

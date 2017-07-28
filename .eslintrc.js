@@ -43,5 +43,8 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  env: { es6: true }
+  env: { es6: true },
+  globals: {
+    __DEV__: true
+  }
 }
