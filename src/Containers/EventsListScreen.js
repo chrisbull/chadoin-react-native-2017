@@ -4,47 +4,67 @@ import {
   Button,
   Text,
   View,
-  ScrollView,
+  ListView,
   TouchableHighlight,
   StyleSheet,
 } from 'react-native'
-import RoundedButton from '../Components/RoundedButton'
 import EventActions from '../Redux/EventRedux'
-import { ApplicationStyles } from '../Themes/'
+import { Colors, ApplicationStyles } from '../Themes/'
 
 const styles = StyleSheet.create({
   mainContainer: {
     ...ApplicationStyles.MainContainer.styles,
   },
+  listRowContainer: {
+    padding: 12,
+  },
+  listRowTitle: {
+    color: Colors.blueGreyMedium,
+    fontWeight: '500',
+  },
 })
+
+const tableRowUnderlayColor = 'rgba(0,0,0,0.3)'
+
+const ListRow = props =>
+  <TouchableHighlight
+    onPress={() => {
+      props.gotoEvent(props.data)
+    }}
+    style={styles.listRowContainer}
+    underlayColor={tableRowUnderlayColor}
+    key={props.data.id}
+  >
+    <Text>
+      {props.data.title}
+    </Text>
+  </TouchableHighlight>
 
 class EventsListScreen extends Component {
   static defaultProps = {
     events: [],
   }
 
+  constructor(props) {
+    super(props)
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+    })
+
+    this.state = {
+      dataSource: ds.cloneWithRows(this.props.events),
+    }
+  }
+
   render() {
     return (
-      <ScrollView style={styles.mainContainer}>
-        {this.props.events.map(event =>
-          <TouchableHighlight
-            onPress={() => {
-              this.props.gotoEvent(event)
-            }}
-            style={styles.card}
-            key={event.id}
-          >
-            <View>
-              <Text style={styles.title}>
-                {event.title || ''}
-              </Text>
-              <Text style={styles.startDate}>
-                {event.startDateTime || ''}
-              </Text>
-            </View>
-          </TouchableHighlight>,
-        )}
-      </ScrollView>
+      <View style={styles.mainContainer}>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={data =>
+            <ListRow data={data} gotoEvent={this.props.gotoEvent} />}
+        />
+      </View>
     )
   }
 }
