@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Fonts, Colors, Metrics, ApplicationStyles } from '../Themes/'
+import { Fonts, Colors, Metrics, ApplicationStyles } from '../Themes'
 
 const styles = StyleSheet.create({
   container: {

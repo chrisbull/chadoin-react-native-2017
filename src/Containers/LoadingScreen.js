@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { ApplicationStyles } from '../Themes/'
+import { ApplicationStyles } from '../Themes'
 
 const styles = StyleSheet.create({
   mainContainer: {

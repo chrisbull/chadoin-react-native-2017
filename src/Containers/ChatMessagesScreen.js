@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   StyleSheet,
 } from 'react-native'
-import { ApplicationStyles } from '../Themes/'
+import { ApplicationStyles } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import ChatActions from '../Redux/ChatRedux'
 

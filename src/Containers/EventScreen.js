@@ -12,7 +12,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native'
-import { ApplicationStyles } from '../Themes/'
+import { ApplicationStyles } from '../Themes'
 import EventActions from '../Redux/EventRedux'
 import RoundedButton from '../Components/RoundedButton'
 
