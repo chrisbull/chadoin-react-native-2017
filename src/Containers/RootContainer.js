@@ -4,8 +4,6 @@
  * AND HAVE GOOD REASON FOR IT
  */
 
-import '../Config'
-import DebugConfig from '../Config/DebugConfig'
 import React, { Component } from 'react'
 import { View, StatusBar, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
@@ -41,9 +39,4 @@ const mapDispatchToProps = dispatch => ({
   startup: () => dispatch(StartupActions.startup()),
 })
 
-// allow reactotron overlay for fast design in dev mode
-export default connect(null, mapDispatchToProps)(
-  DebugConfig.useReactotron
-    ? console.tron.overlay(RootContainer)
-    : RootContainer,
-)
+export default connect(null, mapDispatchToProps)(RootContainer)
