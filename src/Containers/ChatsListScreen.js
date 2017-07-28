@@ -13,6 +13,7 @@ import { Colors, ApplicationStyles } from '../Themes/'
 const styles = StyleSheet.create({
   mainContainer: {
     ...ApplicationStyles.MainContainer.style,
+    backgroundColor: Colors.purple,
   },
   listRowContainer: {
     padding: 12,
