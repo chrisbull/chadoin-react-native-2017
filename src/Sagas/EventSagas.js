@@ -53,7 +53,7 @@ export function* gotoNewEventScreen() {
 }
 
 export function* gotoEventScreen() {
-  yield put(NavigationActions.navigate({ routeName: 'EditEvent' }))
+  yield put(NavigationActions.navigate({ routeName: 'ViewEvent' }))
 }
 
 export function* gotoEventListScreen() {
