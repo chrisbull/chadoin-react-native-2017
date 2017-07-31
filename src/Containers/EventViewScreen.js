@@ -115,8 +115,8 @@ class EventScreen extends Component {
 }
 
 EventScreen.navigationOptions = ({ navigation }) => ({
-  title: 'DETAILS',
-  headerLeft: <Button onPress={() => navigation.goBack(null)} title="<" />,
+  title: 'Details',
+  headerLeft: <Button onPress={() => navigation.goBack(null)} title="Back" />,
   headerRight: (
     <Button
       onPress={() => navigation.dispatch(EventActions.gotoNewEvent())}
