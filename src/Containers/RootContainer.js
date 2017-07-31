@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react'
-import { View, StatusBar, StyleSheet } from 'react-native'
+import { Text, View, StatusBar, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import ReduxPersist from '../Config/ReduxPersist'
 import StartupActions from '../Redux/StartupRedux'
@@ -30,13 +30,21 @@ class RootContainer extends Component {
       <View style={styles.applicationView}>
         <StatusBar barStyle="dark-content" />
         <ReduxNavigation />
+        <Text>
+          Your internet is:{' '}
+          {this.props.isConnected ? 'CONNECTED' : 'NOT CONNECTED'}
+        </Text>
       </View>
     )
   }
 }
 
+const mapStateToProps = ({ netInfo }) => ({
+  isConnected: netInfo.isConnected,
+})
+
 const mapDispatchToProps = dispatch => ({
   startup: () => dispatch(StartupActions.startup()),
 })
 
-export default connect(null, mapDispatchToProps)(RootContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RootContainer)
