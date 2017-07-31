@@ -23,7 +23,11 @@
     "git-hook": "npm run lint -s && npm run test -s",
     "lint": "eslint ./src/**/*.js | snazzy",
     "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
-    "format": "prettier-eslint ./src/**/*.js --write"
+    "format": "prettier-eslint ./src/**/*.js --write",
+    "chris:build": "react-native run-ios --device \"Chris's iPhone\"",
+    "chris:build:release": "react-native run-ios --configuration Release --device \"Chris's iPhone\" ",
+    "andy:build": "react-native run-ios --device \"Andy's iPhone\"",
+    "andy:build:release": "react-native run-ios --configuration Release --device \"Andy's iPhone\""
   },
   "dependencies": {
     "@shoutem/ui": "^0.19.3",
@@ -96,29 +100,17 @@
     "standard": "^10.0.2"
   },
   "jest": {
-    "testMatch": [
-      "**/Tests/**/*.js",
-      "**/?(*.)(spec|test).js?(x)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "Tests/Setup.js"
-    ],
-    "setupFiles": [
-      "./Tests/Setup"
-    ],
+    "testMatch": ["**/Tests/**/*.js", "**/?(*.)(spec|test).js?(x)"],
+    "testPathIgnorePatterns": ["/node_modules/", "Tests/Setup.js"],
+    "setupFiles": ["./Tests/Setup"],
     "preset": "react-native"
   },
   "config": {},
   "rnpm": {
-    "assets": [
-      "./src/Fonts/"
-    ]
+    "assets": ["./src/Fonts/"]
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ]
+    "plugins": ["flowtype"]
   }
 }
