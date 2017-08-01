@@ -1,12 +1,13 @@
 import { StackNavigator } from 'react-navigation'
 import sharedNavigationOptions from './SharedNavigationOptions'
 import EventsListScreen from '../Containers/EventsListScreen'
+import EventCreateScreen from '../Containers/EventCreateScreen'
 import EventEditScreen from '../Containers/EventEditScreen'
 import EventViewScreen from '../Containers/EventViewScreen'
 
-export const NewEventStack = StackNavigator(
+export const CreateEventStack = StackNavigator(
   {
-    NewEvent: { screen: EventEditScreen },
+    CreateEventMainScreen: { screen: EventCreateScreen },
   },
   {
     navigationOptions: {
@@ -15,22 +16,14 @@ export const NewEventStack = StackNavigator(
   },
 )
 
-export const EditEventStack = StackNavigator(
-  {
-    EditEvent: { screen: EventEditScreen },
-  },
-  {
-    headerMode: 'none',
-  },
-)
-
 export default StackNavigator(
   {
     EventsList: { screen: EventsListScreen },
-    EditEvent: { screen: EditEventStack },
     ViewEvent: { screen: EventViewScreen },
+    EditEvent: { screen: EventEditScreen },
   },
   {
+    // headerMode: 'none',
     navigationOptions: {
       ...sharedNavigationOptions,
     },

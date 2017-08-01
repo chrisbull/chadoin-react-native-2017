@@ -215,7 +215,8 @@ class EventScreen extends Component {
 }
 
 EventScreen.navigationOptions = ({ navigation }) => ({
-  title: 'Edit Event',
+  title: 'Create Event',
+  headerLeft: <Button onPress={() => navigation.goBack(null)} title="Cancel" />,
   tabBarVisible: false,
 })
 

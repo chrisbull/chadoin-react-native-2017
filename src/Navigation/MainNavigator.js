@@ -1,7 +1,7 @@
 import { TabNavigator, StackNavigator } from 'react-navigation'
 
 /* ----- NAVIGATORS ----- */
-import EventStack, { NewEventStack } from './EventsNavigator'
+import EventStack, { CreateEventStack } from './EventsNavigator'
 import ChatStack, { NewChatStack } from './ChatsNavigator'
 
 /* ----- SCREENS ----- */
@@ -19,7 +19,7 @@ const MainTabsNavigator = TabNavigator(
 export default StackNavigator(
   {
     Main: { screen: MainTabsNavigator },
-    NewEvent: { screen: NewEventStack },
+    CreateEvent: { screen: CreateEventStack },
     NewChat: { screen: NewChatStack },
   },
   {

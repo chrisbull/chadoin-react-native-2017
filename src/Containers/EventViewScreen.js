@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Button, ScrollView, Text, View, StyleSheet } from 'react-native'
 import { ApplicationStyles } from '../Themes'
 import EventActions from '../Redux/EventRedux'
+import RoundedButton from '../Components/RoundedButton'
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -10,74 +11,28 @@ const styles = StyleSheet.create({
   },
 })
 
-const tomorrow = new Date()
-tomorrow.setDate(tomorrow.getDate() + 1)
-
 class EventScreen extends Component {
-  state = {
-    title: (this.props.event && this.props.event.title) || '',
-    allDay: (this.props.event && this.props.event.allDay) || false,
-    startDateTime:
-      (this.props.event && new Date(this.props.event.startDateTime)) ||
-      tomorrow,
-    endDateTime:
-      (this.props.event && new Date(this.props.event.endDateTime)) || tomorrow,
-    date: new Date(),
-    timeZoneOffsetInHours: -1 * new Date().getTimezoneOffset() / 60,
-    startDateTimePickerVisible: false,
-    endDateTimePickerVisible: false,
-  }
-
-  // -- Event handlers
-
-  toggleDateTime = allDay => {
-    this.setState({ allDay })
-  }
-
-  // -- Save Handler
-
-  updateEventTitle = title => {
-    this.setState({ title })
-  }
-
-  handleCreate = () => {
-    const { event, createEvent, updateEvent } = this.props
-    const { title, allDay, startDateTime, endDateTime } = this.state
-
-    console.log(this.state)
-
-    const newEvent = {
-      ...this.props.event,
-      title,
-      allDay,
-      startDateTime: startDateTime.toString(),
-      endDateTime: endDateTime.toString(),
-    }
-
-    return event && event.id ? updateEvent(newEvent) : createEvent(newEvent)
-  }
-
   render() {
-    const { title, allDay, startDateTime, endDateTime } = this.state
+    const { title, allDay, startDateTime, endDateTime } = this.props.event
 
-    const startDate = startDateTime.toLocaleTimeString('en-us', {
+    const startDate = new Date(startDateTime).toLocaleTimeString('en-us', {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
     })
 
-    const startTime = startDateTime.toLocaleTimeString('en-us', {
+    const startTime = new Date(startDateTime).toLocaleTimeString('en-us', {
       hour: 'numeric',
       minute: '2-digit',
     })
 
-    const endDate = endDateTime.toLocaleTimeString('en-us', {
+    const endDate = new Date(endDateTime).toLocaleTimeString('en-us', {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
     })
 
-    const endTime = endDateTime.toLocaleTimeString('en-us', {
+    const endTime = new Date(endDateTime).toLocaleTimeString('en-us', {
       hour: 'numeric',
       minute: '2-digit',
     })
@@ -108,6 +63,9 @@ class EventScreen extends Component {
                 {endTime}
               </Text>}
           </View>
+          <RoundedButton onPress={this.props.gotoEditEvent}>
+            Edit Event
+          </RoundedButton>
         </View>
       </ScrollView>
     )
@@ -115,14 +73,7 @@ class EventScreen extends Component {
 }
 
 EventScreen.navigationOptions = ({ navigation }) => ({
-  title: 'Details',
-  headerLeft: <Button onPress={() => navigation.goBack(null)} title="Back" />,
-  headerRight: (
-    <Button
-      onPress={() => navigation.dispatch(EventActions.gotoNewEvent())}
-      title="Edit"
-    />
-  ),
+  title: 'Event Details',
   tabBarVisible: false,
 })
 
@@ -132,8 +83,7 @@ const mapStateToProps = ({ events }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createEvent: event => dispatch(EventActions.createEventRequest(event)),
-  updateEvent: event => dispatch(EventActions.updateEventRequest(event)),
+  gotoEditEvent: () => dispatch(EventActions.gotoEditEvent()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventScreen)

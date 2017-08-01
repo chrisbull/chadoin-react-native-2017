@@ -12,6 +12,7 @@ const { Types, Creators } = createActions({
   // -- Create/Update Event
   createEventRequest: ['event'],
   updateEventRequest: ['event'],
+  deleteEventRequest: ['event'],
 
   // -- API Callbacks
   eventSuccess: ['event'],
@@ -19,6 +20,7 @@ const { Types, Creators } = createActions({
 
   // -- Navigation
   gotoNewEvent: null,
+  gotoEditEvent: ['event'],
   gotoEvent: ['event'],
   gotoEventList: null,
 })
