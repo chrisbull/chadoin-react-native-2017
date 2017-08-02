@@ -45,6 +45,12 @@
     "react-native-device-info": "^0.10.2",
     "react-native-drawer": "^2.3.0",
     "react-native-i18n": "^2.0.2",
+    "react-native-keyboard-aware-scroll-view": "^0.2.9",
+    "react-native-maps": "^0.15.3",
+    "react-native-navigation": "^1.1.168",
+    "react-native-navigation-redux-helpers": "^0.5.0",
+    "react-native-scrollable-tab-view": "^0.6.7",
+    "react-native-tab-navigator": "^0.3.3",
     "react-native-vector-icons": "^4.2.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.5",
@@ -100,17 +106,29 @@
     "standard": "^10.0.2"
   },
   "jest": {
-    "testMatch": ["**/Tests/**/*.js", "**/?(*.)(spec|test).js?(x)"],
-    "testPathIgnorePatterns": ["/node_modules/", "Tests/Setup.js"],
-    "setupFiles": ["./Tests/Setup"],
+    "testMatch": [
+      "**/Tests/**/*.js",
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "Tests/Setup.js"
+    ],
+    "setupFiles": [
+      "./Tests/Setup"
+    ],
     "preset": "react-native"
   },
   "config": {},
   "rnpm": {
-    "assets": ["./src/Fonts/"]
+    "assets": [
+      "./src/Fonts/"
+    ]
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": ["flowtype"]
+    "plugins": [
+      "flowtype"
+    ]
   }
 }
