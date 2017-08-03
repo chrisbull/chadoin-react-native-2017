@@ -55,6 +55,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   // -- Navigation
   [Types.GOTO_EVENT]: setEvent,
+  [Types.GOTO_NEW_EVENT]: setEvent,
 })
 
 /* ------------- Selectors ------------- */
