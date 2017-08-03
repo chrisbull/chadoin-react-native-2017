@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, ScrollView, Text, View, StyleSheet } from 'react-native'
+import { ScrollView, Text, View, StyleSheet } from 'react-native'
 import { ApplicationStyles } from '../Themes'
 import EventActions from '../Redux/EventRedux'
 import RoundedButton from '../Components/RoundedButton'

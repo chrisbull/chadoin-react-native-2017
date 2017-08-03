@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
-  Button,
   DatePickerIOS,
   ScrollView,
   Switch,
@@ -22,19 +21,13 @@ const styles = StyleSheet.create({
   },
 })
 
-const tomorrow = new Date()
-tomorrow.setDate(tomorrow.getDate() + 1)
-
 class EventScreen extends Component {
   state = {
-    id: (this.props.event && this.props.event.id) || '',
-    title: (this.props.event && this.props.event.title) || '',
-    allDay: (this.props.event && this.props.event.allDay) || false,
-    startDateTime:
-      (this.props.event && new Date(this.props.event.startDateTime)) ||
-      tomorrow,
-    endDateTime:
-      (this.props.event && new Date(this.props.event.endDateTime)) || tomorrow,
+    id: this.props.event.id,
+    title: this.props.event.title,
+    allDay: this.props.event.allDay,
+    startDateTime: new Date(this.props.event.startDateTime),
+    endDateTime: new Date(this.props.event.endDateTime),
     date: new Date(),
     timeZoneOffsetInHours: -1 * new Date().getTimezoneOffset() / 60,
     startDateTimePickerVisible: false,
@@ -48,13 +41,8 @@ class EventScreen extends Component {
   }
 
   // -- Save Handler
-
-  updateEventTitle = title => {
-    this.setState({ title })
-  }
-
-  handleCreate = () => {
-    const { event, createEvent, updateEvent } = this.props
+  handleUpdate = () => {
+    const { updateEvent } = this.props
     const { title, allDay, startDateTime, endDateTime } = this.state
 
     const newEvent = {
@@ -65,7 +53,7 @@ class EventScreen extends Component {
       endDateTime: endDateTime.toString(),
     }
 
-    return event && event.id ? updateEvent(newEvent) : createEvent(newEvent)
+    return updateEvent(newEvent)
   }
 
   handleDelete = () => {
@@ -81,7 +69,6 @@ class EventScreen extends Component {
       startDateTime,
       endDateTime,
       timeZoneOffsetInHours,
-      saving,
       startDateTimePickerVisible,
       endDateTimePickerVisible,
     } = this.state
@@ -200,8 +187,8 @@ class EventScreen extends Component {
           <TouchableHighlight style={styles.tappableLabel}>
             <Text>Invite Friends</Text>
           </TouchableHighlight>
-          <RoundedButton onPress={this.handleCreate}>
-            {saving ? 'Saving...' : id ? 'Update Event' : 'Create Event'}
+          <RoundedButton onPress={this.handleUpdate}>
+            Update Event
           </RoundedButton>
           {id
             ? <RoundedButton onPress={this.handleDelete}>
