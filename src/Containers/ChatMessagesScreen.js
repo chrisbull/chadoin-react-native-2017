@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   StyleSheet,
 } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { ApplicationStyles } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import ChatActions from '../Redux/ChatRedux'
@@ -37,7 +38,7 @@ class ChatMessagesScreen extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.mainContainer}>
+      <KeyboardAwareScrollView style={styles.mainContainer}>
         {Object.keys(this.props.messages)
           .map(key => ({
             ...this.props.messages[key],
@@ -62,7 +63,7 @@ class ChatMessagesScreen extends Component {
           multiline
         />
         <RoundedButton onPress={this.handleCreateMessage} text="Send" />
-      </ScrollView>
+      </KeyboardAwareScrollView>
     )
   }
 }

@@ -11,6 +11,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { ApplicationStyles } from '../Themes'
 import EventActions from '../Redux/EventRedux'
 import RoundedButton from '../Components/RoundedButton'
@@ -96,7 +97,7 @@ class EventScreen extends Component {
     })
 
     return (
-      <ScrollView style={styles.mainContainer}>
+      <KeyboardAwareScrollView style={styles.mainContainer}>
         <View style={styles.contentContainer}>
           <TextInput
             style={styles.textInput}
@@ -196,7 +197,7 @@ class EventScreen extends Component {
               </RoundedButton>
             : null}
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     )
   }
 }
