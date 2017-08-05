@@ -32,8 +32,8 @@ class LoginScreen extends React.Component {
   }
 
   state = {
-    email: 'chrisbull83@gmail.com',
-    password: 'password',
+    email: '',
+    password: '',
     visibleHeight: Metrics.screenHeight,
     topLogo: { width: Metrics.screenWidth },
     focusPasswordInput: false,

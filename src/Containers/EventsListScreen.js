@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import { ApplicationStyles } from '../Themes'
 import EventActions from '../Redux/EventRedux'
+import LoginActions from '../Redux/LoginRedux'
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -80,6 +81,14 @@ EventsListScreen.navigationOptions = ({ navigation }) => ({
       title="New"
       onPress={() => {
         navigation.dispatch(EventActions.gotoNewEvent())
+      }}
+    />
+  ),
+  headerLeft: (
+    <Button
+      title="Logout"
+      onPress={() => {
+        navigation.dispatch(LoginActions.logout())
       }}
     />
   ),
