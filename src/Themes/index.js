@@ -2,7 +2,21 @@ import Colors from './Colors'
 import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Images from './Images'
-import ApplicationStyles from './ApplicationStyles'
+import ApplicationStyles, {
+  TintColor,
+  TextColor,
+  UnderlayColor,
+} from './ApplicationStyles'
 import Buttons from './Buttons'
 
-export { Colors, Fonts, Images, Metrics, ApplicationStyles, Buttons }
+export {
+  ApplicationStyles,
+  Buttons,
+  Colors,
+  Fonts,
+  Images,
+  Metrics,
+  TextColor,
+  TintColor,
+  UnderlayColor,
+}

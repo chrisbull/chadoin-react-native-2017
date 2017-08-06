@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {
   Button,
   DatePickerIOS,
-  ScrollView,
   Switch,
   Text,
   TextInput,
@@ -13,15 +12,11 @@ import {
   StyleSheet,
 } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { ApplicationStyles } from '../Themes'
 import EventActions from '../Redux/EventRedux'
 import RoundedButton from '../Components/RoundedButton'
+import { ApplicationStyles } from '../Themes'
 
-const styles = StyleSheet.create({
-  mainContainer: {
-    ...ApplicationStyles.MainContainer.styles,
-  },
-})
+const styles = ApplicationStyles
 
 const tomorrow = new Date()
 tomorrow.setDate(tomorrow.getDate() + 1)
@@ -102,105 +97,101 @@ class EventScreen extends Component {
 
     return (
       <KeyboardAwareScrollView style={styles.mainContainer}>
-        <View style={styles.contentContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Title"
-            onChangeText={this.updateEventTitle}
-            value={title}
-          />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Title"
+          onChangeText={this.updateEventTitle}
+          value={title}
+        />
 
-          <View style={styles.switchControl}>
-            <View style={styles.switchLabel}>
-              <Text>
-                {allDay}
-              </Text>
-            </View>
-            <View style={styles.switchInput}>
-              <Switch onValueChange={this.toggleDateTime} value={allDay} />
-            </View>
+        <View style={styles.switchControl}>
+          <View style={styles.switchLabel}>
+            <Text>
+              {allDay}
+            </Text>
           </View>
-
-          <TouchableWithoutFeedback
-            style={styles.tappableLabel}
-            onPress={() => {
-              this.setState({
-                startDateTimePickerVisible: !startDateTimePickerVisible,
-              })
-            }}
-          >
-            <View style={styles.dateTimeView}>
-              <Text style={styles.dateTimeLabel}>Start Time</Text>
-              <Text style={styles.dateTimeDate}>
-                {startDate}
-              </Text>
-              {!allDay &&
-                <Text style={styles.dateTimeTime}>
-                  {startTime}
-                </Text>}
-            </View>
-          </TouchableWithoutFeedback>
-
-          <View
-            style={{
-              height: startDateTimePickerVisible ? 'auto' : 0,
-              overflow: 'hidden',
-            }}
-          >
-            <DatePickerIOS
-              date={startDateTime}
-              mode={allDay ? 'date' : 'datetime'}
-              timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
-              onDateChange={date => this.setState({ startDateTime: date })}
-            />
+          <View style={styles.switchInput}>
+            <Switch onValueChange={this.toggleDateTime} value={allDay} />
           </View>
-
-          <TouchableWithoutFeedback
-            style={styles.tappableLabel}
-            onPress={() => {
-              this.setState({
-                endDateTimePickerVisible: !endDateTimePickerVisible,
-              })
-            }}
-          >
-            <View style={styles.dateTimeView}>
-              <Text style={styles.dateTimeLabel}>End Time</Text>
-              <Text style={styles.dateTimeDate}>
-                {endDate}
-              </Text>
-              {!allDay &&
-                <Text style={styles.dateTimeTime}>
-                  {endTime}
-                </Text>}
-            </View>
-          </TouchableWithoutFeedback>
-
-          <View
-            style={{
-              height: endDateTimePickerVisible ? 'auto' : 0,
-              overflow: 'hidden',
-            }}
-          >
-            <DatePickerIOS
-              date={endDateTime}
-              mode={allDay ? 'date' : 'datetime'}
-              timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
-              onDateChange={date => this.setState({ endDateTime: date })}
-            />
-          </View>
-
-          <TouchableHighlight style={styles.tappableLabel}>
-            <Text>Invite Friends</Text>
-          </TouchableHighlight>
-          <RoundedButton onPress={this.handleCreate}>
-            Create Event
-          </RoundedButton>
-          {id
-            ? <RoundedButton onPress={this.handleDelete}>
-                Delete Event
-              </RoundedButton>
-            : null}
         </View>
+
+        <TouchableWithoutFeedback
+          style={styles.tappableLabel}
+          onPress={() => {
+            this.setState({
+              startDateTimePickerVisible: !startDateTimePickerVisible,
+            })
+          }}
+        >
+          <View style={styles.dateTimeView}>
+            <Text style={styles.dateTimeLabel}>Start Time</Text>
+            <Text style={styles.dateTimeDate}>
+              {startDate}
+            </Text>
+            {!allDay &&
+              <Text style={styles.dateTimeTime}>
+                {startTime}
+              </Text>}
+          </View>
+        </TouchableWithoutFeedback>
+
+        <View
+          style={{
+            height: startDateTimePickerVisible ? 'auto' : 0,
+            overflow: 'hidden',
+          }}
+        >
+          <DatePickerIOS
+            date={startDateTime}
+            mode={allDay ? 'date' : 'datetime'}
+            timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
+            onDateChange={date => this.setState({ startDateTime: date })}
+          />
+        </View>
+
+        <TouchableWithoutFeedback
+          style={styles.tappableLabel}
+          onPress={() => {
+            this.setState({
+              endDateTimePickerVisible: !endDateTimePickerVisible,
+            })
+          }}
+        >
+          <View style={styles.dateTimeView}>
+            <Text style={styles.dateTimeLabel}>End Time</Text>
+            <Text style={styles.dateTimeDate}>
+              {endDate}
+            </Text>
+            {!allDay &&
+              <Text style={styles.dateTimeTime}>
+                {endTime}
+              </Text>}
+          </View>
+        </TouchableWithoutFeedback>
+
+        <View
+          style={{
+            height: endDateTimePickerVisible ? 'auto' : 0,
+            overflow: 'hidden',
+          }}
+        >
+          <DatePickerIOS
+            date={endDateTime}
+            mode={allDay ? 'date' : 'datetime'}
+            timeZoneOffsetInMinutes={timeZoneOffsetInHours * 60}
+            onDateChange={date => this.setState({ endDateTime: date })}
+          />
+        </View>
+
+        <TouchableHighlight style={styles.tappableLabel}>
+          <Text>Invite Friends</Text>
+        </TouchableHighlight>
+        <RoundedButton onPress={this.handleCreate}>Create Event</RoundedButton>
+        {id
+          ? <RoundedButton onPress={this.handleDelete}>
+              Delete Event
+            </RoundedButton>
+          : null}
       </KeyboardAwareScrollView>
     )
   }

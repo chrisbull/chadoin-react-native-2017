@@ -1,27 +1,42 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
-  TextInput,
+  FlatList,
   Text,
-  View,
-  ScrollView,
+  TextInput,
   TouchableHighlight,
-  StyleSheet,
+  View,
 } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { ApplicationStyles } from '../Themes'
-import RoundedButton from '../Components/RoundedButton'
 import ChatActions from '../Redux/ChatRedux'
+import RoundedButton from '../Components/RoundedButton'
+import Separator from '../Components/Separator'
+import TimeAgo from '../Components/TimeAgo'
+import { ApplicationStyles } from '../Themes'
 
-const styles = StyleSheet.create({
-  mainContainer: {
-    ...ApplicationStyles.MainContainer.styles,
-  },
-})
+const styles = ApplicationStyles
 
 class ChatMessagesScreen extends Component {
+  static defaultProps = {
+    messages: [],
+  }
+
   state = {
+    messages: this.formatMessages(this.props.messages),
     messageText: '',
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      messages: this.formatMessages(props.messages),
+    })
+  }
+
+  formatMessages(messages) {
+    return Object.keys(messages).map(key => ({
+      ...messages[key],
+      id: key,
+    }))
   }
 
   handleCreateMessage = () => {
@@ -29,30 +44,40 @@ class ChatMessagesScreen extends Component {
     const { messageText } = this.state
 
     if (messageText !== '') {
-      const message = { message: messageText, created: new Date() }
+      const message = {
+        message: messageText.trim(),
+        created: new Date().toString(),
+      }
 
       this.props.createMessage(chat, message)
       this.setState({ messageText: '' })
     }
   }
 
+  _renderItem({ item }) {
+    return (
+      <TouchableHighlight style={styles.messageRow} onLongPress={() => {}}>
+        <View>
+          <Text style={styles.messageRowText}>
+            {`${item.message.trim()}`}
+          </Text>
+          {item.created && <TimeAgo time={item.created} />}
+        </View>
+      </TouchableHighlight>
+    )
+  }
+
   render() {
     return (
       <KeyboardAwareScrollView style={styles.mainContainer}>
-        {Object.keys(this.props.messages)
-          .map(key => ({
-            ...this.props.messages[key],
-            id: key,
-          }))
-          .map(message =>
-            <TouchableHighlight key={message.id}>
-              <View>
-                <Text>
-                  {message.message}
-                </Text>
-              </View>
-            </TouchableHighlight>,
-          )}
+        <FlatList
+          style={styles.mainContainer}
+          keyExtractor={item => item.id}
+          data={this.state.messages}
+          renderItem={this._renderItem}
+          ItemSeparatorComponent={({ highlighted }) =>
+            <Separator highlighted={highlighted} />}
+        />
         <TextInput
           onChangeText={messageText => {
             this.setState({ messageText })

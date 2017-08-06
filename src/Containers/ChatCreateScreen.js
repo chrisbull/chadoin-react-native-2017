@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { TextInput, View, ScrollView, Button, StyleSheet } from 'react-native'
+import { TextInput, View, ScrollView, Button } from 'react-native'
 import { ApplicationStyles } from '../Themes'
 import RoundedButton from '../Components/RoundedButton'
 import ChatActions from '../Redux/ChatRedux'
 
-const styles = StyleSheet.create({
-  mainContainer: {
-    ...ApplicationStyles.MainContainer.styles,
-  },
-})
+const styles = ApplicationStyles
 
 class ChatCreateScreen extends Component {
   state = {

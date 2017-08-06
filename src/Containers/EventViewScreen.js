@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, Text, View, StyleSheet } from 'react-native'
-import { ApplicationStyles } from '../Themes'
+import { ScrollView, Text, View } from 'react-native'
 import EventActions from '../Redux/EventRedux'
 import RoundedButton from '../Components/RoundedButton'
+import { ApplicationStyles } from '../Themes'
 
-const styles = StyleSheet.create({
-  mainContainer: {
-    ...ApplicationStyles.MainContainer.styles,
-  },
-})
+const styles = ApplicationStyles
 
 class EventScreen extends Component {
   render() {
@@ -39,34 +35,32 @@ class EventScreen extends Component {
 
     return (
       <ScrollView style={styles.mainContainer}>
-        <View style={styles.contentContainer}>
-          <Text>
-            {title}
+        <Text>
+          {title}
+        </Text>
+        <View style={styles.dateTimeView}>
+          <Text style={styles.dateTimeLabel}>Start Time</Text>
+          <Text style={styles.dateTimeDate}>
+            {startDate}
           </Text>
-          <View style={styles.dateTimeView}>
-            <Text style={styles.dateTimeLabel}>Start Time</Text>
-            <Text style={styles.dateTimeDate}>
-              {startDate}
-            </Text>
-            {!allDay &&
-              <Text style={styles.dateTimeTime}>
-                {startTime}
-              </Text>}
-          </View>
-          <View style={styles.dateTimeView}>
-            <Text style={styles.dateTimeLabel}>End Time</Text>
-            <Text style={styles.dateTimeDate}>
-              {endDate}
-            </Text>
-            {!allDay &&
-              <Text style={styles.dateTimeTime}>
-                {endTime}
-              </Text>}
-          </View>
-          <RoundedButton onPress={this.props.gotoEditEvent}>
-            Edit Event
-          </RoundedButton>
+          {!allDay &&
+            <Text style={styles.dateTimeTime}>
+              {startTime}
+            </Text>}
         </View>
+        <View style={styles.dateTimeView}>
+          <Text style={styles.dateTimeLabel}>End Time</Text>
+          <Text style={styles.dateTimeDate}>
+            {endDate}
+          </Text>
+          {!allDay &&
+            <Text style={styles.dateTimeTime}>
+              {endTime}
+            </Text>}
+        </View>
+        <RoundedButton onPress={this.props.gotoEditEvent}>
+          Edit Event
+        </RoundedButton>
       </ScrollView>
     )
   }

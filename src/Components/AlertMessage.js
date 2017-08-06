@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: Fonts.size.regular,
     fontWeight: 'bold',
-    color: ApplicationStyles.textColor.regular,
+    // color: ApplicationStyles.textColor.regular,
   },
   icon: {
-    color: ApplicationStyles.textColor.regular,
+    // color: ApplicationStyles.textColor.regular,
   },
 })
 

@@ -9,17 +9,11 @@ import {
   Image,
   Keyboard,
   LayoutAnimation,
-  StyleSheet,
 } from 'react-native'
 import LoginActions from '../Redux/LoginRedux'
 import { Images, Metrics, ApplicationStyles } from '../Themes'
 
-const styles = StyleSheet.create({
-  mainContainer: {
-    ...ApplicationStyles.MainContainer.styles,
-    paddingTop: 70,
-  },
-})
+const styles = ApplicationStyles
 
 class LoginScreen extends React.Component {
   isAttempting = false

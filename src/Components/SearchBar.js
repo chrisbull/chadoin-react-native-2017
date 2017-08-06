@@ -10,8 +10,8 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { Fonts, Colors, Metrics, ApplicationStyles } from '../Themes'
 
 const styles = StyleSheet.create({
-  container: {
-    ...ApplicationStyles.screen.container,
+  mainContainer: {
+    ...ApplicationStyles.mainContainer,
     marginTop: Metrics.smallMargin,
     flexDirection: 'row',
     width: Metrics.screenWidth - Metrics.baseMargin,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.white,
     paddingLeft: 30,
-    color: Colors.snow,
+    color: Colors.smoke50,
     flexDirection: 'row',
   },
   searchIcon: {
@@ -54,7 +54,7 @@ export default class SearchBar extends Component {
     const { onSearch, onCancel, searchTerm } = this.props
     const onSubmitEditing = () => onSearch(searchTerm)
     return (
-      <View style={styles.container}>
+      <View style={styles.mainContainer}>
         <Icon
           name="search"
           size={Metrics.icons.tiny}
