@@ -4887,6 +4887,16 @@ react-native-animatable@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.2.tgz#a873550e6f7cb95f90baf46b9eb15b1ab56425cb"
 
+react-native-autogrow-textinput@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-autogrow-textinput/-/react-native-autogrow-textinput-4.1.0.tgz#a7e5b17eb3c16ab08e31bbfb88d92488ed87f276"
+
+react-native-blur@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-3.1.2.tgz#82492a4db1d99aaa61956bbabc50a98930974e6d"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-config@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.5.0.tgz#109aaee511b81851b22e1fd3372d86c9d6c797d4"
@@ -4928,6 +4938,17 @@ react-native-keyboard-aware-scroll-view@^0.2.9:
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.9.tgz#2a1ae49cfae90a9665b21763c1f8bd03ed5fb92c"
   dependencies:
     react-timer-mixin "^0.13.3"
+
+react-native-keyboard-input@^3.0.23:
+  version "3.0.23"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-input/-/react-native-keyboard-input-3.0.23.tgz#b2cb817d47e5036e1d546261707fd1a7da7ee825"
+  dependencies:
+    lodash "^4.17.4"
+    react-native-keyboard-tracking-view "^3.0.12"
+
+react-native-keyboard-tracking-view@^3.0.12, react-native-keyboard-tracking-view@^3.0.13:
+  version "3.0.13"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-tracking-view/-/react-native-keyboard-tracking-view-3.0.13.tgz#a1eafebbed8300211ee89c19d4c3ca3f75039bc5"
 
 react-native-maps@^0.15.3:
   version "0.15.3"

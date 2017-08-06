@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, PixelRatio, Platform } from 'react-native'
 import Colors from './Colors'
 import Metrics from './Metrics'
 
@@ -13,8 +13,25 @@ const ApplicationStyles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: Colors.white,
+    position: 'relative',
   },
-  listViewContainer: {
+  scrollContainer: {
+    justifyContent: 'center',
+    padding: 15,
+    flex: 1,
+  },
+  contentContainer: {
+    flex: 1,
+    backgroundColor: Colors.purple,
+  },
+  blurContainer: {
+    ...Platform.select({
+      ios: {
+        flex: 1,
+      },
+    }),
+  },
+  listContainer: {
     flex: 1,
   },
   listRow: {
@@ -33,7 +50,22 @@ const ApplicationStyles = StyleSheet.create({
     backgroundColor: Colors.smoke20,
     height: 1,
   },
-  textInput: {},
+  inputContainer: {},
+  textInput: {
+    flex: 1,
+    marginLeft: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 10,
+
+    paddingLeft: 10,
+    paddingTop: 2,
+    paddingBottom: 5,
+    fontSize: 16,
+    backgroundColor: 'white',
+    borderWidth: 0.5 / PixelRatio.get(),
+    borderRadius: 18,
+  },
   textInputReadonly: {},
   switchInput: {},
   messageRow: {
@@ -46,6 +78,11 @@ const ApplicationStyles = StyleSheet.create({
     fontFamily: 'Geomanist',
     color: TextColor,
     fontSize: 17,
+  },
+  chatMessageInputRow: {},
+  sendButton: {
+    paddingRight: 15,
+    paddingLeft: 15,
   },
 })
 

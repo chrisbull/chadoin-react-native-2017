@@ -29,7 +29,7 @@ export default class TimeAgo extends Component {
     clearInterval(this.state.intervalId)
   }
 
-  timer() {
+  timer = () => {
     this.forceUpdate()
   }
 
