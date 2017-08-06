@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="500" height="800" fill="#F9FAFC"/>
+    <g transform="translate(75 75)">
+      <rect width="50" height="50" fill="#F9F9FA" rx="6"/>
+      <rect width="50" height="50" x="100" fill="#DADADC" rx="6"/>
+      <rect width="50" height="50" x="200" fill="#B7B7BB" rx="6"/>
+      <rect width="50" height="50" x="300" fill="#96969B" rx="6"/>
+      <rect width="50" height="50" y="100" fill="#73737A" rx="6"/>
+      <rect width="50" height="50" x="100" y="100" fill="#515159" rx="6"/>
+      <rect width="50" height="50" x="200" y="100" fill="#30303A" rx="6"/>
+      <rect width="50" height="50" x="300" y="100" fill="#0E0E19" rx="6"/>
+      <rect width="50" height="50" y="200" fill="#7DD420" rx="6"/>
+      <rect width="50" height="50" x="100" y="200" fill="#A24AEC" rx="6"/>
+      <rect width="50" height="50" x="200" y="200" fill="#FF2067" rx="6"/>
+      <rect width="50" height="50" x="300" y="200" fill="#02B3B9" rx="6"/>
+      <rect width="50" height="50" y="300" fill="#338BF8" rx="6"/>
+      <rect width="50" height="50" x="100" y="300" fill="#FA55D8" rx="6"/>
+      <rect width="50" height="50" x="200" y="300" fill="#FFDE00" rx="6"/>
+      <rect width="50" height="50" x="300" y="300" fill="#FF2133" rx="6"/>
+      <rect width="50" height="50" y="400" fill="#3FC8DE" rx="6"/>
+      <rect width="50" height="50" x="100" y="400" fill="#7B2EFF" rx="6"/>
+      <rect width="50" height="50" x="200" y="400" fill="#00DCAE" rx="6"/>
+      <rect width="50" height="50" x="300" y="400" fill="#FF9600" rx="6"/>
+      <rect width="50" height="50" y="500" fill="#6565FF" rx="6"/>
+      <rect width="50" height="50" x="100" y="500" fill="#40CC4E" rx="6"/>
+      <rect width="50" height="50" x="200" y="500" fill="#FBCE14" rx="6"/>
+      <rect width="50" height="50" x="300" y="500" fill="#14C8FB" rx="6"/>
+      <rect width="50" height="50" x="300" y="600" fill="#B6E611" rx="6"/>
+      <rect width="50" height="50" x="200" y="600" fill="#11E686" rx="6"/>
+      <rect width="50" height="50" x="100" y="600" fill="#2729B2" rx="6"/>
+      <rect width="50" height="50" y="600" fill="#E65A11" rx="6"/>
+    </g>
+    <g transform="translate(75 75)">
+      <rect width="50" height="50" fill="#F5F7FA" rx="6"/>
+      <rect width="50" height="50" x="100" fill="#E6E9ED" rx="6"/>
+      <rect width="50" height="50" x="200" fill="#CCD1D9" rx="6"/>
+      <rect width="50" height="50" x="300" fill="#AAB2BD" rx="6"/>
+      <rect width="50" height="50" y="100" fill="#656D78" rx="6"/>
+      <rect width="50" height="50" x="100" y="100" fill="#434A54" rx="6"/>
+      <rect width="50" height="50" x="200" y="100" fill="#2A3039" rx="6"/>
+      <rect width="50" height="50" x="300" y="100" fill="#181D25" rx="6"/>
+    </g>
+    <g transform="translate(500)">
+      <rect width="500" height="800" fill="#0C0F14"/>
+      <g transform="translate(75 75)">
+        <rect width="50" height="50" fill="#F9F9FA" rx="6"/>
+        <rect width="50" height="50" x="100" fill="#DADADC" rx="6"/>
+        <rect width="50" height="50" x="200" fill="#B7B7BB" rx="6"/>
+        <rect width="50" height="50" x="300" fill="#96969B" rx="6"/>
+        <rect width="50" height="50" y="100" fill="#73737A" rx="6"/>
+        <rect width="50" height="50" x="100" y="100" fill="#515159" rx="6"/>
+        <rect width="50" height="50" x="200" y="100" fill="#30303A" rx="6"/>
+        <rect width="50" height="50" x="300" y="100" fill="#0E0E19" rx="6"/>
+        <rect width="50" height="50" y="200" fill="#7DD420" rx="6"/>
+        <rect width="50" height="50" x="100" y="200" fill="#A24AEC" rx="6"/>
+        <rect width="50" height="50" x="200" y="200" fill="#FF2067" rx="6"/>
+        <rect width="50" height="50" x="300" y="200" fill="#02B3B9" rx="6"/>
+        <rect width="50" height="50" y="300" fill="#338BF8" rx="6"/>
+        <rect width="50" height="50" x="100" y="300" fill="#FA55D8" rx="6"/>
+        <rect width="50" height="50" x="200" y="300" fill="#FFDE00" rx="6"/>
+        <rect width="50" height="50" x="300" y="300" fill="#FF2133" rx="6"/>
+        <rect width="50" height="50" y="400" fill="#3FC8DE" rx="6"/>
+        <rect width="50" height="50" x="100" y="400" fill="#7B2EFF" rx="6"/>
+        <rect width="50" height="50" x="200" y="400" fill="#00DCAE" rx="6"/>
+        <rect width="50" height="50" x="300" y="400" fill="#FF9600" rx="6"/>
+        <rect width="50" height="50" y="500" fill="#6565FF" rx="6"/>
+        <rect width="50" height="50" x="100" y="500" fill="#40CC4E" rx="6"/>
+        <rect width="50" height="50" x="200" y="500" fill="#FBCE14" rx="6"/>
+        <rect width="50" height="50" x="300" y="500" fill="#14C8FB" rx="6"/>
+        <rect width="50" height="50" x="300" y="600" fill="#B6E611" rx="6"/>
+        <rect width="50" height="50" x="200" y="600" fill="#11E686" rx="6"/>
+        <rect width="50" height="50" x="100" y="600" fill="#2729B2" rx="6"/>
+        <rect width="50" height="50" y="600" fill="#E65A11" rx="6"/>
+      </g>
+      <g transform="translate(75 75)">
+        <rect width="50" height="50" fill="#F5F7FA" rx="6"/>
+        <rect width="50" height="50" x="100" fill="#E6E9ED" rx="6"/>
+        <rect width="50" height="50" x="200" fill="#CCD1D9" rx="6"/>
+        <rect width="50" height="50" x="300" fill="#AAB2BD" rx="6"/>
+        <rect width="50" height="50" y="100" fill="#656D78" rx="6"/>
+        <rect width="50" height="50" x="100" y="100" fill="#434A54" rx="6"/>
+        <rect width="50" height="50" x="200" y="100" fill="#2A3039" rx="6"/>
+        <rect width="50" height="50" x="300" y="100" fill="#181D25" rx="6"/>
+      </g>
+    </g>
+  </g>
+</svg>
