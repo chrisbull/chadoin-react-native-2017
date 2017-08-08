@@ -33,7 +33,7 @@ styles = StyleSheet.flatten([ApplicationStyles, styles])
 
 export default class NoConnectionScreen extends Component {
   render() {
-    if (this.props.isConnected) {
+    if (!this.props.isConnected) {
       return (
         <View style={styles.mainContainer}>
           <View style={styles.contentContainer}>
