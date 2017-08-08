@@ -10,9 +10,12 @@ const { Types, Creators } = createActions({
   logout: null,
   logoutSuccess: null,
   logoutFailure: ['error'],
-  autoLogin: null,
   syncUserData: null,
   syncUser: ['user'],
+  // routing
+  login: null, // go to login
+  autoLogin: null, // auto login and go to main
+  walkthrough: null, // go to walkthrough
 })
 
 export const LoginTypes = Types
@@ -25,6 +28,7 @@ export const INITIAL_STATE = Immutable({
   error: null,
   fetching: false,
   user: null,
+  firstTimeOpeningApp: true,
 })
 
 /* ------------- Reducers ------------- */
@@ -47,6 +51,7 @@ export const logoutFailure = (state, { error }) =>
 
 // startup saga invoked autoLogin
 export const autoLogin = state => state
+export const walkthrough = state => state.merge({ firstTimeOpeningApp: false })
 
 export const syncUser = (state, { email }) => state.merge({ email })
 
@@ -54,6 +59,8 @@ export const syncUser = (state, { email }) => state.merge({ email })
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.AUTO_LOGIN]: autoLogin,
+  [Types.WALKTHROUGH]: walkthrough,
+
   [Types.SYNC_USER]: syncUser,
   [Types.LOGIN_REQUEST]: request,
   [Types.LOGIN_SUCCESS]: success,
@@ -68,3 +75,5 @@ export const reducer = createReducer(INITIAL_STATE, {
 
 // Is the current user logged in?
 export const isLoggedIn = loginState => loginState.email !== null
+export const isFirstTimeOpeningApp = loginState =>
+  loginState.firstTimeOpeningApp === true

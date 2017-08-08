@@ -9,11 +9,19 @@ import {
   Image,
   Keyboard,
   LayoutAnimation,
+  StyleSheet,
 } from 'react-native'
 import LoginActions from '../Redux/LoginRedux'
 import { Images, Metrics, ApplicationStyles } from '../Themes'
 
-const styles = ApplicationStyles
+const styles = StyleSheet.create({
+  ...ApplicationStyles,
+  topLogo: {
+    maxHeight: 140,
+    maxWidth: 140,
+    alignSelf: 'center',
+  },
+})
 
 class LoginScreen extends React.Component {
   isAttempting = false
@@ -102,7 +110,7 @@ class LoginScreen extends React.Component {
       : styles.textInputReadonly
     return (
       <ScrollView
-        contentContainerStyle={{ justifyContent: 'center' }}
+        contentContainerStyle={styles.contentContainer}
         style={[styles.mainContainer, { height: this.state.visibleHeight }]}
         keyboardShouldPersistTaps="always"
       >
@@ -112,7 +120,6 @@ class LoginScreen extends React.Component {
         />
         <View style={styles.form}>
           <View style={styles.row}>
-            <Text style={styles.rowLabel}>Username</Text>
             <TextInput
               style={textInputStyle}
               value={email}
@@ -130,7 +137,6 @@ class LoginScreen extends React.Component {
           </View>
 
           <View style={styles.row}>
-            <Text style={styles.rowLabel}>Password</Text>
             <TextInput
               style={textInputStyle}
               value={password}
@@ -153,16 +159,16 @@ class LoginScreen extends React.Component {
               style={styles.loginButtonWrapper}
               onPress={this.handlePressLogin}
             >
-              <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Sign In</Text>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Sign In</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.loginButtonWrapper}
               onPress={() => this.props.navigation.goBack()}
             >
-              <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Cancel</Text>
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Cancel</Text>
               </View>
             </TouchableOpacity>
           </View>

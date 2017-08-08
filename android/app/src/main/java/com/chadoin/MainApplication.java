@@ -3,6 +3,9 @@ package com.chadoin;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.brentvatne.react.ReactVideoPackage;
+import com.github.yamill.orientation.OrientationPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativenavigation.NavigationReactPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.wix.interactable.Interactable;
@@ -31,6 +34,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactVideoPackage(),
+            new OrientationPackage(),
+            new LinearGradientPackage(),
             new NavigationReactPackage(),
             new MapsPackage(),
             new Interactable(),

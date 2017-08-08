@@ -204,17 +204,21 @@ class ChatMessagesScreen extends Component {
           />
           <RoundedButton onPress={this.handleCreateMessage} text="Send" />
         </ScrollView>
-        <KeyboardTrackingView styles={styles.inputContainer}>
-          <TextInput
-            style={styles.textInput}
-            onChangeText={messageText => {
-              this.setState({ messageText })
-            }}
-            value={this.state.messageText}
-            placeholder="Message"
-            autoFocus
-            multiline
-          />
+        <KeyboardTrackingView>
+          <View style={styles.messageInputContainer}>
+            <View style={styles.messageTextInputContainer}>
+              <TextInput
+                style={styles.messageTextInput}
+                onChangeText={messageText => {
+                  this.setState({ messageText })
+                }}
+                value={this.state.messageText}
+                placeholder="Message"
+                autoFocus
+                multiline
+              />
+            </View>
+          </View>
         </KeyboardTrackingView>
       </View>
     )
