@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import ReduxPersist from '../Config/ReduxPersist'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
+import NoConnectionScreen from './NoConnectionScreen'
 
 const styles = StyleSheet.create({
   applicationView: {
@@ -30,10 +31,7 @@ class RootContainer extends Component {
       <View style={styles.applicationView}>
         <StatusBar barStyle="dark-content" />
         <ReduxNavigation />
-        <Text>
-          Your internet is:{' '}
-          {this.props.isConnected ? 'CONNECTED' : 'NOT CONNECTED'}
-        </Text>
+        <NoConnectionScreen isConnected={this.props.isConnected} />
       </View>
     )
   }
