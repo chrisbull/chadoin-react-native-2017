@@ -46,6 +46,7 @@
     "react-native-config": "^0.5.0",
     "react-native-device-info": "^0.10.2",
     "react-native-drawer": "^2.3.0",
+    "react-native-floating-action": "^1.1.0",
     "react-native-i18n": "^2.0.2",
     "react-native-interactable": "^0.1.1",
     "react-native-invertible-scroll-view": "^1.1.0",
