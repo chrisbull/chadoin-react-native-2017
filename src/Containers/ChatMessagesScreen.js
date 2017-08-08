@@ -192,7 +192,7 @@ class ChatMessagesScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'green' }}>
+      <View style={{ flex: 1 }}>
         <ScrollView>
           <FlatList
             style={styles.listContainer}
@@ -228,7 +228,7 @@ ChatMessagesScreen.navigationOptions = ({ navigation }) => ({
 
 const mapStateToProps = ({ chats }) => ({
   chat: chats.chat,
-  messages: chats.chat.messages || [],
+  messages: (chats.chat && chats.chat.messages) || [],
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -4933,6 +4933,10 @@ react-native-i18n@^2.0.2:
   dependencies:
     i18n-js "github:fnando/i18n-js#v3.0.0"
 
+react-native-interactable@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-interactable/-/react-native-interactable-0.1.1.tgz#a36f2432bcff404709fb19dfe0481ff72cd1d5bf"
+
 react-native-keyboard-aware-scroll-view@^0.2.9:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.9.tgz#2a1ae49cfae90a9665b21763c1f8bd03ed5fb92c"
@@ -4958,9 +4962,9 @@ react-native-navigation-redux-helpers@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation-redux-helpers/-/react-native-navigation-redux-helpers-0.5.0.tgz#2cfa39422c5a8973ab8037963473ca89bc7ce0c5"
 
-react-native-navigation@^1.1.168:
-  version "1.1.168"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.168.tgz#87dc3b92c2e542f21c5a829cb8baf1939bf4ab38"
+react-native-navigation@^1.1.182:
+  version "1.1.182"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.182.tgz#c710e89370321a64824c9405146c820ac77afb1b"
   dependencies:
     lodash "4.x.x"
 

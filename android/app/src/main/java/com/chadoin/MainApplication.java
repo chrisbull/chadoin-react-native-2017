@@ -3,6 +3,10 @@ package com.chadoin;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativenavigation.NavigationReactPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.wix.interactable.Interactable;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -27,6 +31,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new NavigationReactPackage(),
+            new MapsPackage(),
+            new Interactable(),
+            new BlurViewPackage(),
             new VectorIconsPackage(),
             new RNI18nPackage(),
             new RNDeviceInfo(),

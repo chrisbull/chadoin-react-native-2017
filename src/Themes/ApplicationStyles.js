@@ -1,4 +1,5 @@
 import { StyleSheet, PixelRatio, Platform } from 'react-native'
+import Fonts from './Fonts'
 import Colors from './Colors'
 import Metrics from './Metrics'
 
@@ -41,10 +42,7 @@ const ApplicationStyles = StyleSheet.create({
     paddingBottom: Metrics.marginVertical,
   },
   listRowTitle: {
-    fontFamily: 'Geomanist',
-    color: TextColor,
-    fontWeight: '500',
-    fontSize: 17,
+    ...Fonts.style.normal,
   },
   separator: {
     backgroundColor: Colors.smoke20,
@@ -52,15 +50,10 @@ const ApplicationStyles = StyleSheet.create({
   },
   inputContainer: {},
   textInput: {
-    flex: 1,
     marginLeft: 10,
     marginTop: 10,
     marginBottom: 10,
     marginRight: 10,
-
-    paddingLeft: 10,
-    paddingTop: 2,
-    paddingBottom: 5,
     fontSize: 16,
     backgroundColor: 'white',
     borderWidth: 0.5 / PixelRatio.get(),
@@ -75,11 +68,11 @@ const ApplicationStyles = StyleSheet.create({
     paddingBottom: Metrics.marginVertical,
   },
   messageRowText: {
-    fontFamily: 'Geomanist',
-    color: TextColor,
-    fontSize: 17,
+    ...Fonts.style.normal,
   },
-  chatMessageInputRow: {},
+  messageTextInput: {
+    ...Fonts.style.normal,
+  },
   sendButton: {
     paddingRight: 15,
     paddingLeft: 15,
