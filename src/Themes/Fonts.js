@@ -1,21 +1,29 @@
 import Colors from './Colors'
+import Metrics from './Metrics'
 
 const type = {
   base: 'Geomanist',
-  bold: 'Geomanist',
-  emphasis: 'Geomanist',
+  thin: 'Geomanist-Thin',
+  extraLight: 'Geomanist-ExtraLight',
+  light: 'Geomanist-Light',
+  regular: 'Geomanist-Regular',
+  book: 'Geomanist-Book',
+  medium: 'Geomanist-Medium',
+  bold: 'Geomanist-Bold',
+  ultra: 'Geomanist-Ultra',
+  black: 'Geomanist-Black',
 }
 
 const weight = {
-  thin: '100',
-  extraLight: '200',
-  light: '300',
-  regular: '400',
-  book: '500',
-  medium: '600',
-  bold: '700',
-  ultra: '800',
-  black: '900',
+  ultra: { fontFamily: type.ultra },
+  black: { fontFamily: type.black },
+  bold: { fontFamily: type.bold },
+  medium: { fontFamily: type.medium },
+  book: { fontFamily: type.book },
+  regular: { fontFamily: type.regular },
+  light: { fontFamily: type.light },
+  extraLight: { fontFamily: type.extraLight },
+  thin: { fontFamily: type.thin },
 }
 
 const size = {
@@ -25,22 +33,40 @@ const size = {
   h4: 22,
   h5: 19,
   h6: 17,
-  input: 18,
+  large: 19,
   regular: 17,
+  default: 15,
   medium: 14,
   small: 12,
   tiny: 8.5,
 }
 
-const colors = {
-  default: Colors.smoke80,
-  inverse: Colors.white,
+const color = {
+  light: Colors.base4,
+  medium: Colors.base6,
+  regular: Colors.base8,
+  dark: Colors.base9,
+
+  primary: Colors.primary,
+  secondary: Colors.secondary,
+
+  baseColor: Colors.baseColor,
+  baseColorLightOpacity: Colors.baseColorLightOpacity,
+  baseColorDarkOpacity: Colors.baseColorDarkOpacity,
+
+  darkColor: Colors.darkColor,
+  darkColorLightOpacity: Colors.darkColorLightOpacity,
+  darkColorDarkOpacity: Colors.darkColorDarkOpacity,
+
+  lightColor: Colors.lightColor,
+  lightColorLightOpacity: Colors.lightColorLightOpacity,
+  lightColorDarkOpacity: Colors.lightColorDarkOpacity,
 }
 
 const base = {
   fontFamily: type.base,
-  fontWeight: weight.regular,
-  color: colors.default,
+  color: color.regular,
+  fontSize: size.default,
 }
 
 const style = {
@@ -68,13 +94,86 @@ const style = {
     ...base,
     fontSize: size.h6,
   },
-  normal: {
+
+  formInput: {
+    ...base,
+    ...weight.base,
+    fontWeight: '400',
+  },
+
+  paragraph: {
+    ...base,
+    fontSize: size.regular,
+    color: Colors.textMedium,
+    lineHeight: 20,
+  },
+
+  paragraphSecondary: {
+    ...base,
+    fontSize: size.regular,
+    color: color.medium,
+    lineHeight: 20,
+  },
+
+  body: {
     ...base,
     fontSize: size.regular,
   },
+
+  bodyLight: {
+    ...base,
+    fontSize: size.regular,
+    color: color.baseColorDarkOpacity,
+  },
+
+  bodyBold: {
+    ...base,
+    ...weight.book,
+    fontSize: size.regular,
+  },
+
+  smallLight: {
+    ...base,
+    fontSize: size.small,
+    color: color.baseColorDarkOpacity,
+  },
+
+  textLink: {
+    ...base,
+    fontSize: size.regular,
+    color: color.secondary,
+  },
+
   description: {
     ...base,
-    fontSize: size.medium,
+  },
+
+  tableLabel: {
+    ...base,
+    ...weight.medium,
+    fontSize: size.regular,
+  },
+
+  tableTitle: {
+    ...base,
+    ...weight.book,
+  },
+
+  tableSubtitle: {
+    ...base,
+    color: color.medium,
+    fontSize: size.small,
+  },
+
+  tableDescription: {
+    ...base,
+    fontSize: size.small,
+  },
+
+  tableTimestamp: {
+    ...base,
+    fontSize: size.tiny,
+    color: color.medium,
   },
 }
 
@@ -84,4 +183,5 @@ export default {
   style,
   type,
   weight,
+  color,
 }

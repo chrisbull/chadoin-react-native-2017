@@ -12,11 +12,11 @@ export default class ListRow extends Component {
   render() {
     return (
       <TouchableHighlight
-        style={styles.listRow}
+        style={styles.tableRow}
         onPress={this._onPress}
         underlayColor={UnderlayColor}
       >
-        <Text style={styles.listRowTitle}>
+        <Text style={styles.tableLabel}>
           {this.props.title}
         </Text>
       </TouchableHighlight>

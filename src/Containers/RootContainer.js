@@ -31,7 +31,7 @@ class RootContainer extends Component {
       <View style={styles.applicationView}>
         <StatusBar barStyle="dark-content" />
         <ReduxNavigation />
-        <NoConnectionScreen isConnected={this.props.isConnected} />
+        {/* <NoConnectionScreen isConnected={this.props.isConnected} /> */}
       </View>
     )
   }

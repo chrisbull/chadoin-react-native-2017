@@ -35,7 +35,6 @@ function* logoutSaga() {
   try {
     yield call(fireApp.auth.signOut)
     yield put(logoutSuccess())
-    console.tron.log('logout successful')
   } catch (error) {
     yield put(logoutFailure(error))
   }

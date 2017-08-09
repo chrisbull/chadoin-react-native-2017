@@ -1,27 +1,55 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
-  View,
-  ScrollView,
   Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
+  ScrollView,
+  View,
   Keyboard,
   LayoutAnimation,
   StyleSheet,
 } from 'react-native'
 import LoginActions from '../Redux/LoginRedux'
-import { Images, Metrics, ApplicationStyles } from '../Themes'
+import { Metrics, ApplicationStyles } from '../Themes'
 
-const styles = StyleSheet.create({
-  ...ApplicationStyles,
-  topLogo: {
-    maxHeight: 140,
-    maxWidth: 140,
-    alignSelf: 'center',
-  },
-})
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import FormInput from '../Components/FormInput'
+import FormGroup from '../Components/FormGroup'
+import FormSeparator from '../Components/FormSeparator'
+import RoundedButton from '../Components/RoundedButton'
+import TextLink from '../Components/TextLink'
+
+const appStyles = ApplicationStyles
+
+const getStyles = (props, state) => {
+  console.log(
+    'LoginScreen -> getStyles() -> visibleHeight',
+    state.visibleHeight,
+  )
+  const styles = StyleSheet.create({
+    mainContainer: {
+      ...appStyles.mainContainer,
+      height: state.visibleHeight,
+    },
+
+    contentContainer: {
+      ...appStyles.contentContainer,
+      ...appStyles.centerVerticalContainer,
+    },
+
+    centerTextContainer: {
+      ...appStyles.centerTextContainer,
+      marginTop: Metrics.spacing.xlarge,
+    },
+
+    topLogo: {
+      maxHeight: 140,
+      maxWidth: 140,
+      alignSelf: 'center',
+    },
+  })
+
+  return styles
+}
 
 class LoginScreen extends React.Component {
   isAttempting = false
@@ -105,23 +133,20 @@ class LoginScreen extends React.Component {
     const { email, password } = this.state
     const { fetching } = this.props
     const editable = !fetching
-    const textInputStyle = editable
-      ? styles.textInput
-      : styles.textInputReadonly
+
+    const styles = getStyles(this.props, this.state)
+
     return (
       <ScrollView
-        contentContainerStyle={styles.contentContainer}
-        style={[styles.mainContainer, { height: this.state.visibleHeight }]}
-        keyboardShouldPersistTaps="always"
+        style={styles.mainContainer}
+        contentContainerStyle={appStyles.scrollViewContentContainer}
       >
-        <Image
-          source={Images.logo}
-          style={[styles.topLogo, this.state.topLogo]}
-        />
-        <View style={styles.form}>
-          <View style={styles.row}>
-            <TextInput
-              style={textInputStyle}
+        <View style={styles.contentContainer}>
+          <Text style={appStyles.h1}>
+            {`Login`}
+          </Text>
+          <FormGroup>
+            <FormInput
               value={email}
               editable={editable}
               keyboardType="default"
@@ -134,11 +159,8 @@ class LoginScreen extends React.Component {
                 this.setState({ focusPasswordInput: true })}
               placeholder="Email"
             />
-          </View>
-
-          <View style={styles.row}>
-            <TextInput
-              style={textInputStyle}
+            <FormSeparator />
+            <FormInput
               value={password}
               editable={editable}
               keyboardType="default"
@@ -152,25 +174,18 @@ class LoginScreen extends React.Component {
               placeholder="Password"
               focus={this.state.focusPasswordInput}
             />
-          </View>
+          </FormGroup>
 
-          <View style={[styles.loginRow]}>
-            <TouchableOpacity
-              style={styles.loginButtonWrapper}
+          <View style={appStyles.buttonGroupHorizontal}>
+            <RoundedButton
+              primary
+              label="Sign In"
               onPress={this.handlePressLogin}
-            >
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Sign In</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.loginButtonWrapper}
-              onPress={() => this.props.navigation.goBack()}
-            >
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Cancel</Text>
-              </View>
-            </TouchableOpacity>
+            />
+          </View>
+          <View style={styles.centerTextContainer}>
+            <Text style={appStyles.bodyLight}>Forgot your password? </Text>
+            <TextLink title="Reset Password" onPress={() => {}} />
           </View>
         </View>
       </ScrollView>

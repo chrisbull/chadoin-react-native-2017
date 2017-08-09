@@ -1,26 +1,43 @@
-import { TabNavigator, StackNavigator } from 'react-navigation'
-
-/* ----- NAVIGATORS ----- */
-import EventStack, { CreateEventStack } from './EventsNavigator'
-import ChatStack, { NewChatStack } from './ChatsNavigator'
+import { StackNavigator } from 'react-navigation'
 
 /* ----- SCREENS ----- */
 
-const MainTabsNavigator = TabNavigator(
+// Home
+import HomeScreen from '../Containers/HomeScreen'
+
+// Events
+// import EventsListScreen from '../Containers/EventsListScreen'
+import EventCreateScreen from '../Containers/EventCreateScreen'
+import EventEditScreen from '../Containers/EventEditScreen'
+import EventViewScreen from '../Containers/EventViewScreen'
+
+// Chats
+// import ChatsListScreen from '../Containers/ChatsListScreen'
+import ChatCreateScreen from '../Containers/ChatCreateScreen'
+import ChatMessagesScreen from '../Containers/ChatMessagesScreen'
+
+const HomeStack = StackNavigator(
   {
-    Events: { screen: EventStack },
-    Chats: { screen: ChatStack },
+    HomeScreen: { screen: HomeScreen },
+
+    // Events
+    ViewEvent: { screen: EventViewScreen },
+    EditEvent: { screen: EventEditScreen },
+
+    // Chats
+    ChatCreate: { screen: ChatCreateScreen },
+    ChatMessages: { screen: ChatMessagesScreen },
   },
   {
-    headerMode: 'none',
+    // headerMode: 'none',
   },
 )
 
 export default StackNavigator(
   {
-    Main: { screen: MainTabsNavigator },
-    CreateEvent: { screen: CreateEventStack },
-    NewChat: { screen: NewChatStack },
+    Home: { screen: HomeStack },
+    CreateEvent: { screen: EventCreateScreen },
+    NewChat: { screen: ChatCreateScreen },
   },
   {
     headerMode: 'none',

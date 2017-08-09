@@ -1,30 +1,62 @@
-import { StyleSheet, PixelRatio, Platform } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import Fonts from './Fonts'
 import Colors from './Colors'
 import Metrics from './Metrics'
+import Borders from './Borders'
 
 export const UnderlayColor = 'rgba(0,0,0,0.1)'
 export const TintColor = Colors.purple
-export const TextColor = Colors.smoke80
+export const TextColor = Colors.baseColor
 
 export const appStyles = {
+  // All Font Sizes and Variations
+  ...Fonts.style,
+
   navigationHeader: {
     backgroundColor: 'white',
   },
+
   mainContainer: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.base0,
     position: 'relative',
   },
+
   scrollContainer: {
-    justifyContent: 'center',
-    padding: 15,
     flex: 1,
   },
+
+  scrollViewContentContainer: {
+    flex: 1,
+  },
+
   contentContainer: {
     flex: 1,
-    padding: 15,
+    padding: Metrics.spacing.large,
   },
+
+  centerContentContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  centerHorizontalContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+
+  centerVerticalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+
+  centerTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'nowrap',
+  },
+
   blurContainer: {
     ...Platform.select({
       ios: {
@@ -32,74 +64,100 @@ export const appStyles = {
       },
     }),
   },
-  listContainer: {
+
+  // Tables
+
+  tableContainer: {
     flex: 1,
   },
-  listRow: {
-    paddingLeft: Metrics.marginHorizontal,
-    paddingRight: Metrics.marginHorizontal,
-    paddingTop: Metrics.marginVertical,
-    paddingBottom: Metrics.marginVertical,
-  },
-  listRowTitle: {
-    ...Fonts.style.normal,
-  },
-  separator: {
-    backgroundColor: Colors.smoke20,
-    height: 1,
-  },
-  row: {
-    marginBottom: 5,
-    marginTop: 5,
-  },
-  textInput: {
-    ...Fonts.style.normal,
-    padding: 15,
-    backgroundColor: 'white',
-    borderColor: Colors.smoke50,
-    borderWidth: 0.5 / PixelRatio.get(),
-    borderRadius: 4,
-  },
-  textInputReadonly: {},
-  switchInput: {},
-  messageRow: {
-    paddingLeft: Metrics.marginHorizontal,
-    paddingRight: Metrics.marginHorizontal,
-    paddingTop: Metrics.marginVertical,
-    paddingBottom: Metrics.marginVertical,
-  },
-  messageRowText: {
-    ...Fonts.style.normal,
-  },
-  messageInputContainer: {
-    backgroundColor: 'white',
-    paddingLeft: Metrics.marginHorizontal,
-    paddingRight: Metrics.marginHorizontal,
-    paddingTop: 4,
-    paddingBottom: 4,
-  },
-  messageTextInputContainer: {},
-  messageTextInput: {
-    ...Fonts.style.normal,
-  },
-  sendButton: {
-    paddingRight: 15,
-    paddingLeft: 15,
-  },
-  button: {
-    height: 45,
-    borderRadius: 5,
-    marginHorizontal: Metrics.section,
-    marginVertical: Metrics.baseMargin,
-    backgroundColor: Colors.blue,
+
+  tableRow: {
+    paddingHorizontal: Metrics.spacing.regular,
+    paddingVertical: Metrics.spacing.small,
+    minHeight: Metrics.rowMinHeight,
     justifyContent: 'center',
   },
+
+  tableRowTitle: {
+    ...Fonts.style.tableLabel,
+  },
+
+  tableSeparator: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: Borders.borderColor,
+    ...Platform.select({
+      ios: {
+        marginLeft: Metrics.spacing.regular,
+      },
+    }),
+  },
+
+  tableGroup: {
+    ...Borders.defaultStyle,
+    marginHorizontal: Metrics.marginHorizontal,
+    marginVertical: Metrics.marginVertical,
+    overflow: 'hidden',
+  },
+
+  tableGroupRow: {
+    ...Borders.defaultStyle,
+    paddingHorizontal: Metrics.spacing.regular,
+    paddingVertical: Metrics.spacing.small,
+  },
+
+  // Messages
+
+  messageRow: {
+    paddingHorizontal: Metrics.spacing.regular,
+    paddingVertical: Metrics.spacing.small,
+  },
+
+  messageRowText: {
+    ...Fonts.style.body,
+  },
+
+  messageInputContainer: {
+    backgroundColor: 'white',
+    paddingHorizontal: Metrics.spacing.regular,
+    paddingVertical: Metrics.spacing.small,
+  },
+
+  messageTextInputContainer: {},
+
+  messageTextInput: {
+    ...Fonts.style.body,
+  },
+
+  // Buttons
+
+  button: {
+    ...Borders.defaultStyleRadius,
+    paddingHorizontal: Metrics.spacing.large,
+    paddingVertical: Metrics.spacing.small,
+    height: Metrics.buttonHeight,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  buttonPrimary: {
+    backgroundColor: Colors.primary,
+    borderWidth: 0,
+  },
+
+  buttonSecondary: {
+    backgroundColor: Colors.secondary,
+    borderWidth: 0,
+  },
+
   buttonText: {
-    color: Colors.white,
+    ...Fonts.style.body,
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: Fonts.size.medium,
-    marginVertical: Metrics.baseMargin,
+  },
+
+  buttonColorText: {
+    ...Fonts.style.body,
+    textAlign: 'center',
+    color: Colors.white,
   },
 }
 

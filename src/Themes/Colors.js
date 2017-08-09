@@ -1,61 +1,69 @@
-const Colors = {
-  // bloodOrange: '#fb5f26',
-  // blue: '#0096FB',
-  // charcoal: '#595959',
-  // eggplant: '#251a34',
-  // ember: 'rgba(164, 0, 48, 0.5)',
-  // error: 'rgba(200, 0, 0, 0.8)',
-  // facebook: '#3b5998',
-  // pink: '#FE0166',
-  // silver: '#F7F7F7',
-  // purple: '#803DFF',
-  // darkPurple: '#0096FB',
-  // blueGreyMedium: '#34495e',
-  // blueGreyDark: '#505d6b',
+const white = '#FFFFFF'
+const black = '#000000'
 
-  transparent: 'rgba(0,0,0,0)',
-
-  white: '#FFFFFF',
-  black: '#000000',
-
-  smoke10: '#FBFBFC',
-  smoke20: '#F7F8F9',
-  smoke30: '#E7EAEF',
-  smoke40: '#D8DEE5',
-  smoke50: '#B7BEC7',
-  smoke60: '#929BA6',
-  smoke70: '#757F8C',
-  smoke80: '#4D5663',
-  smoke90: '#2C323B',
-  smoke100: '#0F1216',
-  pear: '#7DD420',
-  amethyst: '#A24AEC',
-  punch: '#FF2067',
-  teal: '#02B3B9',
-  blue: '#338BF8',
-  pink: '#FA55D8',
-  yellow: '#FFDE00',
-  red: '#FF2133',
-  babyBlue: '#3FC8DE',
-  purple: '#7B2EFF',
-  seafoam: '#00DCAE',
-  orange: '#FF9600',
-  bluePurple: '#6565FF',
-  parakeet: '#40CC4E',
-  gold: '#FBCE14',
-  skyBlue: '#14C8FB',
-  darkOrange: '#E65A11',
-  royalBlue: '#2729B2',
-  neonGreen: '#11E686',
-  lime: '#B6E611',
-  grey10: '#F9F9FA',
-  grey20: '#DADADC',
-  grey30: '#B7B7BB',
-  grey40: '#96969B',
-  grey50: '#73737A',
-  grey60: '#515159',
-  grey70: '#30303A',
-  grey80: '#0E0E19',
+const base = {
+  base0: '#FBFBFC',
+  base1: '#F7F8F9',
+  base2: '#E7EAEF',
+  base3: '#D8DEE5',
+  base4: '#B7BEC7',
+  base5: '#929BA6',
+  base6: '#757F8C',
+  base7: '#4D5663',
+  base8: '#2C323B',
+  base9: '#0F1216',
 }
 
-export default Colors
+const colors = {
+  pink: '#FA55D8',
+  lightPurple: '#A24AEC',
+  purple: '#7B2EFF',
+  bluePurple: '#6565FF',
+  royalBlue: '#2729B2',
+  blue: '#338BF8',
+  seaBlue: '#3FC8DE',
+  skyBlue: '#14C8FB',
+  seafoam: '#02B3B9',
+  turquoise: '#00DCAE',
+  neonGreen: '#11E686',
+  darkGreen: '#40CC4E',
+  green: '#7DD420',
+  lime: '#B6E611',
+  yellow: '#FFDE00',
+  sunflower: '#FBCE14',
+  orange: '#FF9600',
+  amber: '#E65A11',
+  neonPink: '#FF2067',
+  red: '#FF2133',
+}
+
+// Brand Colors
+const brand = {
+  primary: colors.purple,
+  secondary: colors.blue,
+}
+
+const opacity = {
+  baseColor: base.base9,
+  baseColorLightOpacity: 'rgba(117,127,140, 0.4)',
+  baseColorDarkOpacity: 'rgba(117,127,140, 0.8)',
+
+  darkColor: black,
+  darkColorLightOpacity: 'rgba(0,0,0,0.3)',
+  darkColorDarkOpacity: 'rgba(0,0,0,0.6)',
+
+  lightColor: white,
+  lightColorLightOpacity: 'rgba(255,255,255,0.4)',
+  lightColorDarkOpacity: 'rgba(255,255,255,0.7)',
+
+  transparent: 'rgba(0,0,0,0)',
+}
+
+export default {
+  white,
+  black,
+  ...base,
+  ...colors,
+  ...brand,
+  ...opacity,
+}
