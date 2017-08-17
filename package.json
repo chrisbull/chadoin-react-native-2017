@@ -18,8 +18,8 @@
     "android:devices": "$ANDROID_HOME/platform-tools/adb devices",
     "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
     "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
-    "precommit": "npm run git-hook",
-    "prepush": "npm run git-hook",
+    "_precommit": "npm run git-hook",
+    "_prepush": "npm run git-hook",
     "git-hook": "npm run lint -s && npm run test -s",
     "lint": "eslint ./src/**/*.js | snazzy",
     "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
@@ -50,6 +50,7 @@
     "react-native-device-info": "^0.10.2",
     "react-native-drawer": "^2.3.0",
     "react-native-elements": "^0.15.0",
+    "react-native-firebase": "^2.1.2",
     "react-native-floating-action": "^1.1.0",
     "react-native-i18n": "^2.0.2",
     "react-native-interactable": "^0.1.1",
@@ -59,7 +60,7 @@
     "react-native-keyboard-tracking-view": "https://github.com/chrisbull/react-native-keyboard-tracking-view",
     "react-native-linear-gradient": "^2.2.0",
     "react-native-maps": "^0.15.3",
-    "react-native-navigation": "^1.1.182",
+    "react-native-navigation": "^1.1.202",
     "react-native-navigation-redux-helpers": "^0.5.0",
     "react-native-orientation": "^2.1.0",
     "react-native-reversed-flat-list": "^1.0.2",
@@ -127,29 +128,17 @@
     "standard": "^10.0.2"
   },
   "jest": {
-    "testMatch": [
-      "**/Tests/**/*.js",
-      "**/?(*.)(spec|test).js?(x)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "Tests/Setup.js"
-    ],
-    "setupFiles": [
-      "./Tests/Setup"
-    ],
+    "testMatch": ["**/Tests/**/*.js", "**/?(*.)(spec|test).js?(x)"],
+    "testPathIgnorePatterns": ["/node_modules/", "Tests/Setup.js"],
+    "setupFiles": ["./Tests/Setup"],
     "preset": "react-native"
   },
   "config": {},
   "rnpm": {
-    "assets": [
-      "./src/Fonts/Geomanist/*"
-    ]
+    "assets": ["./src/Fonts/Geomanist/*"]
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ]
+    "plugins": ["flowtype"]
   }
 }

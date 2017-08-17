@@ -88,6 +88,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+andlog@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/andlog/-/andlog-1.0.0.tgz#25b39047ac9c1e5f6b2c8e4cdb5e7bf9e65e534b"
+
 ansi-escapes@^1.1.0, ansi-escapes@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
@@ -1165,6 +1169,12 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bows@^1.6.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/bows/-/bows-1.7.0.tgz#a3598ed9cef61a7a0cab1a7240f291654865ec76"
+  dependencies:
+    andlog "^1.0.0"
 
 bplist-creator@0.0.7:
   version "0.0.7"
@@ -5858,6 +5868,13 @@ react-native-elements@^0.15.0:
     react-native-side-menu "^0.20.1"
     react-native-tab-navigator "^0.3.3"
 
+react-native-firebase@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-2.1.2.tgz#bfa8b562e15f7e0fa212e57121acef0da2ac8125"
+  dependencies:
+    bows "^1.6.0"
+    prop-types "^15.5.10"
+
 react-native-floating-action@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-floating-action/-/react-native-floating-action-1.1.0.tgz#24c573b979255c9c1a5c9e89307e1436abae14ba"
@@ -5914,9 +5931,9 @@ react-native-navigation-redux-helpers@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation-redux-helpers/-/react-native-navigation-redux-helpers-0.5.0.tgz#2cfa39422c5a8973ab8037963473ca89bc7ce0c5"
 
-react-native-navigation@^1.1.182:
-  version "1.1.182"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.182.tgz#c710e89370321a64824c9405146c820ac77afb1b"
+react-native-navigation@^1.1.202:
+  version "1.1.202"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.202.tgz#0d3a9eca53829219c0b28d5609e3eebfa743ab45"
   dependencies:
     lodash "4.x.x"
 
