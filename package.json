@@ -26,8 +26,6 @@
     "format": "prettier-eslint ./src/**/*.js --write",
     "chris:build": "react-native run-ios --device \"Chris's iPhone\"",
     "chris:build:release": "react-native run-ios --configuration Release --device \"Chris's iPhone\" ",
-    "andy:build": "react-native run-ios --device \"Andy's iPhone\"",
-    "andy:build:release": "react-native run-ios --configuration Release --device \"Andy's iPhone\"",
     "generate": "rc-autocomplete"
   },
   "dependencies": {
