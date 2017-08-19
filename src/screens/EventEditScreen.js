@@ -1,20 +1,19 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import {
   DatePickerIOS,
-  ScrollView,
   Switch,
   Text,
   TextInput,
   TouchableHighlight,
   TouchableWithoutFeedback,
   View,
-  StyleSheet,
 } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import EventActions from '../Redux/EventRedux'
-import RoundedButton from '../Components/RoundedButton'
-import { ApplicationStyles } from '../Themes'
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
+
+import { ApplicationStyles } from '../themes'
+import EventActions from '../redux/EventRedux'
+import RoundedButton from '../components/RoundedButton'
 
 const styles = ApplicationStyles
 

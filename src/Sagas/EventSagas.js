@@ -1,7 +1,7 @@
 import { fork, takeLatest, put, call, take } from 'redux-saga/effects'
 import { NavigationActions } from 'react-navigation'
-import EventActions, { EventTypes } from '../Redux/EventRedux'
-import fireApp from '../Services/FirebaseApp'
+import EventActions, { EventTypes } from '../redux/EventRedux'
+import fireApp from '../services/FirebaseApp'
 
 /* ----- All Events Sagas ----- */
 

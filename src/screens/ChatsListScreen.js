@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Button } from 'react-native'
-import ChatActions from '../Redux/ChatRedux'
-import FlatList from '../Components/FlatList'
-import { TintColor } from '../Themes'
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
+
+import { TintColor } from '../themes'
+import ChatActions from '../redux/ChatRedux'
+import FlatList from '../components/FlatList'
 
 class ChatsListScreen extends Component {
   static defaultProps = {

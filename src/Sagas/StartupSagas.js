@@ -1,10 +1,10 @@
 import { takeLatest, put, select } from 'redux-saga/effects'
-import AppStateActions from '../Redux/AppStateRedux'
-import { StartupTypes } from '../Redux/StartupRedux'
+import AppStateActions from '../redux/AppStateRedux'
+import { StartupTypes } from '../redux/StartupRedux'
 import LoggedInActions, {
   isLoggedIn,
   isFirstTimeOpeningApp,
-} from '../Redux/LoginRedux'
+} from '../redux/LoginRedux'
 
 /* -- Selectors -- */
 // exported to make available for tests

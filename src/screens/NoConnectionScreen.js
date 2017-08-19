@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import { ApplicationStyles, Colors } from '../Themes'
+import React, { Component } from 'react'
+
+import { ApplicationStyles, Colors } from '../themes'
 
 const appStyles = ApplicationStyles
 

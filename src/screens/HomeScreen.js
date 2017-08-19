@@ -1,16 +1,15 @@
 /* @flow */
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Button, StyleSheet, Animated } from 'react-native'
+import { StyleSheet, Animated } from 'react-native'
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view'
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
 
-import { ApplicationStyles, TintColor, Colors, Fonts } from '../Themes'
+import { ApplicationStyles, Colors, Fonts } from '../themes'
+import ChatsListScreen from './ChatsListScreen'
+import EventsListScreen from './EventsListScreen'
 
-import LoginActions from '../Redux/LoginRedux'
-import EventActions from '../Redux/EventRedux'
-
-import EventsListScreen from '../Containers/EventsListScreen'
-import ChatsListScreen from '../Containers/ChatsListScreen'
+// import EventActions from '../redux/EventRedux'
+// import LoginActions from '../redux/LoginRedux'
 
 const appStyles = ApplicationStyles
 
@@ -64,10 +63,19 @@ class HomeScreen extends Component {
       />
     )
   }
+
+  // render() {
+  //   return (
+  //     <View style={styles.container}>
+  //       <Text>Home Screen</Text>
+  //     </View>
+  //   )
+  // }
 }
 
 const styles = StyleSheet.create({
   container: {
+    ...appStyles.mainContainer,
     flex: 1,
   },
   indicator: {
@@ -82,27 +90,27 @@ const styles = StyleSheet.create({
   },
 })
 
-HomeScreen.navigationOptions = ({ navigation }) => ({
-  title: 'ChaDoin?',
-  headerLeft: (
-    <Button
-      title="Logout"
-      onPress={() => {
-        navigation.dispatch(LoginActions.logout())
-      }}
-      color={TintColor}
-    />
-  ),
-  headerRight: (
-    <Button
-      title="New"
-      onPress={() => {
-        navigation.dispatch(EventActions.gotoNewEvent())
-      }}
-      color={TintColor}
-    />
-  ),
-})
+// HomeScreen.navigationOptions = ({ navigation }) => ({
+//   title: 'ChaDoin?',
+//   headerLeft: (
+//     <Button
+//       title="Logout"
+//       onPress={() => {
+//         navigation.dispatch(LoginActions.logout())
+//       }}
+//       color={TintColor}
+//     />
+//   ),
+//   headerRight: (
+//     <Button
+//       title="New"
+//       onPress={() => {
+//         navigation.dispatch(EventActions.gotoNewEvent())
+//       }}
+//       color={TintColor}
+//     />
+//   ),
+// })
 
 const mapStateToProps = () => ({})
 

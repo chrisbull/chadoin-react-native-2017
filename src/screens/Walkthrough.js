@@ -4,11 +4,11 @@ import { StyleSheet, Text, View } from 'react-native'
 // import Swiper from 'react-native-swiper'
 import Swiper from 'react-native-deck-swiper'
 
-import LoginActions from '../Redux/LoginRedux'
-import RoundedButton from '../Components/RoundedButton'
-import TextLink from '../Components/TextLink'
+import LoginActions from '../redux/LoginRedux'
+import RoundedButton from '../components/RoundedButton'
+import TextLink from '../components/TextLink'
 
-import { ApplicationStyles, Colors, Fonts, Metrics } from '../Themes'
+import { ApplicationStyles, Colors, Fonts, Metrics } from '../themes'
 
 const appStyles = ApplicationStyles
 
@@ -197,7 +197,12 @@ class Walkthrough extends Component {
     return (
       <View style={styles.container}>
         <Swiper
-          cards={[<Card1 />, <Card2 />, <Card3 />, <Card4 />]}
+          cards={[
+            <Card1 key={1} />,
+            <Card2 key={2} />,
+            <Card3 key={3} />,
+            <Card4 key={4} />,
+          ]}
           renderCard={card => {
             return (
               <View style={styles.card}>

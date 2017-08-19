@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { TextInput, View, ScrollView, Button } from 'react-native'
-import { ApplicationStyles } from '../Themes'
-import RoundedButton from '../Components/RoundedButton'
-import ChatActions from '../Redux/ChatRedux'
+import { ApplicationStyles } from '../themes'
+import RoundedButton from '../components/RoundedButton'
+import ChatActions from '../redux/ChatRedux'
 
 const styles = ApplicationStyles
 

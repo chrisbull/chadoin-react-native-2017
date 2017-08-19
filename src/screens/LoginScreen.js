@@ -1,5 +1,3 @@
-import React from 'react'
-import { connect } from 'react-redux'
 import {
   Text,
   ScrollView,
@@ -8,48 +6,18 @@ import {
   LayoutAnimation,
   StyleSheet,
 } from 'react-native'
-import LoginActions from '../Redux/LoginRedux'
-import { Metrics, ApplicationStyles } from '../Themes'
+import { connect } from 'react-redux'
+import React from 'react'
 
-// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import FormInput from '../Components/FormInput'
-import FormGroup from '../Components/FormGroup'
-import FormSeparator from '../Components/FormSeparator'
-import RoundedButton from '../Components/RoundedButton'
-import TextLink from '../Components/TextLink'
+import { Metrics, ApplicationStyles } from '../themes'
+import FormGroup from '../components/FormGroup'
+import FormInput from '../components/FormInput'
+import FormSeparator from '../components/FormSeparator'
+import LoginActions from '../redux/LoginRedux'
+import RoundedButton from '../components/RoundedButton'
+import TextLink from '../components/TextLink'
 
 const appStyles = ApplicationStyles
-
-const getStyles = (props, state) => {
-  console.log(
-    'LoginScreen -> getStyles() -> visibleHeight',
-    state.visibleHeight,
-  )
-  const styles = StyleSheet.create({
-    mainContainer: {
-      ...appStyles.mainContainer,
-      height: state.visibleHeight,
-    },
-
-    contentContainer: {
-      ...appStyles.contentContainer,
-      ...appStyles.centerVerticalContainer,
-    },
-
-    centerTextContainer: {
-      ...appStyles.centerTextContainer,
-      marginTop: Metrics.spacing.xlarge,
-    },
-
-    topLogo: {
-      maxHeight: 140,
-      maxWidth: 140,
-      alignSelf: 'center',
-    },
-  })
-
-  return styles
-}
 
 class LoginScreen extends React.Component {
   isAttempting = false
@@ -191,6 +159,37 @@ class LoginScreen extends React.Component {
       </ScrollView>
     )
   }
+}
+
+const getStyles = (props, state) => {
+  console.log(
+    'LoginScreen -> getStyles() -> visibleHeight',
+    state.visibleHeight,
+  )
+  const styles = StyleSheet.create({
+    mainContainer: {
+      ...appStyles.mainContainer,
+      height: state.visibleHeight,
+    },
+
+    contentContainer: {
+      ...appStyles.contentContainer,
+      ...appStyles.centerVerticalContainer,
+    },
+
+    centerTextContainer: {
+      ...appStyles.centerTextContainer,
+      marginTop: Metrics.spacing.xlarge,
+    },
+
+    topLogo: {
+      maxHeight: 140,
+      maxWidth: 140,
+      alignSelf: 'center',
+    },
+  })
+
+  return styles
 }
 
 const mapStateToProps = state => ({

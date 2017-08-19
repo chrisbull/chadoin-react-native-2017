@@ -1,6 +1,2 @@
-/* @flow */
- import './src/Config/ReactotronConfig'
- import { AppRegistry } from 'react-native'
- import App from './src/Containers/App'
-
- AppRegistry.registerComponent('ChaDoin', () => App)
+/* eslint-disable no-unused-vars */
+import App from './src/app.android'

@@ -1,7 +1,7 @@
 /* @flow */
 import React, { Component } from 'react'
 import { Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { ApplicationStyles } from '../Themes'
+import { ApplicationStyles } from '../themes'
 
 const appStyles = ApplicationStyles
 

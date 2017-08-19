@@ -4,19 +4,12 @@
  * AND HAVE GOOD REASON FOR IT
  */
 
-import React, { Component } from 'react'
-import { Text, View, StatusBar, StyleSheet } from 'react-native'
+import { View, StatusBar, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import ReduxPersist from '../Config/ReduxPersist'
-import StartupActions from '../Redux/StartupRedux'
-import ReduxNavigation from '../Navigation/ReduxNavigation'
-import NoConnectionScreen from './NoConnectionScreen'
+import React, { Component } from 'react'
 
-const styles = StyleSheet.create({
-  applicationView: {
-    flex: 1,
-  },
-})
+import ReduxPersist from '../config/ReduxPersist'
+import StartupActions from '../redux/StartupRedux'
 
 class RootContainer extends Component {
   componentDidMount() {
@@ -30,12 +23,18 @@ class RootContainer extends Component {
     return (
       <View style={styles.applicationView}>
         <StatusBar barStyle="dark-content" />
-        <ReduxNavigation />
+        {/* <ReduxNavigation /> */}
         {/* <NoConnectionScreen isConnected={this.props.isConnected} /> */}
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  applicationView: {
+    flex: 1,
+  },
+})
 
 const mapStateToProps = ({ netInfo }) => ({
   isConnected: netInfo.isConnected,

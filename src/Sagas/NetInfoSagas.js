@@ -1,7 +1,7 @@
 import { NetInfo } from 'react-native'
 import { eventChannel } from 'redux-saga'
 import { fork, put, call, take } from 'redux-saga/effects'
-import NetInfoActions from '../Redux/NetInfoRedux'
+import NetInfoActions from '../redux/NetInfoRedux'
 
 export function createConnectionChannel() {
   return eventChannel(emit => {

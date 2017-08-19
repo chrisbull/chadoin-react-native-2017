@@ -1,6 +1,6 @@
 import { take, takeLatest, put, call, fork } from 'redux-saga/effects'
-import LoginActions, { LoginTypes } from '../Redux/LoginRedux'
-import fireApp from '../Services/FirebaseApp'
+import LoginActions, { LoginTypes } from '../redux/LoginRedux'
+import fireApp from '../services/FirebaseApp'
 
 const {
   syncUser,

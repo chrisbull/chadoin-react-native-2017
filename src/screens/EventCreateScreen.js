@@ -12,9 +12,9 @@ import {
   StyleSheet,
 } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import EventActions from '../Redux/EventRedux'
-import RoundedButton from '../Components/RoundedButton'
-import { ApplicationStyles } from '../Themes'
+import EventActions from '../redux/EventRedux'
+import RoundedButton from '../components/RoundedButton'
+import { ApplicationStyles } from '../themes'
 
 const styles = ApplicationStyles
 

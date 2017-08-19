@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Button } from 'react-native'
-import EventActions from '../Redux/EventRedux'
-import LoginActions from '../Redux/LoginRedux'
-import FlatList from '../Components/FlatList'
-import { TintColor } from '../Themes'
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
+
+import { TintColor } from '../themes'
+import EventActions from '../redux/EventRedux'
+import FlatList from '../components/FlatList'
+import LoginActions from '../redux/LoginRedux'
 
 class EventsListScreen extends Component {
   static defaultProps = {

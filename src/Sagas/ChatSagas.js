@@ -1,7 +1,7 @@
 import { fork, takeLatest, put, call, take, select } from 'redux-saga/effects'
 import { NavigationActions } from 'react-navigation'
-import ChatActions, { ChatTypes } from '../Redux/ChatRedux'
-import fireApp from '../Services/FirebaseApp'
+import ChatActions, { ChatTypes } from '../redux/ChatRedux'
+import fireApp from '../services/FirebaseApp'
 
 /* ----- All Chats Sagas ----- */
 

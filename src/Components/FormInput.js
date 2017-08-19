@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import { StyleSheet, TextInput } from 'react-native'
-import { Metrics, ApplicationStyles, Forms } from '../Themes'
+import { Metrics, ApplicationStyles, Forms } from '../themes'
 
 const appStyles = ApplicationStyles
 

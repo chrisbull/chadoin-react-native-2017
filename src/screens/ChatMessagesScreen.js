@@ -1,29 +1,21 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import {
   FlatList,
   Text,
   TextInput,
   TouchableHighlight,
   View,
-  Platform,
   StyleSheet,
 } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { KeyboardTrackingView } from 'react-native-keyboard-tracking-view'
-import { BlurView } from 'react-native-blur'
+import { connect } from 'react-redux'
+import React, { Component } from 'react'
 
-// Redux
-import ChatActions from '../Redux/ChatRedux'
-
-// Components
-import RoundedButton from '../Components/RoundedButton'
-import TextLink from '../Components/TextLink'
-import TableSeparator from '../Components/TableSeparator'
-import TimeAgo from '../Components/TimeAgo'
-
-// Styles
-import { ApplicationStyles, Colors, Metrics, Borders } from '../Themes'
+import { ApplicationStyles, Colors, Metrics, Borders } from '../themes'
+import ChatActions from '../redux/ChatRedux'
+import TableSeparator from '../components/TableSeparator'
+import TextLink from '../components/TextLink'
+import TimeAgo from '../components/TimeAgo'
 
 const appStyles = ApplicationStyles
 
