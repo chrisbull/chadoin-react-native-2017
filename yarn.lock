@@ -5931,9 +5931,9 @@ react-native-navigation-redux-helpers@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation-redux-helpers/-/react-native-navigation-redux-helpers-0.5.0.tgz#2cfa39422c5a8973ab8037963473ca89bc7ce0c5"
 
-react-native-navigation@^1.1.202:
-  version "1.1.202"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.202.tgz#0d3a9eca53829219c0b28d5609e3eebfa743ab45"
+react-native-navigation@^1.1.205:
+  version "1.1.205"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.205.tgz#eb7ff639f97e7f5bde42f38d2b11b7a6ce06a2c0"
   dependencies:
     lodash "4.x.x"
 

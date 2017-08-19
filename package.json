@@ -58,7 +58,7 @@
     "react-native-keyboard-tracking-view": "https://github.com/chrisbull/react-native-keyboard-tracking-view",
     "react-native-linear-gradient": "^2.2.0",
     "react-native-maps": "^0.15.3",
-    "react-native-navigation": "^1.1.202",
+    "react-native-navigation": "^1.1.205",
     "react-native-navigation-redux-helpers": "^0.5.0",
     "react-native-orientation": "^2.1.0",
     "react-native-reversed-flat-list": "^1.0.2",
@@ -126,17 +126,29 @@
     "standard": "^10.0.2"
   },
   "jest": {
-    "testMatch": ["**/Tests/**/*.js", "**/?(*.)(spec|test).js?(x)"],
-    "testPathIgnorePatterns": ["/node_modules/", "Tests/Setup.js"],
-    "setupFiles": ["./Tests/Setup"],
+    "testMatch": [
+      "**/Tests/**/*.js",
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "Tests/Setup.js"
+    ],
+    "setupFiles": [
+      "./Tests/Setup"
+    ],
     "preset": "react-native"
   },
   "config": {},
   "rnpm": {
-    "assets": ["./src/Fonts/Geomanist/*"]
+    "assets": [
+      "./src/Fonts/Geomanist/*"
+    ]
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": ["flowtype"]
+    "plugins": [
+      "flowtype"
+    ]
   }
 }
