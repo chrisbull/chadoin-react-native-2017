@@ -6,6 +6,8 @@ import fireApp from '../services/FirebaseApp'
 /* ----- All Events Sagas ----- */
 
 export function* syncEventsSaga() {
+  console.log('Saga: syncEventsSaga')
+
   const channel = yield call(fireApp.database.channel, 'events')
 
   while (true) {
@@ -26,6 +28,8 @@ export function* syncEventsSaga() {
 /* ----- Single Event Sagas ----- */
 
 export function* createEventSaga({ event }) {
+  console.log('Saga: createEventSaga')
+
   try {
     const fireEventId = yield call(fireApp.database.create, 'events', event)
     yield put(EventActions.eventSuccess({ id: fireEventId, ...event }))
@@ -36,6 +40,8 @@ export function* createEventSaga({ event }) {
 }
 
 export function* updateEventSaga({ event }) {
+  console.log('Saga: updateEventSaga')
+
   try {
     const { id, ...data } = event
     yield call(fireApp.database.update, `events/${id}`, data)
@@ -47,6 +53,8 @@ export function* updateEventSaga({ event }) {
 }
 
 export function* deleteEventSaga({ event }) {
+  console.log('Saga: deleteEventSaga')
+
   try {
     const { id } = event
     yield call(fireApp.database.delete, `events/${id}`)
@@ -64,18 +72,23 @@ export function* deleteEventSaga({ event }) {
 /* ----- Navigation Sagas ----- */
 
 export function* gotoNewEventScreen() {
+  console.log('Saga: gotoNewEventScreen')
+
   yield put(NavigationActions.navigate({ routeName: 'CreateEvent' }))
 }
 
 export function* gotoEditEventScreen() {
+  console.log('Saga: gotoEditEventScreen')
   yield put(NavigationActions.navigate({ routeName: 'EditEvent' }))
 }
 
 export function* gotoEventScreen() {
+  console.log('Saga: gotoEventScreen')
   yield put(NavigationActions.navigate({ routeName: 'ViewEvent' }))
 }
 
 export function* gotoEventListScreen() {
+  console.log('Saga: gotoEventListScreen')
   yield put(NavigationActions.navigate({ routeName: 'EventsList' }))
 }
 

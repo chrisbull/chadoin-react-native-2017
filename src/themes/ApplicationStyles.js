@@ -3,6 +3,7 @@ import Fonts from './Fonts'
 import Colors from './Colors'
 import Metrics from './Metrics'
 import Borders from './Borders'
+import Shadows from './Shadows'
 
 export const UnderlayColor = 'rgba(0,0,0,0.1)'
 export const TintColor = Colors.purple
@@ -55,6 +56,13 @@ export const appStyles = {
     flexDirection: 'row',
     alignItems: 'center',
     flexWrap: 'nowrap',
+  },
+
+  messageBoxContainer: {
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: Borders.borderRadius,
+    ...Shadows.default,
   },
 
   blurContainer: {

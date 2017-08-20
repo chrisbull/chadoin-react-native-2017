@@ -1,0 +1,92 @@
+{
+  "components": {
+    "AlertMessage": {
+      "attributes": [
+        "show"
+      ],
+      "props": {
+        "show": {
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          }
+        }
+      }
+    },
+    "DrawerButton": {},
+    "FlatList": {
+      "attributes": [
+        "data"
+      ],
+      "props": {
+        "data": {
+          "defaultValue": {
+            "value": "[]",
+            "computed": false
+          }
+        }
+      }
+    },
+    "FormGroup": {},
+    "FormInput": {},
+    "FormSeparator": {},
+    "FullButton": {},
+    "ListRow": {},
+    "RoundedButton": {},
+    "SearchBar": {},
+    "TextLink": {},
+    "TimeAgo": {
+      "attributes": [
+        "time",
+        "interval",
+        "hideAgo"
+      ],
+      "props": {
+        "time": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "number"
+              },
+              {
+                "name": "array"
+              },
+              {
+                "name": "instanceOf",
+                "value": "Date"
+              }
+            ]
+          },
+          "required": true,
+          "description": ""
+        },
+        "interval": {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "60000",
+            "computed": false
+          }
+        },
+        "hideAgo": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          }
+        }
+      }
+    }
+  }
+}

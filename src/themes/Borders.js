@@ -13,8 +13,6 @@ const borderRadius = 4
 const borderColor = colors.regular
 const borderWidth = 0.5 * PixelRatio.get()
 
-console.log('PixelRatio', PixelRatio.get())
-
 const defaultStyle = {
   borderColor,
   borderWidth,

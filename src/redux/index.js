@@ -5,9 +5,9 @@ const rootReducer = combineReducers({
   chats: require('./ChatRedux').reducer,
   events: require('./EventRedux').reducer,
   login: require('./LoginRedux').reducer,
-  nav: require('./NavigationRedux').reducer,
   netInfo: require('./NetInfoRedux').reducer,
   search: require('./SearchRedux').reducer,
+  // nav: require('./NavigationRedux').reducer,
 })
 
 export default rootReducer

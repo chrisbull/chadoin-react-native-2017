@@ -11,6 +11,8 @@ const {
 } = LoginActions
 
 function* loginSaga({ email, password }) {
+  console.log('Saga: loginSaga')
+
   try {
     if (email === '') return yield put(loginFailure('MISSING_EMAIL'))
     yield call(fireApp.auth.signInWithEmailAndPassword, email, password)
@@ -21,6 +23,8 @@ function* loginSaga({ email, password }) {
 }
 
 function* syncUserSaga() {
+  console.log('Saga: syncUserSaga')
+
   const channel = yield call(fireApp.auth.channel)
 
   while (true) {
@@ -32,6 +36,8 @@ function* syncUserSaga() {
 }
 
 function* logoutSaga() {
+  console.log('Saga: logoutSaga')
+
   try {
     yield call(fireApp.auth.signOut)
     yield put(logoutSuccess())

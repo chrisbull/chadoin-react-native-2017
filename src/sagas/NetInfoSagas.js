@@ -4,6 +4,8 @@ import { fork, put, call, take } from 'redux-saga/effects'
 import NetInfoActions from '../redux/NetInfoRedux'
 
 export function createConnectionChannel() {
+  console.log('Saga: createConnectionChannel')
+
   return eventChannel(emit => {
     const changeHandler = isConnected => {
       emit(isConnected)
@@ -23,11 +25,15 @@ export function createConnectionChannel() {
 }
 
 export function* getConnectionStatus() {
+  console.log('Saga: getConnectionStatus')
+
   const isConnected = yield call(NetInfo.isConnected.fetch)
   yield put(NetInfoActions.changeConnectionStatus(isConnected))
 }
 
 export function* watchConnectionStatus() {
+  console.log('Saga: watchConnectionStatus')
+
   const channel = yield call(createConnectionChannel)
 
   while (true) {

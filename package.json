@@ -26,7 +26,9 @@
     "format": "prettier-eslint ./src/**/*.js --write",
     "chris:build": "react-native run-ios --device \"Chris's iPhone\"",
     "chris:build:release": "react-native run-ios --configuration Release --device \"Chris's iPhone\" ",
-    "generate": "rc-autocomplete"
+    "generate": "rc-autocomplete",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android"
   },
   "dependencies": {
     "apisauce": "^0.14.0",
@@ -126,29 +128,17 @@
     "standard": "^10.0.2"
   },
   "jest": {
-    "testMatch": [
-      "**/Tests/**/*.js",
-      "**/?(*.)(spec|test).js?(x)"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "Tests/Setup.js"
-    ],
-    "setupFiles": [
-      "./Tests/Setup"
-    ],
+    "testMatch": ["**/Tests/**/*.js", "**/?(*.)(spec|test).js?(x)"],
+    "testPathIgnorePatterns": ["/node_modules/", "Tests/Setup.js"],
+    "setupFiles": ["./Tests/Setup"],
     "preset": "react-native"
   },
   "config": {},
   "rnpm": {
-    "assets": [
-      "./src/Fonts/Geomanist/*"
-    ]
+    "assets": ["./src/Fonts/Geomanist/*"]
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ]
+    "plugins": ["flowtype"]
   }
 }

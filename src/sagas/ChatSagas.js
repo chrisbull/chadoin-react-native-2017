@@ -6,6 +6,8 @@ import fireApp from '../services/FirebaseApp'
 /* ----- All Chats Sagas ----- */
 
 export function* syncChatsSaga() {
+  console.log('Saga: syncChatsSaga')
+
   const channel = yield call(fireApp.database.channel, 'chats')
 
   while (true) {
@@ -25,10 +27,15 @@ export function* syncChatsSaga() {
   }
 }
 
-export const selectChatFromChats = state =>
-  state.chats.list.find(c => c.id === state.chats.chat.id)
+export const selectChatFromChats = state => {
+  console.log('Saga: selectChatFromChats')
+
+  return state.chats.list.find(c => c.id === state.chats.chat.id)
+}
 
 export function* syncChatSaga() {
+  console.log('Saga: syncChatSaga')
+
   const chat = yield select(selectChatFromChats)
   yield put(ChatActions.syncChat(chat))
 }
@@ -36,6 +43,8 @@ export function* syncChatSaga() {
 /* ----- Single Chat Sagas ----- */
 
 export function* createChatSaga({ chat }) {
+  console.log('Saga: createChatSaga')
+
   try {
     yield call(fireApp.database.create, 'chats', chat)
     yield put(ChatActions.chatSuccess())
@@ -45,6 +54,8 @@ export function* createChatSaga({ chat }) {
 }
 
 export function* updateChatSaga({ chat }) {
+  console.log('Saga: updateChatSaga')
+
   try {
     const { id, ...data } = chat
     yield call(fireApp.database.update, `chats/${id}`, data)
@@ -57,6 +68,8 @@ export function* updateChatSaga({ chat }) {
 /* ----- Single Message Sagas ----- */
 
 export function* createChatMessageSaga({ chat, message }) {
+  console.log('Saga: createChatMessageSaga')
+
   try {
     yield call(fireApp.database.create, `chats/${chat.id}/messages`, message)
     yield put(ChatActions.messageSuccess())
@@ -66,6 +79,8 @@ export function* createChatMessageSaga({ chat, message }) {
 }
 
 export function* updateChatMessageSaga({ chat, message }) {
+  console.log('Saga: updateChatMessageSaga')
+
   try {
     yield call(
       fireApp.database.update,
@@ -81,14 +96,17 @@ export function* updateChatMessageSaga({ chat, message }) {
 /* ----- Navigation Sagas ----- */
 
 export function* gotoNewChatScreen() {
+  console.log('Saga: gotoNewChatScreen')
   yield put(NavigationActions.navigate({ routeName: 'NewChat' }))
 }
 
 export function* gotoEditChatScreen() {
+  console.log('Saga: gotoEditChatScreen')
   yield put(NavigationActions.navigate({ routeName: 'EditChat' }))
 }
 
 export function* gotoChatMessagesScreen() {
+  console.log('Saga: gotoChatMessagesScreen')
   yield put(NavigationActions.navigate({ routeName: 'ChatMessages' }))
 }
 

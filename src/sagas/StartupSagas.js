@@ -15,6 +15,8 @@ export const selectFirstTimeOpeningApp = state =>
 /* -- Sagas -- */
 
 export function* startupSaga() {
+  console.log('Saga: startupSaga')
+
   yield put(AppStateActions.setRehydrationComplete())
 
   const isLoggedIn = yield select(selectLoggedInStatus)

@@ -5,6 +5,7 @@ import Fonts from './Fonts'
 import Forms from './Forms'
 import Images from './Images'
 import Metrics from './Metrics'
+import NavigationStyle from './NavigationStyle'
 
 import ApplicationStyles, {
   TintColor,
@@ -21,6 +22,7 @@ export {
   Forms,
   Images,
   Metrics,
+  NavigationStyle,
   TextColor,
   TintColor,
   UnderlayColor,

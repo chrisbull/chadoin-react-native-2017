@@ -162,10 +162,6 @@ class LoginScreen extends React.Component {
 }
 
 const getStyles = (props, state) => {
-  console.log(
-    'LoginScreen -> getStyles() -> visibleHeight',
-    state.visibleHeight,
-  )
   const styles = StyleSheet.create({
     mainContainer: {
       ...appStyles.mainContainer,
