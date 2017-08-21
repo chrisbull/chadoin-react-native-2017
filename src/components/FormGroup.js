@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Borders, Metrics } from '../themes'
+import { Borders, Metrics } from '../theme'
 
 const FormGroup = props => {
   return (

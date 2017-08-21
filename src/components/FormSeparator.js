@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Borders } from '../themes'
+import { Borders } from '../theme'
 
 const FormSeparator = () => {
   return <View style={styles.seperator} />

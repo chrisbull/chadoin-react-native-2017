@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { FlatList } from 'react-native'
 import TableSeparator from '../components/TableSeparator'
 import ListRow from '../components/ListRow'
-import { ApplicationStyles } from '../themes'
+import { ApplicationStyles } from '../theme'
 const styles = ApplicationStyles
 
 export default class MyFlatList extends Component {
