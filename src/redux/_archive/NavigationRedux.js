@@ -22,13 +22,6 @@ const LOGGED_IN_STATE = getStateForAction(
   }),
 )
 
-const WALKTHROUGH_STATE = getStateForAction(
-  reset({
-    index: 0,
-    actions: [navigate({ routeName: 'WalkthroughScreen' })],
-  }),
-)
-
 export const reducer = (state = INITIAL_STATE, action) => {
   let nextState
 
@@ -48,8 +41,6 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return LOGGED_IN_STATE
     case 'AUTO_LOGIN':
       return LOGGED_IN_STATE
-    case 'WALKTHROUGH':
-      return WALKTHROUGH_STATE
   }
 
   nextState = getStateForAction(action, state)
