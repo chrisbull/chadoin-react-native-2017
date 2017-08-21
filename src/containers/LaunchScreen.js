@@ -7,7 +7,7 @@ import { View, StyleSheet } from 'react-native'
   and determining if user is logged in or not
 */
 
-export default class AppLoadingScreen extends Component {
+export default class LaunchScreen extends Component {
   render() {
     return <View style={styles.container} />
   }

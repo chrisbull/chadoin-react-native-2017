@@ -1,5 +1,6 @@
+/* @flow */
 import { take, takeLatest, put, call, fork } from 'redux-saga/effects'
-import LoginActions, { LoginTypes } from '../redux/LoginRedux'
+import AuthActions, { AuthTypes } from '../redux/AuthRedux'
 import fireApp from '../services/FirebaseApp'
 
 const {
@@ -8,7 +9,7 @@ const {
   loginFailure,
   logoutSuccess,
   logoutFailure,
-} = LoginActions
+} = AuthActions
 
 function* loginSaga({ email, password }) {
   try {
@@ -40,10 +41,10 @@ function* logoutSaga() {
   }
 }
 
-const LoginSagas = [
+const AuthSagas = [
   fork(syncUserSaga),
-  takeLatest(LoginTypes.LOGIN_REQUEST, loginSaga),
-  takeLatest(LoginTypes.LOGOUT, logoutSaga),
+  takeLatest(AuthTypes.LOGIN_REQUEST, loginSaga),
+  takeLatest(AuthTypes.LOGOUT_REQUEST, logoutSaga),
 ]
 
-export default LoginSagas
+export default AuthSagas

@@ -12,7 +12,7 @@ import Immutable from 'seamless-immutable'
 */
 
 const { Types, Creators } = createActions({
-  startup: null,
+  startupSaga: null,
   setRehydrationComplete: null,
 })
 

@@ -1,5 +1,4 @@
 /* @flow */
-
 import React from 'react'
 import { addNavigationHelpers } from 'react-navigation'
 import { connect } from 'react-redux'
@@ -17,4 +16,5 @@ const ReduxNavigation = props => {
 }
 
 const mapStateToProps = state => ({ nav: state.nav })
+
 export default connect(mapStateToProps)(ReduxNavigation)

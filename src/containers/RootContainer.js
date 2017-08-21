@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { View, StatusBar, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+
 import ReduxPersist from '../config/ReduxPersist'
 import StartupActions from '../redux/StartupRedux'
 import ReduxNavigation from '../navigation/ReduxNavigation'
@@ -19,7 +20,7 @@ class RootContainer extends Component {
   componentDidMount() {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
-      this.props.startup()
+      this.props.startupSaga()
     }
   }
 
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = () => ({})
 
 const mapDispatchToProps = dispatch => ({
-  startup: () => dispatch(StartupActions.startup()),
+  startupSaga: () => dispatch(StartupActions.startupSaga()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootContainer)

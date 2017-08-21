@@ -18,7 +18,7 @@ const { Types, Creators } = createActions({
   autoLogin: null, // Navigate to HomeScreen
 })
 
-export const LoginTypes = Types
+export const AuthTypes = Types
 export default Creators
 
 /* --- Initial State --- */
@@ -59,4 +59,4 @@ export const reducer = createReducer(INITIAL_STATE, {
 })
 
 /* --- Selectors --- */
-export const isLoggedIn = loginState => loginState.email !== null
+export const isLoggedIn = authState => authState.email !== null
