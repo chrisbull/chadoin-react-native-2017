@@ -1,6 +1,6 @@
 /* @flow */
- import './src/Config/ReactotronConfig'
- import { AppRegistry } from 'react-native'
- import App from './src/Containers/App'
+import './src/config/ReactotronConfig'
+import { AppRegistry } from 'react-native'
+import App from './src/containers/App'
 
- AppRegistry.registerComponent('ChaDoin', () => App)
+AppRegistry.registerComponent('ChaDoin', () => App)
