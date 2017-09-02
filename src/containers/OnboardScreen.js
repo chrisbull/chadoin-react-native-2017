@@ -3,15 +3,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, StyleSheet } from 'react-native'
 
-import { ApplicationStyles } from '../theme'
+import { AppStyles } from '../theme'
 
-const appStyles = ApplicationStyles
-
-class WelcomeScreen extends Component {
+class OnboardScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>WelcomeScreen component</Text>
+        <Text>OnboardScreen component</Text>
       </View>
     )
   }
@@ -19,7 +17,7 @@ class WelcomeScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    ...appStyles.mainContainer,
+    ...AppStyles.mainContainer,
   },
 })
 
@@ -27,4 +25,4 @@ const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(OnboardScreen)

@@ -21,6 +21,15 @@ function* loginSaga({ email, password }) {
   }
 }
 
+function* logoutSaga() {
+  try {
+    yield call(fireApp.auth.signOut)
+    yield put(logoutSuccess())
+  } catch (error) {
+    yield put(logoutFailure(error))
+  }
+}
+
 function* syncUserSaga() {
   const channel = yield call(fireApp.auth.channel)
 
@@ -29,15 +38,6 @@ function* syncUserSaga() {
 
     if (user) yield put(syncUser(user))
     else yield put(syncUser(null))
-  }
-}
-
-function* logoutSaga() {
-  try {
-    yield call(fireApp.auth.signOut)
-    yield put(logoutSuccess())
-  } catch (error) {
-    yield put(logoutFailure(error))
   }
 }
 

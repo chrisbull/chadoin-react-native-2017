@@ -3,7 +3,7 @@ import { StackNavigator } from 'react-navigation'
 
 /* Screens */
 import LaunchScreen from '../containers/LaunchScreen'
-import WelcomeScreen from '../containers/WelcomeScreen'
+import OnboardScreen from '../containers/OnboardScreen'
 import LoginScreen from '../containers/LoginScreen'
 import SignUpScreen from '../containers/SignUpScreen'
 import HomeScreen from '../containers/HomeScreen'
@@ -12,7 +12,7 @@ import HomeScreen from '../containers/HomeScreen'
 const AppNavigation = StackNavigator(
   {
     LaunchScreen: { screen: LaunchScreen },
-    WelcomeScreen: { screen: WelcomeScreen },
+    OnboardScreen: { screen: OnboardScreen },
     LoginScreen: { screen: LoginScreen },
     SignUpScreen: { screen: SignUpScreen },
     HomeScreen: { screen: HomeScreen },

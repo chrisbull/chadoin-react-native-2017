@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
-import { ApplicationStyles, Metrics } from '../theme'
-const styles = ApplicationStyles
+import { AppStyles, Metrics } from '../theme'
+const styles = AppStyles
 
 export default ({ highlighted }) => {
   return (

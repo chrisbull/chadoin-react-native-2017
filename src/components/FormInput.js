@@ -2,13 +2,11 @@
 
 import React, { Component } from 'react'
 import { StyleSheet, TextInput } from 'react-native'
-import { Metrics, ApplicationStyles, Forms } from '../theme'
-
-const appStyles = ApplicationStyles
+import { Metrics, AppStyles, Forms } from '../theme'
 
 const styles = StyleSheet.create({
   formInput: {
-    ...appStyles.formInput,
+    ...AppStyles.formInput,
     paddingHorizontal: Metrics.spacing.regular,
     paddingVertical: Metrics.spacing.small,
     minHeight: Metrics.rowMinHeight,

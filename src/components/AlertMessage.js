@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { Metrics, Fonts, ApplicationStyles } from '../theme'
+import { Metrics, Fonts, AppStyles } from '../theme'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: Fonts.size.regular,
     fontWeight: 'bold',
-    // color: ApplicationStyles.textColor.regular,
+    // color: AppStyles.textColor.regular,
   },
   icon: {
-    // color: ApplicationStyles.textColor.regular,
+    // color: AppStyles.textColor.regular,
   },
 })
 

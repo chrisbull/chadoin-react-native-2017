@@ -6,14 +6,10 @@ import Forms from './Forms'
 import Images from './Images'
 import Metrics from './Metrics'
 
-import ApplicationStyles, {
-  TintColor,
-  TextColor,
-  UnderlayColor,
-} from './ApplicationStyles'
+import AppStyles, { TintColor, TextColor, UnderlayColor } from './AppStyles'
 
 export {
-  ApplicationStyles,
+  AppStyles,
   Borders,
   Buttons,
   Colors,

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Text, TouchableHighlight } from 'react-native'
-import { ApplicationStyles, UnderlayColor } from '../theme'
+import { AppStyles, UnderlayColor } from '../theme'
 
-const styles = ApplicationStyles
+const styles = AppStyles
 
 export default class ListRow extends Component {
   _onPress = () => {

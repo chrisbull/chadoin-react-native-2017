@@ -8,7 +8,7 @@ export const UnderlayColor = 'rgba(0,0,0,0.1)'
 export const TintColor = Colors.purple
 export const TextColor = Colors.baseColor
 
-export const appStyles = {
+export default {
   // All Font Sizes and Variations
   ...Fonts.style,
 
@@ -127,40 +127,4 @@ export const appStyles = {
   messageTextInput: {
     ...Fonts.style.body,
   },
-
-  // Buttons
-
-  button: {
-    ...Borders.defaultStyleRadius,
-    paddingHorizontal: Metrics.spacing.large,
-    paddingVertical: Metrics.spacing.small,
-    height: Metrics.buttonHeight,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  buttonPrimary: {
-    backgroundColor: Colors.primary,
-    borderWidth: 0,
-  },
-
-  buttonSecondary: {
-    backgroundColor: Colors.secondary,
-    borderWidth: 0,
-  },
-
-  buttonText: {
-    ...Fonts.style.body,
-    textAlign: 'center',
-  },
-
-  buttonColorText: {
-    ...Fonts.style.body,
-    textAlign: 'center',
-    color: Colors.white,
-  },
 }
-
-const ApplicationStyles = appStyles // StyleSheet.create(appStyles)
-
-export default ApplicationStyles

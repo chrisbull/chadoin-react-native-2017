@@ -19,7 +19,7 @@ const NOT_LOGGED_IN_STATE = getStateForAction(
 const LOGGED_IN_STATE = getStateForAction(
   reset({
     index: 0,
-    actions: [navigate({ routeName: 'MainScreen' })],
+    actions: [navigate({ routeName: 'HomeScreen' })],
   }),
 )
 

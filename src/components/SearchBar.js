@@ -7,11 +7,11 @@ import {
   StyleSheet,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Fonts, Colors, Metrics, ApplicationStyles } from '../theme'
+import { Fonts, Colors, Metrics, AppStyles } from '../theme'
 
 const styles = StyleSheet.create({
   mainContainer: {
-    ...ApplicationStyles.mainContainer,
+    ...AppStyles.mainContainer,
     marginTop: Metrics.smallMargin,
     flexDirection: 'row',
     width: Metrics.screenWidth - Metrics.baseMargin,
