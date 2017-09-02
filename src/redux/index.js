@@ -1,6 +1,6 @@
 /* @flow */
 import { combineReducers } from 'redux'
-import configureStore from './store'
+import configureStore from './CreateStore'
 import rootSaga from '../sagas'
 
 import * as StartupRedux from './StartupRedux'

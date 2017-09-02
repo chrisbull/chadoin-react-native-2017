@@ -4,9 +4,9 @@ import { autoRehydrate } from 'redux-persist'
 import ReduxLogger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
-import Config from '../../config/DebugConfig'
-import ReduxPersist from '../../config/ReduxPersist'
-import RehydrationServices from '../../services/RehydrationServices'
+import Config from '../config/DebugConfig'
+import ReduxPersist from '../config/ReduxPersist'
+import RehydrationServices from '../services/RehydrationServices'
 
 /*
   ConfigureStore connects the reducers and the sagas to redux,
@@ -47,8 +47,8 @@ const ConfigureStore = (rootReducer, rootSaga) => {
 
   /* --- Fix for hot reloading and react-redux v2.0.0 --- */
   if (module.hot) {
-    module.hot.accept('../index', () => {
-      const nextRootReducer = require('../index')
+    module.hot.accept('./index', () => {
+      const nextRootReducer = require('./index')
       store.replaceReducer(nextRootReducer)
     })
   }
