@@ -3,6 +3,7 @@ package com.chadoin;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.wix.autogrowtextinput.AutoGrowTextInputPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import com.horcrux.svg.SvgPackage;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new AutoGrowTextInputPackage(),
             new RNFirebasePackage(),
             new RNFirebaseAnalyticsPackage(),
             new SvgPackage(),
